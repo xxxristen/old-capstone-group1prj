@@ -1,0 +1,128 @@
+section {
+    padding-left: 1rem;
+    width: 80%;
+    padding-bottom:24px;
+}
+section h1, section h2, section h3 {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem; 
+}
+section:nth-last-child(1) {
+    padding-bottom: 64px;
+}
+.logo {
+    padding: 1rem;
+    color: $white;
+}
+
+.logo img {
+    height: 4rem;
+    width: auto;
+}
+
+.logo img path {
+    fill: #55ff00
+}
+
+/* Modify the background color */
+.custom-bg,
+.navbar-nav ul, .footer-nav {
+    background-color: #2e8b57;
+}
+
+.navbar-nav li {
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+}
+
+nav .navbar-nav li a {
+    color: white !important;
+}
+
+nav .navbar-nav li a:hover {
+    color: white !important;
+    background-color: #005B41;
+}
+
+nav {
+    justify-content: center;
+}
+
+.navbar {
+    padding-bottom: 0;
+}
+header {
+    width: 100%;
+}
+#banner {
+    background-image: url("/www/img/tea-leaves.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-position: 0 30%;
+    height: 18.75rem;
+    max-height: 21.875rem;
+    color: #fff;
+}
+
+.jumbo-text {
+    z-index: 2;
+    width: 40%;
+    margin-top: 3%;
+    position: relative;
+    background-color: #808080;
+}
+
+.jumbo-text h1 {
+    color: #fff;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.jumbo-text button {
+    width: 20%;
+    border: none;
+    padding:8px;
+}
+.jumbo-text button:hover {
+    background-color: #005B41;
+    color: white;
+}
+
+/* .mask1 {
+    -webkit-mask-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 24%, rgba(255, 255, 255, 0) 92%);
+    mask-position: left;
+    z-index: 1;
+    position:absolute;
+} */
+
+.right {
+    position: absolute;
+    right: 0;
+    padding: 1rem;
+    padding-left:30px;
+}
+h1, h2, h3 {
+    color: #e65722;
+}
+.divider {
+    border-bottom: 3px dotted #000;
+}
+.card-container {
+    padding-left: 72px;
+}
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-left: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    list-style: none;
+    margin-bottom: 0;
+}
+.footer-nav li {
+    padding-right: 16px;
+}
+.footer-nav li a {
+    color: #fff;
+}
