@@ -2,10 +2,13 @@ body {
     font-family: "Montserrat", Helvetica, serif;
 }
 
-section {
+section  {
     padding-left: 3rem;
     width: 80%;
     padding-bottom: 24px;
+}
+#img-carousell {
+    width: 100%;
 }
 
 section h1,
@@ -19,7 +22,7 @@ section h3 {
     padding-bottom: 64px;
 }
 
-.logo {
+.padding1-white {
     padding: 1rem;
     color: white;
 }
@@ -68,7 +71,7 @@ header {
 }
 
 #banner {
-    background-image: url("/www/img/tea-leaves.jpg");
+    background-image: linear-gradient(90deg, rgba(255,255,255,0) 11%, rgba(255,255,255,0.8239670868347339) 78%, rgba(255,255,255,1) 96%), url("/www/img/tea-leaves.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -79,11 +82,11 @@ header {
 }
 
 .jumbo-text {
-    z-index: 100;
-    width: 40%;
+    width: 35%;
     margin-top: 3%;
+    margin-right: 30px;
     position: relative;
-    background-color: #808080;
+    background-color: rgba(128,128,128,0.8);
 }
 
 .jumbo-text h1 {
@@ -99,16 +102,9 @@ header {
 }
 
 .jumbo-text button:hover {
-    background-color: #005B41;
+    background-color: #2e8b57;
     color: white;
 }
-
-/* .mask1 {
-    -webkit-mask-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 24%, rgba(255, 255, 255, 0) 92%);
-    mask-position: left;
-    z-index: 1;
-    position:absolute;
-} */
 
 .right {
     position: absolute;
@@ -122,6 +118,14 @@ header {
 .carousel img  {
     max-width: 100%;
     max-height: 100%;
+}
+#carouselExampleControls {
+    display: flex;
+    width: 60%;
+}
+/* Set all card-body to have the same height */
+.carousel .card-body {
+    height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -137,24 +141,22 @@ header {
     }
 
     .carousel .card {
-        margin: 0 0.5em;
+        margin: 0 1em;
         box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
         border: #005B41 1px solid;
-        height: 100%;
     }
 
     .card .img-wrapper {
-        max-width: 100%;
         /* Using flex to align it */
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        height: 20em;
+        height: 100%;
     }
 
     .carousel-control-prev,
     .carousel-control-next {
-        background-color: #e1e1e1;
+        background-color: #e65722;
         width: 6vh;
         height: 6vh;
         border-radius: 50%;
@@ -171,6 +173,12 @@ header {
 @media (max-width: 767px) {
     .card .img-wrapper {
         height: 17em;
+    }
+    nav {
+        display: flex;
+        justify-items: center;
+        width: 100%;
+        margin:auto;
     }
 }
 
@@ -198,7 +206,6 @@ h3 {
 .card-container {
     padding-left: 72px;
 }
-
 .footer-nav {
     display: flex;
     justify-content: center;
