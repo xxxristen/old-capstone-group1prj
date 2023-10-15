@@ -1,18 +1,27 @@
+body {
+    font-family: "Montserrat", Helvetica, serif;
+}
+
 section {
-    padding-left: 1rem;
+    padding-left: 3rem;
     width: 80%;
-    padding-bottom:24px;
+    padding-bottom: 24px;
 }
-section h1, section h2, section h3 {
+
+section h1,
+section h2,
+section h3 {
     padding-top: 1.5rem;
-    padding-bottom: 1rem; 
+    padding-bottom: 1rem;
 }
-section:nth-last-child(1) {
+
+#reviews:nth-last-child(1) {
     padding-bottom: 64px;
 }
+
 .logo {
     padding: 1rem;
-    color: $white;
+    color: white;
 }
 
 .logo img {
@@ -26,8 +35,10 @@ section:nth-last-child(1) {
 
 /* Modify the background color */
 .custom-bg,
-.navbar-nav ul, .footer-nav {
+.navbar-nav ul,
+footer {
     background-color: #2e8b57;
+    color: #fff;
 }
 
 .navbar-nav li {
@@ -51,9 +62,11 @@ nav {
 .navbar {
     padding-bottom: 0;
 }
+
 header {
     width: 100%;
 }
+
 #banner {
     background-image: url("/www/img/tea-leaves.jpg");
     background-size: cover;
@@ -66,7 +79,7 @@ header {
 }
 
 .jumbo-text {
-    z-index: 2;
+    z-index: 100;
     width: 40%;
     margin-top: 3%;
     position: relative;
@@ -78,11 +91,13 @@ header {
     padding-top: 0;
     padding-bottom: 0;
 }
+
 .jumbo-text button {
     width: 20%;
     border: none;
-    padding:8px;
+    padding: 8px;
 }
+
 .jumbo-text button:hover {
     background-color: #005B41;
     color: white;
@@ -99,17 +114,91 @@ header {
     position: absolute;
     right: 0;
     padding: 1rem;
-    padding-left:30px;
+    padding-left: 30px;
 }
-h1, h2, h3 {
+
+/* CAROUSEL */
+/* ------------------------------------------------------------------------ */
+.carousel img  {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@media (min-width: 768px) {
+    .carousel-inner {
+        display: flex;
+        padding: 1em;
+    }
+
+    .carousel-item {
+        margin-right: 0;
+        flex: 0 0 calc(100%/3);
+        display: block;
+    }
+
+    .carousel .card {
+        margin: 0 0.5em;
+        box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+        border: #005B41 1px solid;
+        height: 100%;
+    }
+
+    .card .img-wrapper {
+        max-width: 100%;
+        /* Using flex to align it */
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 20em;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        background-color: #e1e1e1;
+        width: 6vh;
+        height: 6vh;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .carousel .card-body .card-body {
+        display: flex;
+        align-items: stretch;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .card .img-wrapper {
+        height: 17em;
+    }
+}
+
+
+
+
+.strike-red {
+    color: #F00;
+    text-decoration: line-through;
+    font-weight: bold;
+}
+
+/* CAROUSEL END */
+
+h1,
+h2,
+h3 {
     color: #e65722;
 }
+
 .divider {
     border-bottom: 3px dotted #000;
 }
+
 .card-container {
     padding-left: 72px;
 }
+
 .footer-nav {
     display: flex;
     justify-content: center;
@@ -120,9 +209,19 @@ h1, h2, h3 {
     list-style: none;
     margin-bottom: 0;
 }
+
 .footer-nav li {
     padding-right: 16px;
 }
+
 .footer-nav li a {
     color: #fff;
+}
+
+footer svg {
+    fill: #fff;
+}
+
+.carousel-item .card {
+    text-align: center;
 }
