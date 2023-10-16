@@ -21,7 +21,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     if (scrollPosition < carouselWidth - cardWidth * 4) {
       // On click of next button, set scroll position to current scroll position + card width
       scrollPosition += cardWidth;
-      // Making the carousel scroll, use animate function to scroll to current scroll position and set duration 600ms
+      // Making the carousel scroll, use animate function to scroll to current scroll position
       document.querySelector("#carouselExampleControls .carousel-inner").scroll({ left: scrollPosition, behavior: 'smooth' });
     }
   });
@@ -31,7 +31,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     if (scrollPosition > 0) {
       // On click of next button, set scroll position to current scroll position + card width
       scrollPosition -= cardWidth;
-      // Making the carousel scroll, use animate function to scroll to current scroll position and set duration 600ms
+      // Making the carousel scroll, use animate function to scroll to current scroll position
       document.querySelector("#carouselExampleControls .carousel-inner").scroll({ left: scrollPosition, behavior: 'smooth' });
         }
       });
