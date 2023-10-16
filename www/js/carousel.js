@@ -9,11 +9,11 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     wrap: false, // Prevent wrapping at the end
   });
 
-  // Get width of the entire carousel - first image
+  // Get width of the entire carousel / carousel body
   let carouselWidth = document.querySelector(".carousel-inner").scrollWidth;
   // Get width of a card
   let cardWidth = document.querySelector(".carousel-item").offsetWidth;
-  // Setting scrollposition to 0
+  // Setting scroll position to 0
   let scrollPosition = 0;
   // Listen for click event on next button and change position of scroll position
   document.querySelector("#carouselExampleControls .carousel-control-next").addEventListener("click", function () {
@@ -21,17 +21,17 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     if (scrollPosition < carouselWidth - cardWidth * 4) {
       // On click of next button, set scroll position to current scroll position + card width
       scrollPosition += cardWidth;
-      // Making the carousel scroll, use animate function to scroll to current scroll position
+      // Making the carousel scroll, use animate function to scroll to updated scroll position
       document.querySelector("#carouselExampleControls .carousel-inner").scroll({ left: scrollPosition, behavior: 'smooth' });
     }
   });
-  // Listen on click event on previous button
+  // Listen for click event on previous button
   document.querySelector("#carouselExampleControls .carousel-control-prev").addEventListener("click", function () {
-    // Adding a condition to check if we are at the first card
+    // Adding a condition to check if we are not at the first card
     if (scrollPosition > 0) {
       // On click of next button, set scroll position to current scroll position + card width
       scrollPosition -= cardWidth;
-      // Making the carousel scroll, use animate function to scroll to current scroll position
+      // Making the carousel scroll, use animate function to scroll to updated scroll position
       document.querySelector("#carouselExampleControls .carousel-inner").scroll({ left: scrollPosition, behavior: 'smooth' });
         }
       });
