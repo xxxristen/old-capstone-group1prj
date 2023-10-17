@@ -2,14 +2,12 @@ body {
     font-family: "Montserrat", Helvetica, serif;
 }
 
-section {
-    padding-left: 3rem;
-    width: 80%;
-    padding-bottom: 24px;
-}
-
-#img-carousell {
-    width: 100%;
+#reviews.container-fluid,
+#img-carousel.container-fluid,
+#about-tea.container-fluid {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
 }
 
 section h1,
@@ -17,20 +15,27 @@ section h2,
 section h3 {
     padding-top: 1.5rem;
     padding-bottom: 1rem;
+    color: #e65722;
 }
 
-.padding1-white {
-    padding: 1rem;
-    color: white;
+.divider {
+    border-bottom: 3px dotted #000;
+    margin-top: 3rem;
+}
+
+#reviews {
+    margin-bottom: 3rem;
+}
+
+#logo {
+    padding: 1.5rem;
 }
 
 .logo img {
     height: 4rem;
     width: auto;
-    fill: #e65722;
 }
 
-/* Modify the background color */
 .custom-bg,
 .navbar-nav ul,
 footer {
@@ -38,29 +43,22 @@ footer {
     color: #fff;
 }
 
-.navbar-nav li {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-}
-
-nav .navbar-nav li a {
-    color: white !important;
+.nav-item a {
+    color: #fff;
 }
 
 nav .navbar-nav li a:hover {
     color: white !important;
     background-color: #005B41;
-    padding-top: 13px;
-    padding-bottom: 13px;
 }
 
-.navbar-nav {
-    height: 50px;
-    align-items: center;
+.navbar-nav li {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
-.navbar {
-    padding-bottom: 0;
+.navbar img {
+    height: 1.5rem;
 }
 
 #banner {
@@ -103,145 +101,152 @@ nav .navbar-nav li a:hover {
     position: absolute;
     right: 0;
     padding: 1rem;
-    padding-left: 30px;
+    padding-left: 20px;
 }
 
 /* CAROUSEL */
 /* ------------------------------------------------------------------------ */
-.carousel img {
-    max-width: 100%;
-    max-height: 100%;
+/* start: Slider */
+.wrapper {
+    position: relative;
+    max-width: 940px;
+    width: 100%;
 }
 
-#carouselExampleControls {
-    display: flex;
-    width: 60%;
-}
-
-/* Set all card-body to have the same height */
-.carousel .card-body {
-    height: 100%;
-}
-
-
-.carousel-inner {
-    display: flex;
-    padding: 1em;
-}
-
-.carousel-item {
-    margin-right: 0;
-    flex: 0 0 calc(100%/3);
-    display: block;
-}
-
-.carousel .card {
-    margin: 0 1em;
-    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-    border: #005B41 1px solid;
-}
-
-.card .img-wrapper {
-    /* Using flex to align it */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100%;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    background-color: #e65722;
-    width: 6vh;
-    height: 6vh;
-    border-radius: 50%;
+.arrow {
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
-}
-
-.carousel .card-body .card-body {
+    width: 32px;
+    height: 56px;
     display: flex;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .5);
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
 }
 
-.strike-red {
-    color: #F00;
-    text-decoration: line-through;
-    font-weight: bold;
+.arrow:hover {
+    background-color: rgba(0, 0, 0, .7);
 }
 
-/* CAROUSEL END */
-
-h1,
-h2,
-h3 {
-    color: #e65722;
+.arrow.prev {
+    left: 0;
 }
 
-.divider {
-    border-bottom: 3px dotted #000;
+.arrow.next {
+    right: 0;
 }
 
-.card-container {
-    padding-left: 72px;
+.card-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 12px);
+    overflow-x: auto;
+    padding: 24px;
+    gap: 24px;
+    cursor: grab;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 24px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
 }
 
+.card-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.card-wrapper.grab {
+    cursor: grabbing;
+    user-select: none;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.card-wrapper.no-smooth {
+    scroll-behavior: auto;
+}
+
+.card-item {
+    scroll-snap-align: start;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 8px 8px 24px rgba(0, 0, 0, .1);
+}
+
+.card-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 16px;
+}
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: inline-block;
+    font-size: 20px;
+    text-decoration: none;
+    color: #222;
+}
+
+.card-title:hover {
+    color: #006aff;
+}
+
+.card-description {
+    color: #888;
+}
+
+/* end: Slider */
+
+/* FOOTER */
 .footer-nav {
     display: flex;
     justify-content: center;
-    align-content: center;
-    padding-left: 24px;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     list-style: none;
     margin-bottom: 0;
 }
 
 .footer-nav li {
-    padding-right: 16px;
+    padding-right: 3rem;
+}
+
+.footer-nav svg {
+    margin-right: 0.1rem;
 }
 
 .footer-nav li a {
     color: #fff;
+    text-decoration: none;
 }
 
-footer svg {
-    fill: #fff;
+.footer-nav li a:hover {
+    color: #000;
+    text-decoration: underline;
 }
 
-.carousel-item .card {
-    text-align: center;
-}
-
-@media screen and (min-width:300px) and (max-width: 767px) {
-    .card .img-wrapper {
-        height: 17em;
-    }
-
-    nav {
+/* MOBILE */
+@media screen and (max-width:576px) {
+    .footer-nav {
+        padding-left: 0 !important;
         display: flex;
-        justify-items: center;
-        width: 100%;
-        margin: auto;
+        justify-content: space-around;
+        padding-bottom: 1.5rem;
     }
-
-    .navbar-nav ul {
-        padding: 0;
-        width: 100%;
-    }
-
-    .nav-link i {
-        font-size: 34px;
-    }
-
-    nav .navbar-nav li a {
-        color: #fff !important;
-    }
-
-    nav .navbar-nav li a:hover {
-        color: #e65722 !important;
-        background-color: unset;
-        padding-top: unset;
-        padding-bottom: unset;
+    .footer-nav li {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        padding: 0 !important;
     }
 }
