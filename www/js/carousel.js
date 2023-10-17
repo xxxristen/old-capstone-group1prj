@@ -1,44 +1,80 @@
+const cardWrapper = document.querySelector('.card-wrapper')
+const cardWrapperChildren = Array.from(cardWrapper.children)
+const widthToScroll = cardWrapper.children[0].offsetWidth
+const arrowPrev = document.querySelector('.arrow.prev')
+const arrowNext = document.querySelector('.arrow.next')
+const cardBounding = cardWrapper.getBoundingClientRect()
+const column = Math.floor(cardWrapper.offsetWidth / (widthToScroll + 24))
+let currScroll = 0
+let initPos = 0
+let clicked = false
 
-document.addEventListener('DOMContentLoaded', function () {
-  let multipleCardCarousel = document.querySelector("#carouselExampleControls");
+cardWrapperChildren.slice(-column).reverse().forEach(item=> {
+  cardWrapper.insertAdjacentHTML('afterbegin', item.outerHTML)
+})
 
-// Check if minimum viewport width is 768px and if it matches, we'll execute all these in the bracket
-if (window.matchMedia("(min-width: 768px)").matches) {
-  let carousel = new bootstrap.Carousel(multipleCardCarousel, {
-    interval: false, // Disable automatic sliding
-    wrap: false, // Prevent wrapping at the end
-  });
+cardWrapperChildren.slice(0, column).forEach(item=> {
+  cardWrapper.insertAdjacentHTML('beforeend', item.outerHTML)
+})
 
-  // Get width of the entire carousel / carousel body
-  let carouselWidth = document.querySelector(".carousel-inner").scrollWidth;
-  // Get width of a card
-  let cardWidth = document.querySelector(".carousel-item").offsetWidth;
-  // Setting scroll position to 0
-  let scrollPosition = 0;
-  // Listen for click event on next button and change position of scroll position
-  document.querySelector("#carouselExampleControls .carousel-control-next").addEventListener("click", function () {
-    // Adding a condition to check if we've reached the last card
-    if (scrollPosition < carouselWidth - cardWidth * 4) {
-      // On click of next button, set scroll position to current scroll position + card width
-      scrollPosition += cardWidth;
-      // Making the carousel scroll, use animate function to scroll to updated scroll position
-      document.querySelector("#carouselExampleControls .carousel-inner").scroll({ left: scrollPosition, behavior: 'smooth' });
-    }
-  });
-  // Listen for click event on previous button
-  document.querySelector("#carouselExampleControls .carousel-control-prev").addEventListener("click", function () {
-    // Adding a condition to check if we are not at the first card
-    if (scrollPosition > 0) {
-      // On click of next button, set scroll position to current scroll position + card width
-      scrollPosition -= cardWidth;
-      // Making the carousel scroll, use animate function to scroll to updated scroll position
-      document.querySelector("#carouselExampleControls .carousel-inner").scroll({ left: scrollPosition, behavior: 'smooth' });
-        }
-      });
-    }
-    // If it doesn't match condition of (min-width: 768px)
-    else {
-  // Adding slide class back to smaller screen
-  $(multipleCardCarousel).addClass('slide');
+const cardImageAndLink = cardWrapper.querySelectorAll('img, a')
+cardImageAndLink.forEach(item=> {
+  item.setAttribute('draggable', false)
+})
+
+cardWrapper.classList.add('no-smooth')
+cardWrapper.scrollLeft = cardWrapper.offsetWidth
+cardWrapper.classList.remove('no-smooth')
+
+arrowPrev.onclick = function() {
+  cardWrapper.scrollLeft -= widthToScroll
 }
-});
+
+arrowNext.onclick = function() {
+  cardWrapper.scrollLeft += widthToScroll
+}
+
+cardWrapper.onmousedown = function(e) {
+  cardWrapper.classList.add('grab')
+  initPos = e.clientX - cardBounding.left
+  currScroll = cardWrapper.scrollLeft
+  clicked = true
+}
+
+cardWrapper.onmousemove = function(e) {
+  if(clicked) {
+    const xPos = e.clientX - cardBounding.left
+    cardWrapper.scrollLeft = currScroll + -(xPos - initPos)
+  }
+}
+
+cardWrapper.onmouseup = mouseUpAndLeave
+cardWrapper.onmouseleave = mouseUpAndLeave
+
+function mouseUpAndLeave() {
+  cardWrapper.classList.remove('grab')
+  clicked = false
+}
+
+let autoScroll
+
+cardWrapper.onscroll = function() {
+  if(cardWrapper.scrollLeft === 0) {
+    cardWrapper.classList.add('no-smooth')
+    cardWrapper.scrollLeft = cardWrapper.scrollWidth - (2 * cardWrapper.offsetWidth)
+    cardWrapper.classList.remove('no-smooth')
+  } else if(cardWrapper.scrollLeft === cardWrapper.scrollWidth - cardWrapper.offsetWidth) {
+    cardWrapper.classList.add('no-smooth')
+    cardWrapper.scrollLeft = cardWrapper.offsetWidth
+    cardWrapper.classList.remove('no-smooth')
+  }
+
+  if(autoScroll) {
+    clearTimeout(autoScroll)
+  }
+
+  autoScroll = setTimeout(()=> {
+    cardWrapper.classList.remove('no-smooth')
+    cardWrapper.scrollLeft += widthToScroll
+  }, 4000)
+}
