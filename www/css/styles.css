@@ -1,12 +1,13 @@
 body {
     font-family: "Montserrat", Helvetica, serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-#reviews.container-fluid,
-#img-carousel.container-fluid,
-#about-tea.container-fluid {
+.section-padding {
     padding-left: 5rem;
-    padding-right: 5rem;
+    padding-right: 8rem;
     padding-top: 2rem;
 }
 
@@ -18,12 +19,13 @@ section h3 {
     color: #e65722;
 }
 
-a:hover{
-    color:#e65722;
+a:hover {
+    color: #e65722;
 }
+
 .divider {
     border-bottom: 3px dotted #000;
-    margin-top: 3rem;
+    margin-top: 5rem;
 }
 
 #reviews {
@@ -44,6 +46,8 @@ a:hover{
 footer {
     background-color: #2e8b57;
     color: #fff;
+    margin-top: auto;
+
 }
 
 .nav-item a {
@@ -79,14 +83,14 @@ nav .navbar-nav li a:hover {
     margin-top: 3%;
     margin-right: 2.5rem;
     position: relative;
-    background-color: rgba(204,204, 204, 0.8);
+    background-color: rgba(204, 204, 204, 0.8);
     border-radius: 0.5rem;
 }
 
 .jumbo-text h1 {
     font-family: "Licorice";
     font-size: 3.5rem;
-    color:#005B41;
+    color: #005B41;
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -99,6 +103,7 @@ nav .navbar-nav li a:hover {
     border-radius: 0.2rem;
 
 }
+
 .jumbo-text button a {
     color: #fff;
     text-decoration: none;
@@ -113,16 +118,19 @@ nav .navbar-nav li a:hover {
     right: 0;
     padding: 1rem 0.5rem 1rem 2rem;
 }
+
 .typography {
     font-family: "Licorice";
     font-size: 2.9rem;
 }
+
 #love-msg {
     background-color: rgba(0, 91, 65, 0.7);
     border-radius: 1.5rem 0 0 1.5rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
+
 /* CAROUSEL */
 /* ------------------------------------------------------------------------ */
 /* start: Slider */
@@ -224,7 +232,7 @@ nav .navbar-nav li a:hover {
 /* end: Slider */
 
 #reviews .card-header {
-color:#005B41;
+    color: #005B41;
 }
 
 /* FOOTER */
@@ -232,9 +240,10 @@ color:#005B41;
     display: flex;
     justify-content: center;
     padding-top: 1rem;
-    padding-bottom: 1rem;
     list-style: none;
-    margin-bottom: 0;
+    align-items: flex-end;
+    bottom: 0;
+    height: 45px;
 }
 
 .footer-nav li {
@@ -263,15 +272,18 @@ color:#005B41;
         justify-content: space-around;
         padding-bottom: 1.5rem;
     }
+
     .footer-nav li {
         width: 80%;
         display: flex;
         justify-content: center;
         padding: 0 !important;
     }
+
     .arrow {
         display: none;
     }
+
     .card-wrapper {
         margin-left: -16px;
         width: 100vw;
