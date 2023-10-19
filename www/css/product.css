@@ -11,7 +11,6 @@
 
 .pageTitle{
     display: flex;
-    height: 8rem;
     align-items: center;
     width: 100%;
     justify-content: center;
@@ -61,7 +60,7 @@
     border-radius: 1.5rem;
     text-align: center;
     line-height: 3rem;
-    background: #2e8b57;
+    background: #189e1e;
     color: white;
 }
 
@@ -84,9 +83,13 @@
     margin-left: 2rem;
     font-size: 1rem;
     padding: 5px 10px;
-    background: #2e8b57;
+    background: #189e1e;
     color: white;
     border-radius: 0.5rem;
+}
+
+#search_check:hover ~ .search_box .search_icon, #filter_check:hover ~ .filter_txt{
+    background: #2e8b57;
 }
 
 #filter_check:checked ~ .display > #filter_tab{
@@ -120,15 +123,18 @@
 .reset_button{
     display: flex;
     width: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    border: none;
     justify-content: space-between;
-    background: #2e8b57;
+    background: #189e1e;
     color: white;
+    padding: 0.5rem;
+    
     /* display: none; */
 }
 
 .reset_button:hover{
-    border: 1px solid rgba(0, 0, 0, 1);
+    background-color: #2e8b57;
 }
 
 .reset_button_txt{
