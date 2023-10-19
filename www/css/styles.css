@@ -275,6 +275,21 @@ nav .navbar-nav li a:hover {
     color: #000;
     text-decoration: underline;
 }
+#team img {
+    width:30%;
+}
+#team div {
+    color: #9E9FA5;
+}
+.team-bg {
+    background-image: url("../img/ourstory-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 10%;
+    height: 18.75rem;
+    max-height: 30rem;
+    overflow: auto;
+}
 
 /* MOBILE */
 @media screen and (max-width:576px) {
@@ -284,6 +299,7 @@ nav .navbar-nav li a:hover {
         justify-content: space-around;
         padding-bottom: 1rem;
         align-items: center;
+        bottom:0;
     }
 
     .footer-nav li {
@@ -341,5 +357,14 @@ nav .navbar-nav li a:hover {
     }
     #reviews {
         padding-bottom: 3rem;
+    }
+    .team-bg {
+        background-image: url("../img/ourstory-bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 0 30%;
+        height: 50rem;
+        max-height: 60rem;
+        overflow: visible;
     }
 }
