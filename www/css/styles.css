@@ -126,7 +126,7 @@ nav .navbar-nav li a:hover {
 
 #love-msg {
     background-color: rgba(0, 91, 65, 0.7);
-    border-radius: 1.5rem 0 0 1.5rem;
+    border-radius: 1.8rem 0 0 1.5rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
@@ -201,8 +201,8 @@ nav .navbar-nav li a:hover {
 .card-item {
     scroll-snap-align: start;
     border-radius: 6px;
+    border: rgba(0, 91, 65, 0.2) 2px solid;
     overflow: hidden;
-    box-shadow: 8px 8px 24px rgba(0, 0, 0, .1);
     background-color: #fff;
 }
 
@@ -230,6 +230,18 @@ nav .navbar-nav li a:hover {
 }
 
 /* end: Slider */
+#reviews .card-body {
+    position: relative;
+}
+
+#reviews .card-body::after {
+    inset: 0;
+    content: "";
+    position: absolute;
+    background-image: url("/www/img/reviews-bg.jpg");
+    background-size: cover;
+    opacity: 0.1;
+}
 
 #reviews .card-header {
     color: #005B41;
@@ -270,7 +282,8 @@ nav .navbar-nav li a:hover {
         padding-left: 0 !important;
         display: flex;
         justify-content: space-around;
-        padding-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        align-items: center;
     }
 
     .footer-nav li {
@@ -286,7 +299,47 @@ nav .navbar-nav li a:hover {
 
     .card-wrapper {
         margin-left: -16px;
-        width: 100vw;
+        width: 100%;
         grid-auto-columns: 100%;
+    }
+
+    .section-padding {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    #img-carousel .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .card-wrapper {
+        padding: 12px;
+        padding-top: 0;
+        width: 100%;
+    }
+    #img-carousel, h2 {
+        padding-top:0;
+    }
+    section {
+        padding-top: 0 !important;
+    }
+    #img-carousel .card-title {
+        text-align: center;
+    }
+    #welcome {
+        background-image: linear-gradient(180deg, rgba(255,255,255,0.09754922476803218) 16%, rgba(255,255,255,1) 94%), url("/www/img/mobile-bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        background-position: 0% 60%;
+        height: 10rem;
+        max-height: 12rem;
+    }
+    .divider {
+        margin-top: 2rem;
+    }
+    #reviews {
+        padding-bottom: 3rem;
     }
 }
