@@ -1,3 +1,4 @@
 /.idea
-www/index-copy.html
-www/css/styles-trial.css
+www/node_modules
+www/package-lock.json
+www/package.json
