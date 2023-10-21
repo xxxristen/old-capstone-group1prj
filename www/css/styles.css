@@ -1,44 +1,21 @@
+/* SHARED CSS */
 body {
     font-family: "Montserrat", Helvetica, serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color:#FFF6DC;
 }
 
 .section-padding {
     padding-left: 5rem;
     padding-right: 8rem;
-    padding-top: 2rem;
 }
 
 section h1,
 section h2,
 section h3 {
-    padding-top: 1.5rem;
-    padding-bottom: 1rem;
     color: #e65722;
-}
-
-a:hover {
-    color: #e65722;
-}
-
-.divider {
-    border-bottom: 3px dotted #000;
-    margin-top: 5rem;
-}
-
-#reviews {
-    padding-bottom: 5rem;
-}
-
-#logo {
-    padding: 1.5rem;
-}
-
-.logo img {
-    height: 4rem;
-    width: auto;
 }
 
 .custom-bg,
@@ -48,6 +25,28 @@ footer {
     color: #fff;
     margin-top: auto;
 
+}
+
+a:hover {
+    color: #e65722;
+}
+
+.divider {
+    border-bottom: 3px dotted #000;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Logo and navigation bar */
+
+#logo {
+    padding: 1.5rem;
+    background-color:#fff;
+}
+
+.logo img {
+    height: 4rem;
+    width: auto;
 }
 
 .nav-item a {
@@ -68,6 +67,8 @@ nav .navbar-nav li a:hover {
     height: 1.5rem;
 }
 
+/* BANNER SECTION */
+
 #banner {
     background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 11%, rgba(255, 255, 255, 0.8239670868347339) 78%, rgba(255, 255, 255, 1) 96%), url("/www/img/tea-leaves.jpg");
     background-size: cover;
@@ -78,7 +79,8 @@ nav .navbar-nav li a:hover {
     max-height: 21.875rem;
 }
 
-.jumbo-text {
+/* Right div  -Exclusively handcrafted tea */
+#banner .jumbo-text {
     width: 40rem;
     margin-top: 3%;
     margin-right: 2.5rem;
@@ -91,29 +93,28 @@ nav .navbar-nav li a:hover {
     font-family: "Licorice";
     font-size: 3.5rem;
     color: #005B41;
-    padding-top: 0;
-    padding-bottom: 0;
 }
 
 .jumbo-text button {
-    width: 9rem;
-    border: none;
+    width: 30%;
     padding: 8px;
     background-color: #2e8b57;
     border-radius: 0.2rem;
-
 }
 
-.jumbo-text button a {
+#banner .jumbo-text button a,
+.btn-shop {
     color: #fff;
     text-decoration: none;
 }
 
-.jumbo-text button:hover {
+#banner .jumbo-text button:hover,
+.btn-shop:hover {
     background-color: #005B41;
+    color: #fff;
 }
 
-.right {
+#banner .right {
     position: absolute;
     right: 0;
     padding: 1rem 0.5rem 1rem 2rem;
@@ -124,57 +125,64 @@ nav .navbar-nav li a:hover {
     font-size: 2.9rem;
 }
 
+/* SECTION - IMG-CAROUSEL */
+/* ------------------------------------------------------------------------ */
+
+/* Add whitespace between paragraph and the carousel */
+.pb-custom {
+    padding-bottom: 2rem;
+}
+
+/* Column beside the slider */
 #love-msg {
-    background-color: rgba(0, 91, 65, 0.7);
+    background-color: #2e8b57;
     border-radius: 1.8rem 0 0 1.5rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
 
-/* CAROUSEL */
-/* ------------------------------------------------------------------------ */
 /* start: Slider */
-.wrapper {
+#img-carousel .wrapper {
     position: relative;
     max-width: 940px;
     width: 100%;
 }
 
-.arrow {
+#img-carousel .arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 32px;
-    height: 56px;
+    width: 2rem;
+    height: 3.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     background-color: rgba(0, 0, 0, .5);
-    font-size: 20px;
+    font-size: 1.25rem;
     cursor: pointer;
     border: none;
     outline: none;
 }
 
-.arrow:hover {
+#img-carousel .arrow:hover {
     background-color: rgba(0, 0, 0, .7);
 }
 
-.arrow.prev {
+#img-carousel .arrow.prev {
     left: 0;
 }
 
-.arrow.next {
+#img-carousel .arrow.next {
     right: 0;
 }
 
-.card-wrapper {
+#img-carousel .card-wrapper {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: calc((100% / 3) - 12px);
+    grid-auto-columns: calc((100% / 3) - 25px);
     overflow-x: auto;
-    padding: 24px;
+    padding: 10px;
     gap: 24px;
     cursor: grab;
     scroll-snap-type: x mandatory;
@@ -183,53 +191,60 @@ nav .navbar-nav li a:hover {
     scrollbar-width: none;
 }
 
-.card-wrapper::-webkit-scrollbar {
+#img-carousel .card-wrapper::-webkit-scrollbar {
     display: none;
 }
 
-.card-wrapper.grab {
+#img-carousel .card-wrapper.grab {
     cursor: grabbing;
     user-select: none;
     scroll-snap-type: none;
     scroll-behavior: auto;
 }
 
-.card-wrapper.no-smooth {
+#img-carousel .card-wrapper.no-smooth {
     scroll-behavior: auto;
 }
 
-.card-item {
+#img-carousel .card-item {
     scroll-snap-align: start;
     border-radius: 6px;
     border: rgba(0, 91, 65, 0.2) 2px solid;
-    overflow: hidden;
+    box-shadow: 8px 8px 24px rgba(0, 0, 0, .1);
+    overflow: hidden;    
     background-color: #fff;
 }
 
-.card-item img {
+#img-carousel .card-item img {
     width: 100%;
     height: auto;
-    object-fit: fill;
+    object-fit: cover;
 }
 
-.card-info {
-    padding: 16px;
+#img-carousel .card-info {
+    padding: 1rem;
 }
 
-.card-title {
+#img-carousel .card-title {
     font-weight: 600;
     margin-bottom: 10px;
     display: inline-block;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-decoration: none;
     color: #2e8b57;
 }
 
-.card-description {
+#img-carousel .card-description {
     color: #888;
 }
 
 /* end: Slider */
+
+/* REVIEW SECTION */
+#reviews {
+    padding-bottom: 5rem;
+}
+
 #reviews .card-body {
     position: relative;
 }
@@ -247,15 +262,30 @@ nav .navbar-nav li a:hover {
     color: #005B41;
 }
 
-/* FOOTER */
+/* TEAM SECTION IN OURSTORY.HTML */
+#team img {
+    width: 30%;
+}
+
+#team div {
+    color: #9E9FA5;
+}
+
+#team .team-bg {
+    background-image: url("../img/ourstory-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 10%;
+    height: 53.125rem;
+    max-height: 62.5rem;
+}
+
+/* FOOTER SECTION */
 .footer-nav {
     display: flex;
     justify-content: center;
     padding-top: 1rem;
     list-style: none;
-    align-items: flex-end;
-    bottom: 0;
-    height: 45px;
 }
 
 .footer-nav li {
@@ -275,76 +305,28 @@ nav .navbar-nav li a:hover {
     color: #000;
     text-decoration: underline;
 }
-#team img {
-    width:30%;
-}
-#team div {
-    color: #9E9FA5;
-}
-.team-bg {
-    background-image: url("../img/ourstory-bg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 0 10%;
-    height: 18.75rem;
-    max-height: 30rem;
-    overflow: auto;
-}
+
 
 /* MOBILE */
 @media screen and (max-width:576px) {
-    .footer-nav {
-        padding-left: 0 !important;
-        display: flex;
-        justify-content: space-around;
-        padding-bottom: 1rem;
-        align-items: center;
-        bottom:0;
-    }
 
-    .footer-nav li {
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        padding: 0 !important;
-    }
-
-    .arrow {
-        display: none;
-    }
-
-    .card-wrapper {
-        margin-left: -16px;
-        width: 100%;
-        grid-auto-columns: 100%;
-    }
-
+    /* SHARED CSS */
     .section-padding {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
 
-    #img-carousel .container {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .card-wrapper {
-        padding: 12px;
-        padding-top: 0;
-        width: 100%;
-    }
-    #img-carousel, h2 {
-        padding-top:0;
-    }
     section {
         padding-top: 0 !important;
     }
-    #img-carousel .card-title {
-        text-align: center;
+
+    .divider {
+        margin-top: 1rem;
     }
+
+    /* HERO BANNER */
     #welcome {
-        background-image: linear-gradient(180deg, rgba(255,255,255,0.09754922476803218) 16%, rgba(255,255,255,1) 94%), url("/www/img/mobile-bg.jpg");
+        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.09754922476803218) 16%, rgba(255, 255, 255, 1) 94%), url("/www/img/mobile-bg.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
@@ -352,19 +334,73 @@ nav .navbar-nav li a:hover {
         height: 10rem;
         max-height: 12rem;
     }
-    .divider {
-        margin-top: 2rem;
+
+    #welcome p {
+        text-shadow: 2px 2px 1px rgba(128, 128, 128, 0.2);
+        color: #005B41;
     }
+
+    /* SECTION - IMG-CAROUSEL */
+    /* Carousel */
+    #img-carousel .card-wrapper {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% / 2) - 12px);
+        overflow-x: auto;
+        padding: 24px;
+        gap: 24px;
+    }
+
+    #img-carousel .card-title {
+        font-size: 0.8rem;
+        color: #2e8b57;
+    }
+
+    /* Button "Shop all products" under carousel */
+    .btn-shop {
+        width: 100%;
+        padding: 8px;
+        background-color: #2e8b57;
+        border-radius: 0.2rem;
+        padding-top: 1rem;
+    }
+
+    /* Add whitespace between paragraph and the carousel */
+    .pb-custom {
+        padding-bottom: 0.2rem;
+    }
+
+    /* REVIEWS SECTION */
     #reviews {
         padding-bottom: 3rem;
     }
+
+    /* TEAM SECTION IN OURSTORY.HTML */
     .team-bg {
         background-image: url("../img/ourstory-bg.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 0 30%;
         height: 50rem;
-        max-height: 60rem;
+        max-height: 62rem;
         overflow: visible;
+    }
+
+    /* FOOTER SECTION */
+    /* ------------------------------------------------------------------------ */
+    .footer-nav {
+        padding-left: 0 !important;
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 1rem;
+        align-items: center;
+        bottom: 0;
+    }
+
+    .footer-nav li {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        padding: 0 !important;
     }
 }

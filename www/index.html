@@ -26,7 +26,7 @@
       <img src="img/logo/logo.svg" alt="Webrew Logo" class="img-fluid">
     </div>
     <!-- Navigation menu -->
-    <nav class="navbar navbar-expand-md custom-bg navbar-dark">
+    <nav class="navbar navbar-expand-sm custom-bg mb-0 navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand d-block d-sm-none" href="#"><img src="img/logo/logo-white.svg" alt="Webrew logo"
             class="img-fluid" /></a>
@@ -72,15 +72,15 @@
     <!-- Banner section -->
     <div id="banner" class="d-none d-sm-block">
       <div class="jumbo-text right d-none d-md-block">
-        <h1>Exclusively handcrafted teas</h1>
+        <h1 class="py-0">Exclusively handcrafted teas</h1>
         <p>Indulge in the ultimate tea experience with our organic blends exclusively
           handcrafted with love in Singapore!
         </p>
-        <button type="button"><a href="#">All products</a></button>
+        <button type="button" class="border-0"><a href="#">All products</a></button>
       </div>
     </div>
     <!-- "The birth of tea" section -->
-    <section id="about-tea" class="container-fluid d-none d-sm-block section-padding">
+    <section id="about-tea" class="container-fluid d-none d-sm-block section-padding pt-5 pb-0">
       <div>
         <h2>The birth of tea</h2>
         <p>Tea is often thought of as being a quintessentially British drink, and we have been drinking it for over 350
@@ -93,30 +93,37 @@
           a Camellia sinensis, and the resulting drink was what we now call tea.</p>
       </div>
     </section>
-    <!-- Section divider / hr -->
+    <!-- Hero in xs view -->
     <section id="welcome" class="d-block d-sm-none section-padding d-flex align-items-center">
-      <p class="text-success text-center">Welcome to our tea world, where every cup unfolds a unique story of flavor and tradition.</p>
+      <p class="text-center">Welcome to our tea world, where every cup unfolds a unique story of flavor and
+        tradition.</p>
     </section>
     <hr class="divider d-none d-sm-block">
-    <section id="img-carousel" class="container-fluid section-padding">
-      <h2>Our top picks</h2>
-      <p class="pb-4">Behold our ultimate choice, a pinnacle of tea excellence! Handpicked from the finest leaves, it
-        encapsulates the essence of top-tier quality and flavor. Embark on a remarkable tea journey with this
-        extraordinary selection.</p>
-      <div class="container">
-        <div class="row">
-          <div class="col offset-lg-1 d-flex align-items-center me-2">
+    <!-- Top picks - img-carousel section -->
+    <section id="img-carousel">
+      <div class="container-fluid section-padding pt-0">
+        <h2>Our top picks</h2>
+        <p class="pb-custom">Behold our ultimate choice, a pinnacle of tea excellence! Handpicked from the finest
+          leaves, it
+          encapsulates the essence of top-tier quality and flavor. Embark on a remarkable tea journey with this
+          extraordinary selection.</p>
+        <!-- Columns - left div and carousel -->
+        <div class="row justify-content-center">
+          <!-- Left div "Sharing with you what others love" -->
+          <div class="col-xxl-2 col-xl-0 d-flex align-items-center me-3">
             <div class="row d-none d-xxl-block">
               <div id="love-msg" class="position-relative top-50 custom-bg text-end">
                 <h4 class="typography pe-3 ps-2 text-white">Sharing with you what the others love</h4>
               </div>
             </div>
           </div>
+          <!-- Carousel -->
           <div class="wrapper">
             <button class="arrow prev"><i class="bi bi-arrow-left-circle-fill"></i></button>
             <button class="arrow next"><i class="bi bi-arrow-right-circle-fill"></i>
             </button>
             <div class="card-wrapper">
+              <!-- Carousel item 1 -->
               <div class="card-item">
                 <img src="img/teas/african-rooibos-honeybush.jpg" alt="African rooibos honeybush tea">
                 <div class="card-info">
@@ -125,6 +132,7 @@
                   </p>
                 </div>
               </div>
+              <!-- Carousel item 2 -->
               <div class="card-item">
                 <img src="img/teas/black-tea.jpg" alt="Black tea">
                 <div class="card-info">
@@ -134,6 +142,7 @@
                     tea experience.</p>
                 </div>
               </div>
+              <!-- Carousel item 3 -->
               <div class="card-item">
                 <img src="img/teas/fruit-tea.jpg" alt="Fruit tea">
                 <div class="card-info">
@@ -143,15 +152,15 @@
                     tailor-made for your enjoyment.</p>
                 </div>
               </div>
+              <!-- Carousel item 4 -->
               <div class="card-item">
-                <img src="img/teas/Green-tea.jpg" alt="Green tea">
+                <img src="img/teas/green-tea.jpg" alt="China jasmine tea">
                 <div class="card-info">
-                  <a href="#" class="card-title">Green tea</a>
-                  <p class="card-description d-none d-sm-block">Sip our Green Elegance Tea, a vibrant, invigorating
-                    infusion for your
-                    personalized refreshment.</p>
+                  <a href="#" class="card-title">China Jasmine</a>
+                  <p class="card-description d-none d-sm-block">A fragrant blend of green tea and jasmine blossoms for a soothing and elegant sip.</p>
                 </div>
               </div>
+              <!-- Carousel item 5 -->
               <div class="card-item">
                 <img src="img/teas/herbal-floral-tea.jpg" alt="Herbal and floral tea">
                 <div class="card-info">
@@ -161,6 +170,7 @@
                     tranquility and wellness.</p>
                 </div>
               </div>
+              <!-- Carousel item 6 -->
               <div class="card-item">
                 <img src="img/teas/matcha.jpg" alt="Matcha green tea">
                 <div class="card-info">
@@ -171,6 +181,7 @@
                     tailored for your revitalisation.</p>
                 </div>
               </div>
+              <!-- Carousel item 7 -->
               <div class="card-item">
                 <img src="img/teas/oolong-tea.jpg" alt="Oolong tea">
                 <div class="card-info">
@@ -184,11 +195,13 @@
             </div>
           </div>
         </div>
-        <p class="d-block d-sm-none"><a href="#">Shop all products</a></p>
+        <!-- Button under carousel - Appear in xs view -->
+        <p class="d-block d-sm-none"><a href="#" class="btn btn-shop">Shop all products</a></p>
       </div>
     </section>
     <!-- Section divider / hr -->
     <hr class="divider">
+    <!-- Reviews section -->
     <section id="reviews" class="container-fluid section-padding">
       <h2>What our customers say</h2>
       <p>Your feedback is as essential as steeping time for tea.</p>
@@ -198,6 +211,7 @@
       <p class="pb-4">Have a look at our customers' reviews:</p>
       <div class="card-container">
         <div class="row row-cols-1 row-cols-md-3 g-5">
+          <!-- Review #1 -->
           <div class="col">
             <div class="card border-success h-100">
               <div class="card-header fw-bold">Great value and quality</div>
@@ -210,6 +224,7 @@
               <div class="card-footer">John Doe</div>
             </div>
           </div>
+          <!-- Review #2 -->
           <div class="col">
             <div class="card border-success h-100">
               <div class="card-header fw-bold">Great tea!</div>
@@ -221,6 +236,7 @@
               <div class="card-footer">Jane Doe</div>
             </div>
           </div>
+          <!-- Review #3 -->
           <div class="col">
             <div class="card border-success h-100">
               <div class="card-header fw-bold">Perfect!</div>
@@ -235,9 +251,10 @@
     </section>
   </main>
   <!-- Footer -->
-  <footer class="container-fluid">
+  <footer class="footer">
     <!-- Footer menu -->
     <ul class="footer-nav">
+      <!-- Email -->
       <li id="email"><a href="#" class="icon-link"><svg role="img" xmlns="http://www.w3.org/2000/svg" width="16"
             height="16" fill="currentColor" class="bi bi-envelope-at" viewBox="0 0 16 16" aria-labelledby="Email">
             <path
@@ -247,6 +264,7 @@
           </svg>
           </svg> <span class="d-none d-lg-block">sales@webrew.com</span></a>
       </li>
+      <!-- Phone -->
       <li id="phone"><a href="tel:66999999" class="icon-link"><svg role="img" xmlns="http://www.w3.org/2000/svg"
             width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16"
             aria-labelledby="Telephone">
@@ -254,12 +272,14 @@
               d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
           </svg> <span class="d-none d-lg-block">6699 9999</span></a>
       </li>
+      <!-- Facebook -->
       <li id="facebook"><a href="#" class="icon-link"><svg role="img" xmlns="http://www.w3.org/2000/svg" width="16"
             height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16" aria-labelledby="Facebook">
             <path
               d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
           </svg> <span class="d-none d-lg-block">Follow us on facebook</span></a>
       </li>
+      <!-- Instagram -->
       <li id="instagram"><a href="#" class="icon-link"><svg role="img" xmlns="http://www.w3.org/2000/svg" width="16"
             height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16" aria-labelledby="Instagram">
             <path
@@ -267,12 +287,10 @@
           </svg> <span class="d-none d-lg-block">Follow us on instagram</span></a>
       </li>
     </ul>
-    <p class="text-center mb-0 pb-2 small">&copy; 2023 Webrew</p>
+    <!-- Copyright statement -->
+    <p class="text-center mb-0 py-2 small" style="background-color: #005B41">&copy; 2023 Webrew</p>
   </footer>
-  <!-- Link to JS files -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+  <!-- Link to JS file -->
   <script src="js/carousel.js"></script>
 </body>
 
