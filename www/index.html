@@ -10,6 +10,8 @@
   <!-- Custom CSS file -->
   <link href="css/styles.css" rel="stylesheet" type="text/css">
   <!-- Fetch font from google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Licorice&family=Montserrat:wght@400;500&display=swap"
     rel="stylesheet">
   <!-- Load logo in the title bar -->
@@ -83,14 +85,22 @@
     <section id="about-tea" class="container-fluid d-none d-sm-block section-padding pt-5 pb-0">
       <div>
         <h2>The birth of tea</h2>
-        <p>Tea is often thought of as being a quintessentially British drink, and we have been drinking it for over 350
-          years. But in fact the history of tea goes much further back.</p>
-        <p>The story of tea begins in China. According to legend, in 2737 BC, the Chinese emperor Shen Nung was sitting
-          beneath a tree while his servant boiled drinking water, when some leaves from the tree blew into the water.
-          Shen
-          Nung, a renowned herbalist, decided to try the infusion that his servant had accidentally created. The tree
-          was
-          a Camellia sinensis, and the resulting drink was what we now call tea.</p>
+        <div class="overflow-auto">
+          <img src="img/birth-of-tea2.gif" alt="Employer Shen Nung sittin under the tree"
+            class="float-start ps-3 pe-4 pt-4" />
+          <p class="pe-1 pt-4">Tea is often thought of as being a quintessentially British drink, and we have been
+            drinking it for over
+            350
+            years. But in fact the history of tea goes much further back.</p>
+          <p class="pe-1">The story of tea begins in China. According to legend, in 2737 BC, the Chinese emperor Shen
+            Nung was
+            sitting
+            beneath a tree while his servant boiled drinking water, when some leaves from the tree blew into the water.
+            Shen
+            Nung, a renowned herbalist, decided to try the infusion that his servant had accidentally created. The tree
+            was
+            a Camellia sinensis, and the resulting drink was what we now call tea.</p>
+        </div>
       </div>
     </section>
     <!-- Hero in xs view -->
@@ -103,7 +113,7 @@
     <section id="img-carousel">
       <div class="container-fluid section-padding pt-0">
         <h2>Our top picks</h2>
-        <p class="pb-custom">Behold our ultimate choice, a pinnacle of tea excellence! Handpicked from the finest
+        <p class="pb-custom pt-3">Behold our ultimate choice, a pinnacle of tea excellence! Handpicked from the finest
           leaves, it
           encapsulates the essence of top-tier quality and flavor. Embark on a remarkable tea journey with this
           extraordinary selection.</p>
@@ -122,14 +132,19 @@
             <button class="arrow prev"><i class="bi bi-arrow-left-circle-fill"></i></button>
             <button class="arrow next"><i class="bi bi-arrow-right-circle-fill"></i>
             </button>
+
             <div class="card-wrapper">
               <!-- Carousel item 1 -->
               <div class="card-item">
                 <img src="img/teas/african-rooibos-honeybush.jpg" alt="African rooibos honeybush tea">
                 <div class="card-info">
                   <a href="#" class="card-title">African rooibos honeybush tea</a>
-                  <p class="card-description d-none d-sm-block">Naturally sweet, earthy, and nutty with a hint of honey.
+                  <p class="card-description d-none d-sm-block">Naturally sweet, earthy, and nutty with a hint of
+                    honey.
                   </p>
+                </div>
+                <div class="card-overlay">
+                  <button class="card-overlay-btn">See product!</button>
                 </div>
               </div>
               <!-- Carousel item 2 -->
@@ -141,6 +156,9 @@
                     crafted to elevate your
                     tea experience.</p>
                 </div>
+                <div class="card-overlay">
+                  <button class="card-overlay-btn">See product!</button>
+                </div>
               </div>
               <!-- Carousel item 3 -->
               <div class="card-item">
@@ -151,13 +169,20 @@
                     sweetness and flavor,
                     tailor-made for your enjoyment.</p>
                 </div>
+                <div class="card-overlay">
+                  <button class="card-overlay-btn">See product!</button>
+                </div>
               </div>
               <!-- Carousel item 4 -->
               <div class="card-item">
                 <img src="img/teas/green-tea.jpg" alt="China jasmine tea">
                 <div class="card-info">
-                  <a href="#" class="card-title">China Jasmine</a>
-                  <p class="card-description d-none d-sm-block">A fragrant blend of green tea and jasmine blossoms for a soothing and elegant sip.</p>
+                  <a href="#" class="card-title">China jasmine tea</a>
+                  <p class="card-description d-none d-sm-block">A fragrant blend of green tea and jasmine blossoms for a
+                    soothing and elegant sip.</p>
+                </div>
+                <div class="card-overlay">
+                  <button class="card-overlay-btn">See product!</button>
                 </div>
               </div>
               <!-- Carousel item 5 -->
@@ -168,6 +193,9 @@
                   <p class="card-description d-none d-sm-block">Savor our Herbal & Flora Infusion-nature's best,
                     tailored for your
                     tranquility and wellness.</p>
+                </div>
+                <div class="card-overlay">
+                  <button class="card-overlay-btn">See product!</button>
                 </div>
               </div>
               <!-- Carousel item 6 -->
@@ -180,6 +208,9 @@
                     blend,
                     tailored for your revitalisation.</p>
                 </div>
+                <div class="card-overlay">
+                  <button class="card-overlay-btn">See product!</button>
+                </div>
               </div>
               <!-- Carousel item 7 -->
               <div class="card-item">
@@ -191,8 +222,17 @@
                     your
                     exquisite tea moments.</p>
                 </div>
+                <div class="card-overlay">
+                  <button class="card-overlay-btn">See product!</button>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-xl-3 offset-xl-8 col-lg-4 offset-lg-8 col-md-4 offset-md-8 text-end d-none d-sm-block pt-3 pe-5">
+            <a href="#">Shop all products</a>
           </div>
         </div>
         <!-- Button under carousel - Appear in xs view -->
@@ -202,9 +242,9 @@
     <!-- Section divider / hr -->
     <hr class="divider">
     <!-- Reviews section -->
-    <section id="reviews" class="container-fluid section-padding">
+    <section id="reviews" class="container-fluid section-padding pb-5">
       <h2>What our customers say</h2>
-      <p>Your feedback is as essential as steeping time for tea.</p>
+      <p class="pt-3">Your feedback is as essential as steeping time for tea.</p>
       <p>Just as we brew our tea to perfection, we rely on your input to enhance our company and offer even better tea
         experiences. We wholeheartedly welcome hearing from our customers, as it helps us flourish in the world of tea.
       </p>
@@ -249,6 +289,44 @@
         </div>
       </div>
     </section>
+    <!-- Mailing list section -->
+    <section id="mailingList" class="container-fluid section-padding">
+      <div class="text-center">
+        <h3 class="text-white pb-2 fw-bold text-uppercase">Stay in the loop</h3>
+        <p class="text-white pb-4">Subscribe to receive latest product updates and exclusive deals.</p>
+      </div>
+      <div id="mc_embed_shell">
+        <div id="mc_embed_signup">
+          <form
+            action="https://gmail.us17.list-manage.com/subscribe/post?u=32af72499eaa820c49b010eaa&amp;id=ab35859740&amp;f_id=001174e0f0"
+            method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+            target="_blank">
+            <div id="mc_embed_signup_scroll">
+              <div class="mc-field-group pe-0 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                <input type="email" name="EMAIL" class="required email w-100" id="mce-EMAIL" required=""
+                  placeholder="name@example.com">
+              </div>
+              <div id="mce-responses" class="clear foot">
+                <div class="response" id="mce-error-response" style="display: none;"></div>
+                <div class="response" id="mce-success-response" style="display: none;"></div>
+              </div>
+              <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                /* real people should not fill this in and expect good things - do not remove this or risk form bot
+                signups */
+                <input type="text" name="b_32af72499eaa820c49b010eaa_ab35859740" tabindex="-1" value="">
+              </div>
+              <div class="clear foot pe-0 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button w-100" value="Subscribe">
+              </div>
+            </div>
+          </form>
+        </div>
+        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+        <script
+          type="text/javascript">(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
+      </div>
+      </div>
+    </section>
   </main>
   <!-- Footer -->
   <footer class="footer">
@@ -291,6 +369,9 @@
     <p class="text-center mb-0 py-2 small" style="background-color: #005B41">&copy; 2023 Webrew</p>
   </footer>
   <!-- Link to JS file -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
   <script src="js/carousel.js"></script>
 </body>
 
