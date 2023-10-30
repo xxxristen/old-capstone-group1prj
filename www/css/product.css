@@ -161,6 +161,7 @@
 
 /* product listing */
 .card_listing{
+    width: 18rem;
     margin: 1rem;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
 }
@@ -189,7 +190,11 @@
 }
 
 .card_listing:hover{
-    border: 2px solid rgba(0, 0, 0, 1);
+    border: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+#create_product{
+    display: none;
 }
 
 #create_product_content{
@@ -197,7 +202,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* display: none; */
 }
 
 #create_product_content svg{
