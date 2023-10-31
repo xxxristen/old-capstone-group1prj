@@ -37,8 +37,7 @@ a:hover {
     margin-bottom: 2.5rem;
 }
 
-/* Logo and navigation bar */
-
+/* LOGO AND NAVIGATION BAR */
 #logo {
     padding-left: 1.8rem;
     padding-top: 1rem;
@@ -47,7 +46,7 @@ a:hover {
 }
 
 #logo img {
-    height:5rem;
+    height: 5rem;
     width: auto;
 }
 
@@ -70,7 +69,6 @@ nav .navbar-nav li a:hover {
 }
 
 /* BANNER SECTION */
-
 #banner {
     background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 11%, rgba(255, 255, 255, 0.8239670868347339) 78%, rgba(255, 255, 255, 1) 96%), url("/www/img/tea-leaves.jpg");
     background-size: cover;
@@ -97,7 +95,8 @@ nav .navbar-nav li a:hover {
     color: #005B41;
 }
 
-.jumbo-text button, #mc-embedded-subscribe.button {
+.jumbo-text button,
+#mc-embedded-subscribe.button {
     width: 30%;
     padding: 8px;
     background-color: #e65722;
@@ -105,13 +104,15 @@ nav .navbar-nav li a:hover {
 }
 
 #banner .jumbo-text button a,
-.btn-shop, #mc-embedded-subscribe.button {
+.btn-shop,
+#mc-embedded-subscribe.button {
     color: #fff;
     text-decoration: none;
 }
 
 #banner .jumbo-text button:hover,
-.btn-shop:hover, #mc-embedded-subscribe.button:hover {
+.btn-shop:hover,
+#mc-embedded-subscribe.button:hover {
     background-color: #2e8b57;
     color: #fff;
 }
@@ -174,6 +175,7 @@ nav .navbar-nav li a:hover {
     cursor: pointer;
     border: none;
     outline: none;
+    z-index: 5;
 }
 
 #img-carousel .arrow:hover {
@@ -249,36 +251,41 @@ nav .navbar-nav li a:hover {
     color: #888;
 }
 
+/* Show overlay when hover over carousel card */
 .card-overlay {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 0, 0.2);
     color: #fff;
-    bottom:0;
-    left:0;
-    right:0;
-    height: 0%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
     width: 100%;
     z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transition: ease .3s;
+    opacity: 0;
+    transition: 0.2s ease-in;
     overflow: hidden;
 }
+
+/* Button in the carousel overlay */
 .card-overlay .card-overlay-btn {
-    color:#fff;
+    color: #fff;
     background-color: #005B41;
     border-radius: 5%;
-    padding: 8px;
+    padding: 0.5rem;
 }
+
 .card-item:hover .card-overlay {
-    height:100%;
+    opacity: 1;
 }
 
 /* end: Slider */
-/* REVIEW SECTION */
 
+/* REVIEW SECTION */
 #reviews .card-body {
     position: relative;
 }
@@ -296,20 +303,24 @@ nav .navbar-nav li a:hover {
     color: #005B41;
 }
 
+/* MAILING LIST SECTION */
 #mailingList {
     background-color: #292929;
     padding-top: 5rem;
     padding-bottom: 4rem;
 }
 
+/* OVERWRITE MAILCHIMP CSS */
+
 #mc_embed_signup_scroll {
     background-color: #292929 !important;
 }
-/* Overwrite Mailchimp CSS */
+
 #mc_embed_signup {
     background: #fff;
     clear: left;
 }
+
 /* Fields */
 form .mc-field-group {
     padding-right: 1rem;
@@ -319,24 +330,36 @@ form .mc-field-group {
 /* Validation message */
 
 #mce-EMAIL {
-    height:auto;
+    height: auto;
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
 }
+
 /* Border around email input field when invalid */
-#mce-EMAIL.required.email.mce_inline_error{
+#mce-EMAIL.required.email.mce_inline_error {
     border: #a52a2a 2px solid;
 }
+
 #mc-embedded-subscribe.button {
-    border:0;
+    border: 0;
 }
-div.mce_inline_error{
+
+/* Error message */
+div.mce_inline_error {
     display: inline-block;
     font-size: 0.9rem;
     font-weight: 300 !important;
-    background-color:#a52a2a !important;
+    background-color: #a52a2a !important;
     color: #fff !important;
 }
+
+#mce-error-response.response {
+    color: #fff !important;
+    background-color: #a52a2a !important;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
 /* Subscription successful message */
 #mce-success-response.response {
     background-color: #005B41;
@@ -346,8 +369,8 @@ div.mce_inline_error{
     color: #fff;
     transition: 1s;
     animation: response 1s forwards;
-
 }
+
 /* TEAM SECTION IN OURSTORY.HTML */
 #team img {
     width: 30%;
@@ -408,6 +431,10 @@ div.mce_inline_error{
         color: #2e8b57;
     }
 
+    /* Hide arrows */
+    #img-carousel .arrow {
+        display: none;
+    }
 }
 
 /* MOBILE */
@@ -459,6 +486,18 @@ div.mce_inline_error{
         color: #2e8b57;
     }
 
+    .card-overlay .card-overlay-btn {
+        height: 10%;
+        width: auto;
+        font-size: 0.7rem;
+        padding: 0 0.2rem;
+    }
+
+    /* Hide arrows */
+    #img-carousel .arrow {
+        display: none;
+    }
+
     /* Button "Shop all products" under carousel */
     .btn-shop {
         width: 100%;
@@ -478,7 +517,7 @@ div.mce_inline_error{
         padding-bottom: 3rem;
     }
 
-    /* REVIEWS SECTION */
+    /* MAILING LIST SECTION */
     #mailingList {
         padding-top: 4rem !important;
     }

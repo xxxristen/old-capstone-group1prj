@@ -20,6 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coz WeBrew</title>
 </head>
+
 <body>
   <header>
     <!-- Logo goes here -->
@@ -143,7 +144,7 @@
                   </p>
                 </div>
                 <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                  <button class="card-overlay-btn" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 2 -->
@@ -156,7 +157,7 @@
                     tea experience.</p>
                 </div>
                 <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                  <button class="card-overlay-btn" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 3 -->
@@ -169,7 +170,7 @@
                     tailor-made for your enjoyment.</p>
                 </div>
                 <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                  <button class="card-overlay-btn" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 4 -->
@@ -181,7 +182,7 @@
                     soothing and elegant sip.</p>
                 </div>
                 <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                  <button class="card-overlay-btn" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 5 -->
@@ -194,7 +195,7 @@
                     tranquility and wellness.</p>
                 </div>
                 <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                  <button class="card-overlay-btn" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 6 -->
@@ -208,7 +209,7 @@
                     tailored for your revitalisation.</p>
                 </div>
                 <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                  <button class="card-overlay-btn" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 7 -->
@@ -222,7 +223,7 @@
                     exquisite tea moments.</p>
                 </div>
                 <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                  <button class="card-overlay-btn" href="#">See product</button>
                 </div>
               </div>
             </div>
@@ -292,7 +293,7 @@
     <section id="mailingList" class="container-fluid section-padding">
       <div class="text-center">
         <h3 class="text-white pb-2 fw-bold text-uppercase">Stay in the loop</h3>
-        <p class="text-white pb-4">Subscribe to receive latest product updates and exclusive deals.</p>
+        <p class="text-white pb-4">Subscribe to receive latest productupdates and exclusive deals.</p>
       </div>
       <div id="mc_embed_shell">
         <div id="mc_embed_signup">
@@ -303,7 +304,7 @@
             <div id="mc_embed_signup_scroll">
               <div class="mc-field-group pe-0 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                 <input type="email" name="EMAIL" class="required email w-100" id="mce-EMAIL" required=""
-                  placeholder="name@example.com">
+                  placeholder="name@example.com" autocomplete="email">
               </div>
               <div id="mce-responses" class="clear foot col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                 <div class="response" id="mce-error-response" style="display: none;"></div>
@@ -323,7 +324,6 @@
         <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
         <script
           type="text/javascript">(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
-      </div>
       </div>
     </section>
   </main>
@@ -372,6 +372,25 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
   <script src="js/carousel.js"></script>
+  <!-- Function to hide mailchimp error/success message after x time -->
+  <script>
+    const chimpMsg = document.getElementById("mce-responses");
+    const childDiv = chimpMsg.getElementsByTagName('div')[0];
+    const childDiv2 = chimpMsg.getElementsByTagName('div')[1];
+    const observer = new MutationObserver(function () {
+      if ((childDiv.style.display !== "none") || (childDiv2.style.display !== "none")) {
+        setTimeout(() => {
+          if (childDiv.style.display !== "none") {
+            childDiv.style.display = 'none';
+          }
+          else if (childDiv2.style.display !== "none") {
+            childDiv2.style.display = 'none';
+          }
+        }, 4500)
+      }
+    });
+    observer.observe(chimpMsg, { attributes: true, childList: true, subtree: true });
+  </script>
 </body>
 
 </html>

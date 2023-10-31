@@ -16,7 +16,9 @@ cardWrapperChildren.slice(-column).reverse().forEach(item => {
 cardWrapperChildren.slice(0, column).forEach(item => {
   cardWrapper.insertAdjacentHTML('beforeend', item.outerHTML)
 })
-
+cardWrapper.onmouseenter = function(e) {
+  clearTimeout(autoScroll)
+}
 const cardImageAndLink = cardWrapper.querySelectorAll('img, a')
 cardImageAndLink.forEach(item => {
   item.setAttribute('draggable', false)
@@ -54,6 +56,11 @@ cardWrapper.onmouseleave = mouseUpAndLeave
 function mouseUpAndLeave() {
   cardWrapper.classList.remove('grab')
   clicked = false
+  autoScroll = setTimeout(() => {
+    cardWrapper.classList.remove('no-smooth')
+    cardWrapper.scrollLeft += widthToScroll
+  }, 4000)
+
 }
 
 let autoScroll
@@ -76,5 +83,5 @@ cardWrapper.onscroll = function () {
   autoScroll = setTimeout(() => {
     cardWrapper.classList.remove('no-smooth')
     cardWrapper.scrollLeft += widthToScroll
-  }, 2000)
+  }, 4000)
 }
