@@ -20,6 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coz WeBrew</title>
 </head>
+
 <body>
   <header>
     <!-- Logo goes here -->
@@ -61,7 +62,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact us</a>
+              <a class="nav-link" href="contactus.html">Contact us</a>
             </li>
           </ul>
         </div>
@@ -142,8 +143,8 @@
                     honey.
                   </p>
                 </div>
-                <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                <div class="card-overlay d-none d-sm-block">
+                  <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 2 -->
@@ -155,8 +156,8 @@
                     crafted to elevate your
                     tea experience.</p>
                 </div>
-                <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                <div class="card-overlay d-none d-sm-block">
+                  <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 3 -->
@@ -168,8 +169,8 @@
                     sweetness and flavor,
                     tailor-made for your enjoyment.</p>
                 </div>
-                <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                <div class="card-overlay d-none d-sm-block">
+                  <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 4 -->
@@ -180,8 +181,8 @@
                   <p class="card-description d-none d-sm-block">A fragrant blend of green tea and jasmine blossoms for a
                     soothing and elegant sip.</p>
                 </div>
-                <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                <div class="card-overlay d-none d-sm-block">
+                  <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 5 -->
@@ -193,8 +194,8 @@
                     tailored for your
                     tranquility and wellness.</p>
                 </div>
-                <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                <div class="card-overlay d-none d-sm-block">
+                  <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 6 -->
@@ -207,8 +208,8 @@
                     blend,
                     tailored for your revitalisation.</p>
                 </div>
-                <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                <div class="card-overlay d-none d-sm-block">
+                  <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle" href="#">See product</button>
                 </div>
               </div>
               <!-- Carousel item 7 -->
@@ -221,8 +222,8 @@
                     your
                     exquisite tea moments.</p>
                 </div>
-                <div class="card-overlay">
-                  <button class="card-overlay-btn">See product!</button>
+                <div class="card-overlay d-none d-sm-block">
+                  <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle" href="#">See product</button>
                 </div>
               </div>
             </div>
@@ -303,7 +304,7 @@
             <div id="mc_embed_signup_scroll">
               <div class="mc-field-group pe-0 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                 <input type="email" name="EMAIL" class="required email w-100" id="mce-EMAIL" required=""
-                  placeholder="name@example.com">
+                  placeholder="name@example.com" autocomplete="email">
               </div>
               <div id="mce-responses" class="clear foot col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                 <div class="response" id="mce-error-response" style="display: none;"></div>
@@ -323,7 +324,6 @@
         <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
         <script
           type="text/javascript">(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
-      </div>
       </div>
     </section>
   </main>
@@ -365,13 +365,32 @@
       </li>
     </ul>
     <!-- Copyright statement -->
-    <p class="text-center mb-0 py-2 small" style="background-color: #005B41">&copy; 2023 WeBrew</p>
+    <p class="text-center mb-0 py-2 small">&copy; 2023 WeBrew</p>
   </footer>
   <!-- Link to JS file -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
   <script src="js/carousel.js"></script>
+  <!-- Function to hide mailchimp error/success message after x time -->
+  <script>
+    const chimpMsg = document.getElementById("mce-responses");
+    const childDiv = chimpMsg.getElementsByTagName('div')[0];
+    const childDiv2 = chimpMsg.getElementsByTagName('div')[1];
+    const observer = new MutationObserver(function () {
+      if ((childDiv.style.display !== "none") || (childDiv2.style.display !== "none")) {
+        setTimeout(() => {
+          if (childDiv.style.display !== "none") {
+            childDiv.style.display = 'none';
+          }
+          else if (childDiv2.style.display !== "none") {
+            childDiv2.style.display = 'none';
+          }
+        }, 4500)
+      }
+    });
+    observer.observe(chimpMsg, { attributes: true, childList: true, subtree: true });
+  </script>
 </body>
 
 </html>
