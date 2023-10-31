@@ -9,16 +9,16 @@ let currScroll = 0
 let initPos = 0
 let clicked = false
 
-cardWrapperChildren.slice(-column).reverse().forEach(item=> {
+cardWrapperChildren.slice(-column).reverse().forEach(item => {
   cardWrapper.insertAdjacentHTML('afterbegin', item.outerHTML)
 })
 
-cardWrapperChildren.slice(0, column).forEach(item=> {
+cardWrapperChildren.slice(0, column).forEach(item => {
   cardWrapper.insertAdjacentHTML('beforeend', item.outerHTML)
 })
 
 const cardImageAndLink = cardWrapper.querySelectorAll('img, a')
-cardImageAndLink.forEach(item=> {
+cardImageAndLink.forEach(item => {
   item.setAttribute('draggable', false)
 })
 
@@ -26,23 +26,23 @@ cardWrapper.classList.add('no-smooth')
 cardWrapper.scrollLeft = cardWrapper.offsetWidth
 cardWrapper.classList.remove('no-smooth')
 
-arrowPrev.onclick = function() {
+arrowPrev.onclick = function () {
   cardWrapper.scrollLeft -= widthToScroll
 }
 
-arrowNext.onclick = function() {
+arrowNext.onclick = function () {
   cardWrapper.scrollLeft += widthToScroll
 }
 
-cardWrapper.onmousedown = function(e) {
+cardWrapper.onmousedown = function (e) {
   cardWrapper.classList.add('grab')
   initPos = e.clientX - cardBounding.left
   currScroll = cardWrapper.scrollLeft
   clicked = true
 }
 
-cardWrapper.onmousemove = function(e) {
-  if(clicked) {
+cardWrapper.onmousemove = function (e) {
+  if (clicked) {
     const xPos = e.clientX - cardBounding.left
     cardWrapper.scrollLeft = currScroll + -(xPos - initPos)
   }
@@ -58,23 +58,23 @@ function mouseUpAndLeave() {
 
 let autoScroll
 
-cardWrapper.onscroll = function() {
-  if(cardWrapper.scrollLeft === 0) {
+cardWrapper.onscroll = function () {
+  if (cardWrapper.scrollLeft === 0) {
     cardWrapper.classList.add('no-smooth')
     cardWrapper.scrollLeft = cardWrapper.scrollWidth - (2 * cardWrapper.offsetWidth)
     cardWrapper.classList.remove('no-smooth')
-  } else if(cardWrapper.scrollLeft === cardWrapper.scrollWidth - cardWrapper.offsetWidth) {
+  } else if (cardWrapper.scrollLeft === cardWrapper.scrollWidth - cardWrapper.offsetWidth) {
     cardWrapper.classList.add('no-smooth')
     cardWrapper.scrollLeft = cardWrapper.offsetWidth
     cardWrapper.classList.remove('no-smooth')
   }
 
-  if(autoScroll) {
+  if (autoScroll) {
     clearTimeout(autoScroll)
   }
 
-  autoScroll = setTimeout(()=> {
+  autoScroll = setTimeout(() => {
     cardWrapper.classList.remove('no-smooth')
     cardWrapper.scrollLeft += widthToScroll
-  }, 4000)
+  }, 2000)
 }
