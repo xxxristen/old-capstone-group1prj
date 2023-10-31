@@ -396,6 +396,9 @@ div.mce_inline_error {
     padding-top: 1rem;
     list-style: none;
 }
+footer p {
+    background-color: #005B41;
+}
 
 .footer-nav li {
     padding-right: 3rem;
