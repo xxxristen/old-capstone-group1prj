@@ -13,60 +13,58 @@
     <link href="css/normalize.css" rel="stylesheet" type="text/css">
     <!-- Style.css -->
     <link href="css/styles.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css\product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
     <title>Coz WEBREW</title>
 </head>
 <body>
     <header>
-        <!-- Header section-->
+        <!-- Logo goes here -->
         <div id="logo" class="container-fluid d-none d-sm-block">
-            <img src="img/logo/logo.svg" alt="Webrew Logo" class="img-fluid">
-          </div>
-          <!-- Navigation menu -->
-          <nav class="navbar navbar-expand-md custom-bg navbar-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand d-block d-sm-none" href="#"><img src="img/logo/logo-white.svg" alt="Webrew logo"
-                  class="img-fluid" /></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Our story</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                      Products
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Tea</a></li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" href="#">Tea wares</a></li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" href="#">Accessories</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Contact us</a>
-                  </li>
-                </ul>
-              </div>
+          <img src="img/logo/logo.png" alt="WeBrew logo" class="py-3">
+        </div>
+        <!-- Navigation menu -->
+        <nav class="navbar navbar-expand-sm custom-bg mb-0 navbar-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand d-block d-sm-none" href="#"><img src="img/logo/logo-mobile.png" alt="WeBrew logo"
+                class="img-fluid" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="our-story.html">Our story</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Products
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Tea</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Tea wares</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Accessories</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact us</a>
+                </li>
+              </ul>
             </div>
-          </nav>
-        <!-- heade section ends here -->
-    </header>
+          </div>
+        </nav>
+      </header>
 
     <main>
         <!-- main section-->
@@ -265,9 +263,10 @@
         <!-- main section ends here -->
     </main>
 
-    <footer class="container-fluid">
+    <footer class="footer">
         <!-- Footer menu -->
         <ul class="footer-nav">
+          <!-- Email -->
           <li id="email"><a href="#" class="icon-link"><svg role="img" xmlns="http://www.w3.org/2000/svg" width="16"
                 height="16" fill="currentColor" class="bi bi-envelope-at" viewBox="0 0 16 16" aria-labelledby="Email">
                 <path
@@ -277,6 +276,7 @@
               </svg>
               </svg> <span class="d-none d-lg-block">sales@webrew.com</span></a>
           </li>
+          <!-- Phone -->
           <li id="phone"><a href="tel:66999999" class="icon-link"><svg role="img" xmlns="http://www.w3.org/2000/svg"
                 width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16"
                 aria-labelledby="Telephone">
@@ -284,12 +284,14 @@
                   d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
               </svg> <span class="d-none d-lg-block">6699 9999</span></a>
           </li>
+          <!-- Facebook -->
           <li id="facebook"><a href="#" class="icon-link"><svg role="img" xmlns="http://www.w3.org/2000/svg" width="16"
                 height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16" aria-labelledby="Facebook">
                 <path
                   d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
               </svg> <span class="d-none d-lg-block">Follow us on facebook</span></a>
           </li>
+          <!-- Instagram -->
           <li id="instagram"><a href="#" class="icon-link"><svg role="img" xmlns="http://www.w3.org/2000/svg" width="16"
                 height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16" aria-labelledby="Instagram">
                 <path
@@ -297,7 +299,8 @@
               </svg> <span class="d-none d-lg-block">Follow us on instagram</span></a>
           </li>
         </ul>
-        <p class="text-center mb-0 pb-2">&copy; 2023 Webrew</p>
+        <!-- Copyright statement -->
+        <p class="text-center mb-0 py-2 small" style="background-color: #005B41">&copy; 2023 WeBrew</p>
       </footer>
 
     <!-- script to js -->
