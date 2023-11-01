@@ -2,7 +2,7 @@
 class productList{
 
     constructor(data = []){
-        this.product = data
+        this.products = data
 
         this.storeDataToLocalStorage(data);
     }
@@ -100,5 +100,46 @@ class productList{
                 productRating.appendChild(listRatingNone)
             }
         }
+    }
+
+    // To add product into local storage
+    addProduct(image, name, price, description, type, format){
+        const storageProduct = localStorage.getItem("productList")
+
+        // declare max and min variables for ratings
+        const max = 5
+        const min = 1
+
+        if(storageProduct){
+            const products = JSON.parse(storageProduct)
+            const product = {
+                id: this.products.length+1,
+                image: image,
+                name: name,
+                rating: Math.floor(Math.random()*(max - min + 1)) +min,
+                price: price,
+                description: description,
+                type: type,
+                format: format
+            }
+            products.push(product)
+            localStorage.setItem("productList", JSON.stringify(products))
+            return
+        }
+
+        const setId = !storageProduct ? 1 : storageProduct.length++
+
+        const product = {
+            id: setId,
+            image: image,
+            name: name,
+            rating: Math.floor(Math.random()*(max - min + 1)) +min,
+            price: price,
+            description: description,
+            type: type,
+            format: format
+        }
+        this.products.push(product)
+        localStorage.setItem("productList", JSON.stringify(this.products))
     }
 }

@@ -688,7 +688,7 @@ footer p {
 }
 
 .purchase_btn:hover,
-.user_selection button:hover {
+.user_selection_button:hover {
     background-color: #2e8b57;
 }
 
@@ -713,7 +713,7 @@ footer p {
     margin: 1rem;
 }
 
-.user_selection button {
+.user_selection_button {
     width: fit-content;
     border-radius: 0.5rem;
     background-color: #189e1e;
@@ -722,6 +722,10 @@ footer p {
     padding: 1rem;
     margin: 1rem;
     height: 3rem;
+}
+
+#btn_create {
+    grid-column-start: 2;
 }
 
 #btn_update {
