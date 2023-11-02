@@ -105,8 +105,8 @@
   
               <span class="input_txt">Image: </span>
               <div class="input-group">
-                <input type="file" class="form-control" id="input_image">
-                <!-- <label class="input-group-text" for="input_image">Upload</label> -->
+                <!-- The image file uploaded will be encoded to base64 format -->
+                <input type="file" class="form-control" id="input_image" onchange="getImgURL(this);">
               </div>
 
               <span class="input_txt input_txt_format" id="input_txt_format">Tea Format: </span>

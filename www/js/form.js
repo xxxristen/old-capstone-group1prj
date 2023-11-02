@@ -4,6 +4,23 @@ const teaList = new productList()
 // Select the form
 const newProdForm = document.querySelector("#productForm")
 
+// To store the base64 encoded string of the uploaded image
+let imgURL
+
+// A function to encode the uploaded image file to base64 format to display it on web directly once the new product is created
+function getImgURL(input){
+    const file = document.querySelector("input[type=file]").files[0]
+    if(file){
+        var reader = new FileReader()
+
+        reader.onload = function(){
+            imgURL = reader.result
+            console.log(imgURL)
+        }
+    }
+    reader.readAsDataURL(file)
+}
+
 // Add an 'onsubmit' event listener to the form
 newProdForm.addEventListener('submit',(event)=> {
     event.preventDefault()
@@ -13,7 +30,7 @@ newProdForm.addEventListener('submit',(event)=> {
     const newProdType = document.querySelector('input[name="prod_type"]:checked')
     const newProdPrice = document.querySelector('#input_bar_price')
     const newProdDescription = document.querySelector('#input_bar_description')
-    // const newProdImage = document.querySelector('#"input_image"')
+    const newProdImage = document.querySelector('#input_image')
     const newProdFormat = document.querySelector('input[name="tea_format"]:checked')
 
     // Get values of inputs
@@ -21,20 +38,15 @@ newProdForm.addEventListener('submit',(event)=> {
     const type = newProdType.value
     const price = newProdPrice.value 
     const description = newProdDescription.value
-    // const image = newProdImage.value
+    // const image = reader.result
     const format = newProdFormat.value
 
     /*
     Add Validation Code Here
     */
 
-    console.log(`Name is ${name}`)
-    console.log(`Type is ${type}`)
-    console.log(`Price is $${price}`)
-    console.log(`Content is ${description}`)
-    console.log(`Format is ${format}`)
     // Add new product to the list
-    // teaList.addProduct(image, name, price, description, type, format)
+    teaList.addProduct(imgURL, name, price, description, type, format)
 
     // Run toast if new product is created successfully
     // $('.toast').toast('show')
@@ -44,7 +56,7 @@ newProdForm.addEventListener('submit',(event)=> {
     newProdType.value = ''
     newProdPrice.value = ''
     newProdDescription.value = ''
-    // newProdImage.value = ''
+    newProdImage.value = ''
     newProdFormat.value = ''
 })
 
