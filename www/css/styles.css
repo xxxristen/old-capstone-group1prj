@@ -384,6 +384,30 @@ div.mce_inline_error {
     max-height: 62.5rem;
 }
 
+/* CONTACT US FORM  */
+.form-container form {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 2rem;
+    width:90%;
+}
+.form-container input, .form-container textarea {
+    padding: 10px;
+    margin: 10px 0;
+    outline: none;
+    border:0;
+} 
+.form-container button {
+    padding:10px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+
 /* FOOTER SECTION */
 footer p {
     background-color: #005B41;
@@ -823,7 +847,6 @@ footer p {
         padding-left: 0 !important;
         display: flex;
         justify-content: space-around;
-        padding-bottom: 1rem;
         align-items: center;
         bottom: 0;
     }
