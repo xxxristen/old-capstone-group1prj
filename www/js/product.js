@@ -1,3 +1,5 @@
+// This shows the product listing in product.html
+
 // Create a class product list
 class productList{
 
