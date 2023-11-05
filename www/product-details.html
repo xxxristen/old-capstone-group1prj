@@ -65,7 +65,13 @@
 
     <!-- main section starts here -->
     <main>
-        <div class="container">
+        <!-- User selection button section starts here - to update or delete the product upon signing in -->
+        <div class="user_selection">
+          <button class="user_selection_button" id="btn_update">Update Product</button>
+          <button class="user_selection_button" id="btn_delete">Delete Product</button>
+        </div>        
+        </main>
+        <div class="container product_details">
           <div class="row">
             <div class="col-6 form_left">
               <img src="img\teas\african-rooibos-honeybush.jpg" alt="product_image">
@@ -86,13 +92,6 @@
             </div>
           </div>
         </div>
-
-      <!-- User selection button section starts here - to update or delete the product upon signing in -->
-        <div class="user_selection">
-          <button class="user_selection_button" id="btn_update">Update Product</button>
-          <button class="user_selection_button" id="btn_delete">Delete Product</button>
-        </div>        
-    </main>
     <!-- main section ends here -->
 
     <footer class="footer">
@@ -134,5 +133,11 @@
       <!-- Copyright statement -->
       <p class="text-center mb-0 py-2 small" style="background-color: #005B41">&copy; 2023 WeBrew</p>
     </footer>
+
+    <!-- script to js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+    
 </body>
 </html>

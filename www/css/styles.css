@@ -574,7 +574,7 @@ footer p {
     border: none;
     border-radius: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
-    ;
+    background-color: #FFF6DC;
 }
 
 .filter_bar>.card-header {
@@ -642,9 +642,13 @@ footer p {
 /* PRODUCT.HTML & FORM.HTML section ends here */
 
 /* PRODUCT-DETAILS.HTML */
+.product_details{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
 .form_left {
     /* display:none; */
-    padding-top: 2rem;
 }
 
 
@@ -695,14 +699,21 @@ footer p {
 /* user input section */
 .user_input {
     display: grid;
-    grid-template: 1fr auto 1fr auto 1fr / 1fr 3fr;
-    gap: 2rem 1rem;
+    grid-template: 1fr auto 1fr auto / 1fr 3fr;
+    gap: 2rem 2rem;
     padding: 2rem;
 }
 
 .input_txt {
     text-align: end;
-    padding-right: 1rem;
+}
+
+.input_type_selection, .input_format_selection{
+    padding-left: 2rem;
+}
+
+#input_image{
+    height: 100%;
 }
 
 /* user_selection button section*/

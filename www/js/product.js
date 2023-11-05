@@ -116,7 +116,7 @@ class productList{
                 id: products.length+1,
                 image: image,
                 name: name,
-                rating: Math.floor(Math.random()*(max - min + 1)) +min,
+                rating: Math.floor(Math.random()*(max - min + 1)) +min, //Randomly generate ratings of 1-5
                 price: price,
                 description: description,
                 type: type,
