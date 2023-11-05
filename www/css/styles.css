@@ -26,6 +26,9 @@ footer {
     margin-top: auto;
 
 }
+.orange-bg {
+    background-color: #e65722;
+}
 
 a:hover {
     color: #e65722;
