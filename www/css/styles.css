@@ -711,7 +711,7 @@ footer p {
     border-radius: 0.5rem;
     background-color: #189e1e;
     color: white;
-    width: 25%;
+    /* width: 25%; */
     /* display: none; */
 }
 
@@ -734,10 +734,6 @@ footer p {
 
 .input_type_selection, .input_format_selection{
     padding-left: 2rem;
-}
-
-#input_image{
-    height: 100%;
 }
 
 /* user_selection button section*/
