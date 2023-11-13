@@ -88,7 +88,7 @@ newProdForm.addEventListener('submit', (event) => {
     var formFields = [];
     for (let i = 0; i < newProdForm.length; i++) {
         var field = newProdForm.elements[i];
-        if (field.type != "button") {
+        if (field.type === "text" || field.id === "input_bar_description") {
             if (field.value.trim() === '') {
                 let tempName = '';
                 switch (field.id) {
@@ -112,6 +112,10 @@ newProdForm.addEventListener('submit', (event) => {
         return false;
     }
 
+    // If no image uploaded - replace with default image
+    if (newProdImage.files.length == 0) {
+        imgURL="./img/teas/default-Prod-Img.png";
+    }
 
     // Add new product to the list
     teaList.addProduct(imgURL, name, price, description, type, format)
@@ -123,8 +127,8 @@ newProdForm.addEventListener('submit', (event) => {
 
     var productAddedToast = document.querySelector('.toast');
     productAddedToast.addEventListener('hidden.bs.toast', function () {
-        window.open("product.html", "productlistwindow");
-    })
+        window.open("product.html", "productlist");
+    });
 
     // Reset the user inputs
     newProdName.value = ''
@@ -132,6 +136,7 @@ newProdForm.addEventListener('submit', (event) => {
     newProdPrice.value = ''
     newProdDescription.value = ''
     newProdImage.value = ''
+    document.getElementById('imagePreview').style.display = "none";
     newProdFormat.value = ''
 })
 
