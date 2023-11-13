@@ -121,7 +121,8 @@
           </div>
 
           <span class="input_txt">Price (SGD): </span>
-          <input type="number" min="0" step="0.01" class="form-control input_bar" id="input_bar_price">
+          <!-- Regex - 0 - 999.99 -->
+          <input type="text" pattern="^(0|[1-9][0-9]{0,2})(\.[0-9]{1,2})?$" class="form-control input_bar" id="input_bar_price">
 
           <span class="input_txt">Description: </span>
           <textarea name="input_bar_description" class="input_bar form-control" id="input_bar_description" cols="30"
