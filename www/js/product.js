@@ -53,9 +53,11 @@ class productList{
         }
 
         for(let i=0; i<data.length; i++){
-            let listProduct = document.createElement("li")
+            let listProduct = document.createElement("a")
             listProduct.className = "card"
             listProduct.classList.add("card_listing")
+            listProduct.setAttribute("data-product-id",i+1)
+            listProduct.href = "product-details.html"
             listProduct.innerHTML = `
                 <img src="${data[i].image}"/>
                 <div class="card-body">
@@ -145,3 +147,15 @@ class productList{
         localStorage.setItem("productList", JSON.stringify(this.products))
     }
 }
+
+// To capture the product ID selected by user to display its details in the product details page
+document.addEventListener('DOMContentLoaded', function(){
+    var productLinks = document.querySelectorAll('a[data-product-id]');
+
+    productLinks.forEach(function (link){
+        link.addEventListener('click', function(event){
+            var productId = link.getAttribute('data-product-id')
+            localStorage.setItem('selectedProductId', productId)
+        })
+    })
+})

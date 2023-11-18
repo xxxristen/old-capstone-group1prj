@@ -5,23 +5,23 @@ data = [
         image: "img/teas/black-tea.jpg",
         name: "Black Tea",
         rating: "5",
-        price: "45",
+        price: "100",
         description: "Lorem ipsum dolor sit amet.",
         type: "Tea",
         tea_format: "Loose leaf"
     },    
     {
-        image: "img/teas/black-tea.jpg",
-        name: "Black Tea",
+        image: "img/teas/fruit-tea.jpg",
+        name: "Fruit Tea",
         rating: "4",
-        price: "45",
+        price: "50",
         description: "Lorem ipsum dolor sit amet.",
         type: "Tea",
         tea_format: "Loose leaf"
     },    
     {
-        image: "img/teas/black-tea.jpg",
-        name: "Black Tea",
+        image: "img/teas/green-tea.jpg",
+        name: "Green Tea",
         rating: "2.5",
         price: "45",
         description: "Lorem ipsum dolor sit amet.",
@@ -29,10 +29,10 @@ data = [
         tea_format: "Loose leaf"
     },    
     {
-        image: "img/teas/black-tea.jpg",
-        name: "Black Tea",
+        image: "img/teas/white-tea.jpg",
+        name: "White Tea",
         rating: "1",
-        price: "45",
+        price: "80",
         description: "Lorem ipsum dolor sit amet.",
         type: "Tea",
         tea_format: "Loose leaf"
