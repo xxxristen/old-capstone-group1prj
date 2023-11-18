@@ -56,7 +56,7 @@ class productList{
             let listProduct = document.createElement("a")
             listProduct.className = "card"
             listProduct.classList.add("card_listing")
-            listProduct.setAttribute("data-product-id",i+1)
+            listProduct.setAttribute("data-product-id",i)
             listProduct.href = "product-details.html"
             listProduct.innerHTML = `
                 <img src="${data[i].image}"/>
@@ -148,7 +148,7 @@ class productList{
     }
 }
 
-// To capture the product ID selected by user to display its details in the product details page
+// To capture the product index selected by user to display its details in the product details page
 document.addEventListener('DOMContentLoaded', function(){
     var productLinks = document.querySelectorAll('a[data-product-id]');
 
