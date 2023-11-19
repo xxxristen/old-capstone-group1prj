@@ -674,6 +674,10 @@ footer p {
     margin-top: 2rem;
 }
 
+a{
+    text-decoration: none;
+}
+
 .form_left {
     /* display:none; */
 }
