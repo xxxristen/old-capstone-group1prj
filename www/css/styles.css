@@ -441,24 +441,6 @@ footer p {
     text-decoration: underline;
 }
 
-/* CONTROLLING HOW THE CAROUSELL LOOK IN VIEWPORT MIN-WIDTH 577PX AND MAX 868PX */
-@media screen and (min-width: 577px) and (max-width:868px) {
-    #img-carousel .card-wrapper {
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: calc((100% / 2) - 12px);
-        overflow-x: auto;
-        padding: 24px;
-        gap: 24px;
-    }
-
-    #img-carousel .card-title {
-        font-size: 1rem;
-        color: #2e8b57;
-    }
-
-}
-
 /* PRODUCT.HTML section */
 
 .pageTitle {
@@ -772,6 +754,24 @@ a{
 
 /* PRODUCT.HTML & FORM.HTML section ends */
 
+/* CONTROLLING HOW THE CAROUSELL LOOK IN VIEWPORT MIN-WIDTH 577PX AND MAX 868PX */
+@media screen and (min-width: 577px) and (max-width:868px) {
+    #img-carousel .card-wrapper {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% / 2) - 12px);
+        overflow-x: auto;
+        padding: 24px;
+        gap: 24px;
+    }
+
+    #img-carousel .card-title {
+        font-size: 1rem;
+        color: #2e8b57;
+    }
+
+}
+
 /* MOBILE */
 @media screen and (max-width:576px) {
 
@@ -787,6 +787,14 @@ a{
 
     .divider {
         margin-top: 1rem;
+    }
+
+    .navbar-nav li:first-child {
+        margin-top: 0.4rem;
+
+    }
+    .navbar-nav a {
+        padding-left: 1rem;
     }
 
     /* HERO BANNER */
