@@ -4,21 +4,20 @@
 class ProductController {
 
     constructor(data = []) {
-        this.products = data
-        // this.storeDataToLocalStorage(data);
+        this.products = data;
     }
 
-    // Fetch API - Get
-    async fetchData() {
-        try {
-            let response = await fetch("/api/products");
-            let data = await response.json();
-            displayList(data);
-        }
-        catch (error) {
-            console.error("Error fetching products from API: ", error);
-        }
-    }
+//    // Fetch API - Get
+//    async fetchData() {
+//        try {
+//            let response = await fetch("/api/products");
+//            let data = await response.json();
+//            this.displayList(data);
+//        }
+//        catch (error) {
+//            console.error("Error fetching products from API: ", error);
+//        }
+//    }
 
     // Fetch array of objects and display in HTML (instantiated to ref classname '.row')
     displayList(data) {
@@ -125,13 +124,13 @@ class ProductController {
 }
 
 // Capture the product index selected by user to display its details in the product details page
-document.addEventListener('DOMContentLoaded', function () {
-    var productLinks = document.querySelectorAll('a[data-product-id]');
-
-    productLinks.forEach(function (link) {
-        link.addEventListener('click', function (event) {
-            var productId = link.getAttribute('data-product-id')
-            localStorage.setItem('selectedProductId', productId)
-        })
-    })
-})
+//document.addEventListener('DOMContentLoaded', function () {
+//    var productLinks = document.querySelectorAll('a[data-product-id]');
+//
+//    productLinks.forEach(function (link) {
+//        link.addEventListener('click', function (event) {
+//            var productId = link.getAttribute('data-product-id')
+//            localStorage.setItem('selectedProductId', productId)
+//        })
+//    })
+//})
