@@ -4,7 +4,6 @@ src/main/resources/static/package-lock.json
 src/main/resources/static/package.json
 src/main/resources/static/img/mailing-list.png
 src/main/resources/static/js/helper.js
-src/main/resources/static/js/helpers.js
 src/main/resources/static/js/form.js
 src/main/resources/static/js/product.js
 src/main/resources/static/product-details-backup.html

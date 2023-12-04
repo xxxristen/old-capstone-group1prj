@@ -1,8 +1,11 @@
-import { escapeHTML } from './escape-html';
+//import { escapeHTML } from './escape-html';
 document.addEventListener('DOMContentLoaded', function () {
-    const url = window.location.href;
-    const queryString = url.split('?')[1];
-    const id = new URLSearchParams(queryString).get('id');
+//    const url = window.location.href;
+//    const queryString = url.split('?')[1];
+//    const id = new URLSearchParams(queryString).get('id');
+const url = document.location.search;
+let urlParams = new URLSearchParams(url);
+    let id = urlParams.get("id");
     const apiContainer = document.getElementById("apiError");
     if (id) {
         fetch(`/api/products/${id}`)
