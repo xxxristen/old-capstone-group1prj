@@ -13,7 +13,7 @@ class ProductController {
         try {
             let response = await fetch("/api/products");
             let data = await response.json();
-            productController.displayList(data);
+            displayList(data);
         }
         catch (error) {
             console.error("Error fetching products from API: ", error);
