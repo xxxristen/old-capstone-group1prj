@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 userSelection.classList.add("user_selection");
                 const updateBtn = document.createElement('button');
                 const deleteBtn = document.createElement('button');
-                updateBtn.textContent = "Update product";
+                updateBtn.innerText = "Update product";
                 updateBtn.classList.add("user_selection_button");
                 updateBtn.setAttribute("id", "btn_update");
                 deleteBtn.classList.add("user_selection_button");
-                deleteBtn.textContent = "Delete product";
+                deleteBtn.innerText = "Delete product";
                 deleteBtn.setAttribute("id", "btn_delete");
                 userSelection.appendChild(updateBtn);
                 userSelection.appendChild(deleteBtn);
