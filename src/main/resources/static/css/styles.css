@@ -401,36 +401,36 @@ div.mce_inline_error {
 /* SECTION - LOGIN PAGE */
 /* ------------------------------------------------------------------------ */
 #login {
-    font-family: Arial, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     margin: 0;
+    padding-top:2rem;;
 }
 
 .login-container {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    width: 300px;
+    width: 20rem;
 }
 
 #login-container .form-group,
 #logged-in-container .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
 #login-container .form-group label,
 #logged-in-container .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.3rem;
 }
 
 #login-container .form-group input {
     width: 100%;
-    padding: 8px;
+    padding: 0.5rem;
     box-sizing: border-box;
 }
 
