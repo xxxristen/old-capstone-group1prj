@@ -84,12 +84,12 @@ newProdForm.addEventListener('submit', (event) => {
     const newProdFormat = document.querySelector('input[name="tea_format"]:checked');
 
     // Get values of inputs
-    const name = newProdName.value;
-    const type = newProdType.value;
-    const price = newProdPrice.value;
-    const country = newProdCountry.value;
-    const description = newProdDescription.value;
-    const format = newProdFormat.value;
+    const name = escapeHTML(newProdName.value);
+    const type = escapeHTML(newProdType.value);
+    const price = escapeHTML(newProdPrice.value);
+    const country = escapeHTML(newProdCountry.value);
+    const description = escapeHTML(newProdDescription.value);
+    const format = escapeHTML(newProdFormat.value);
 
     // Validation - Fields cannot be empty
     // Creation of empty array to store those empty fields
@@ -148,13 +148,6 @@ newProdForm.addEventListener('submit', (event) => {
     // Reset the user inputs
     const formElement = document.querySelector('#productForm');
     formElement.reset();
-    // newProdName.value = ''
-    // newProdType.value = ''
-    // newProdFormat.value = ''
-    // newProdPrice.value = ''
-    // newProdCountry.value = ''
-    // newProdDescription.value = ''
-    // newProdImage.value = ''
     document.getElementById('imagePreview').style.display = "none";
 }
 )

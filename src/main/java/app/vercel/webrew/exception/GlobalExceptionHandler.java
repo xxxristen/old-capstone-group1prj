@@ -1,5 +1,7 @@
 package app.vercel.webrew.exception;
 
+import jakarta.servlet.http.HttpServletRequest;
+import org.apache.coyote.BadRequestException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
@@ -7,13 +9,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.web.firewall.RequestRejectedException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
+import org.springframework.web.servlet.resource.NoResourceFoundException;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +25,26 @@ import java.util.Map;
 @ControllerAdvice // Defines a global exception handler for the Spring MVC application.
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    // Handle EmptyTaskListException - empty task list
+    // Overrides the default behavior for handling NoResourceFoundException, 404.
+    @Override
+    protected ResponseEntity<Object> handleNoResourceFoundException(NoResourceFoundException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+        return ResponseEntity.status(HttpStatus.FOUND)
+                // Set the location header to custom 404 error page's url
+                .location(URI.create("/error/404.html"))
+                // Build the ResponseEntity object
+                .build();
+    }
+    // e.g. when entered url has an additional / (e.g. //products.html). Do not try with more than 2 /'s as I did not handle URL normalisation
+    @ExceptionHandler(RequestRejectedException.class)
+    protected ResponseEntity<Object> handleRequestRejectedException(HttpServletRequest request, Exception ex) {
+        return ResponseEntity.status(HttpStatus.FOUND)
+                // Set the location header to custom error page's url
+                .location(URI.create("/error/error.html"))
+                // Build the ResponseEntity object
+                .build();
+    }
+
+    // Handle EmptyTaskListException - empty product list
     @ExceptionHandler(EmptyProductListException.class)
     protected ResponseEntity<Object> handleHttpMessageNotReadable(EmptyProductListException em) {
         String errorResponse = em.getMessage();
@@ -57,7 +80,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         MessageNotReadableException messageNotReadableException = new MessageNotReadableException();
         Map<String, String> errorResponse = new HashMap<>();
         errorResponse.put("error", messageNotReadableException.getMessage());
-
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 }

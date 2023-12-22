@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- <html lang="en"> -->
+<html xmlns:th="http://www.thymeleaf.org" lang="th">
 
 <head>
   <!-- Link to CSS files -->
@@ -28,7 +29,7 @@
       <img src="img/logo/logo.png" alt="WeBrew logo" class="py-3">
     </div>
     <!-- Navigation menu -->
-    <nav class="navbar navbar-expand-sm custom-bg mb-0 navbar-dark">
+    <nav class="navbar navbar-expand-lg custom-bg navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand d-block d-sm-none" href="index.html"><img src="img/logo/logo-mobile.png"
             alt="WeBrew logo" class="img-fluid" /></a>
@@ -37,7 +38,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav me-auto mb-lg-0">
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="index.html">Home</a>
             </li>
@@ -61,8 +62,20 @@
                 <li><a class="dropdown-item" href="#">Accessories</a></li>
               </ul>
             </li>
+            <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+              <a class="nav-link" href="add-product.html">Add product</a>
+            </li>
           </ul>
+          <!-- Visible on smaller (md and below) viewports -->
+          <div id="logoutSmall" class="d-block d-lg-none" th:if="${#authorization.expression('isAuthenticated()')}">
+            <span th:text="${username}"></span> | <a href="/logout" class="text-decoration-none nav-log">Logout</a>
+          </div>
         </div>
+      </div>
+      <!-- Visible on bigger (lg and above) viewports -->
+      <div id="logoutBig" class="d-none d-lg-block container text-end pe-3"
+        th:if="${#authorization.expression('isAuthenticated()')}">
+        <span th:text="${username}"></span> | <a href="/logout" class="text-decoration-none nav-log">Logout</a>
       </div>
     </nav>
   </header>
@@ -75,7 +88,7 @@
         <p>Indulge in the ultimate tea experience with our organic blends exclusively
           handcrafted with love in Singapore!
         </p>
-        <button type="button" class="border-0"><a href="#">All products</a></button>
+        <button type="button" class="border-0"><a href="products.html">All products</a></button>
       </div>
     </div>
     <!-- "The birth of tea" section -->
@@ -84,7 +97,7 @@
         <h2>The birth of tea</h2>
         <div class="overflow-auto">
           <img src="img/birth-of-tea2.gif" alt="Employer Shen Nung sittin under the tree"
-            class="float-start ps-3 pe-4 pt-4" />
+            class="float-start ps-3 pe-4 pt-4 d-none d-md-block" />
           <p class="pe-1 pt-4">Tea is often thought of as being a quintessentially British drink, and we have been
             drinking it for over
             350
@@ -135,58 +148,57 @@
               <div class="card-item">
                 <img src="img/teas/african-rooibos-honeybush.jpg" alt="African rooibos honeybush tea">
                 <div class="card-info">
-                  <a href="#" class="card-title">African rooibos honeybush tea</a>
+                  <a href="product-details.html?id=1" class="card-title">African rooibos honeybush tea</a>
                   <p class="card-description d-none d-sm-block">Naturally sweet, earthy, and nutty with a hint of
                     honey.
                   </p>
                 </div>
                 <div class="card-overlay d-none d-sm-block">
                   <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle"
-                    onclick="location.href='#'">See
+                    onclick="location.href='product-details.html?id=1'">See
                     product</button>
                 </div>
               </div>
               <!-- Carousel item 2 -->
               <div class="card-item">
-                <img src="img/teas/black-tea.jpg" alt="Black tea">
+                <img src="img/teas/black-tea.jpg" alt="Christmas breakfast tea">
                 <div class="card-info">
-                  <a href="#" class="card-title">Black tea</a>
-                  <p class="card-description d-none d-sm-block">Savor our Signature Black Tea - bold and timeless,
+                  <a href="product-details.html?id=2" class="card-title">Christmas breakfast tea</a>
+                  <p class="card-description d-none d-sm-block">Savor our signature tea - bold and timeless,
                     crafted to elevate your
                     tea experience.</p>
                 </div>
                 <div class="card-overlay d-none d-sm-block">
                   <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle"
-                    onclick="location.href='#'">See
+                    onclick="location.href='product-details.html?id=2'">See
                     product</button>
                 </div>
               </div>
               <!-- Carousel item 3 -->
               <div class="card-item">
-                <img src="img/teas/fruit-tea.jpg" alt="Fruit tea">
+                <img src="img/teas/white-tea.jpg" alt="Silver needles tea">
                 <div class="card-info">
-                  <a href="#" class="card-title">Fruit tea</a>
-                  <p class="card-description d-none d-sm-block">Delight in our Fruit Fusion Tea-a burst of natural
-                    sweetness and flavor,
-                    tailor-made for your enjoyment.</p>
+                  <a href="product-details.html?id=3" class="card-title">Silver needles tea</a>
+                  <p class="card-description d-none d-sm-block">Silver Needles is delicate light and charmingly subtle
+                    yet filled with complex florals.</p>
                 </div>
                 <div class="card-overlay d-none d-sm-block">
                   <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle"
-                    onclick="location.href='#'">See
+                    onclick="location.href='product-details.html?id=3'">See
                     product</button>
                 </div>
               </div>
               <!-- Carousel item 4 -->
               <div class="card-item">
-                <img src="img/teas/green-tea.jpg" alt="China jasmine tea">
+                <img src="img/teas/oolong-tea.jpg" alt="Milky oolong tea">
                 <div class="card-info">
-                  <a href="#" class="card-title">China jasmine tea</a>
-                  <p class="card-description d-none d-sm-block">A fragrant blend of green tea and jasmine blossoms for a
-                    soothing and elegant sip.</p>
+                  <a href="product-details.html?id=4" class="card-title">Milky oolong tea</a>
+                  <p class="card-description d-none d-sm-block">Creamy light buttery flavours woven with a fresh vegetal
+                    oolong base.</p>
                 </div>
                 <div class="card-overlay d-none d-sm-block">
                   <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle"
-                    onclick="location.href='#'">See
+                    onclick="location.href='product-details.html?id=4'">See
                     product</button>
                 </div>
               </div>
@@ -194,14 +206,14 @@
               <div class="card-item">
                 <img src="img/teas/herbal-floral-tea.jpg" alt="Herbal and floral tea">
                 <div class="card-info">
-                  <a href="#" class="card-title">Herbal and floral tea</a>
+                  <a href="product-details.html?id=5" class="card-title">Nighty night tea</a>
                   <p class="card-description d-none d-sm-block">Savor our Herbal & Flora Infusion-nature's best,
                     tailored for your
                     tranquility and wellness.</p>
                 </div>
                 <div class="card-overlay d-none d-sm-block">
                   <button class="card-overlay-btn position-absolute top-50 start-50 translate-middle"
-                    onclick="location.href='#'">See
+                    onclick="location.href='product-details.html?id=5">See
                     product</button>
                 </div>
               </div>
@@ -243,11 +255,11 @@
         <div class="row">
           <div
             class="col-xl-3 offset-xl-8 col-lg-4 offset-lg-8 col-md-4 offset-md-8 text-end d-none d-sm-block pt-3 pe-5">
-            <a href="#">Shop all products</a>
+            <a href="products.html">Shop all products</a>
           </div>
         </div>
         <!-- Button under carousel - Appear in xs view -->
-        <p class="d-block d-sm-none"><a href="#" class="btn btn-shop">Shop all products</a></p>
+        <p class="d-block d-sm-none"><a href="products.html" class="btn btn-shop">Shop all products</a></p>
       </div>
     </section>
     <!-- Section divider / hr -->

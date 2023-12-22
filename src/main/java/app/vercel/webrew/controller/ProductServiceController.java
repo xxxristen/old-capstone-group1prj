@@ -12,6 +12,7 @@ import app.vercel.webrew.model.Product;
 import app.vercel.webrew.service.ProductService;
 import app.vercel.webrew.exception.ResourceNotFoundException;
 import app.vercel.webrew.exception.EmptyProductListException;
+
 // Controller class
 @RestController
 @RequestMapping("/api")
@@ -61,13 +62,13 @@ public class ProductServiceController {
     // Delete a product
     @DeleteMapping("/products/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable("id") Integer id) {
-//        Product product = productService.getProduct(id).orElse(null);
-//        if (product != null) {
-//            productService.deleteProduct(id);
-//            return new ResponseEntity<>("Product deleted.", HttpStatus.OK);
-//        } else {
-//            throw new ResourceNotFoundException(id);
-//        }
+        // Product product = productService.getProduct(id).orElse(null);
+        // if (product != null) {
+        // productService.deleteProduct(id);
+        // return new ResponseEntity<>("Product deleted.", HttpStatus.OK);
+        // } else {
+        // throw new ResourceNotFoundException(id);
+        // }
 
         productService.deleteProduct(id);
         return new ResponseEntity<>("Product deleted.", HttpStatus.OK);

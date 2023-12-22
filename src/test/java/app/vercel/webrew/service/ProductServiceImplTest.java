@@ -30,7 +30,7 @@ class ProductServiceImplTest {
     @InjectMocks
     private ProductServiceImpl productServiceImpl;
 
-    private Product productA, productB, productC, productToUpdate;
+    private Product productA, productB, productC;
 
     @BeforeEach
     void init() {

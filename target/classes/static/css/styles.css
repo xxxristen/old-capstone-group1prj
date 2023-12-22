@@ -55,7 +55,8 @@ a:hover {
     width: auto;
 }
 
-.nav-item a {
+.nav-item a,
+.nav-log {
     color: #fff;
 }
 
@@ -367,7 +368,16 @@ div.mce_inline_error {
     color: #fff;
     transition: 1s;
     animation: response 1s forwards;
+}
 
+#mce-error-response.response {
+    background-color: #a52a2a;
+    padding: 0.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #fff;
+    transition: 1s;
+    animation: response 1s forwards;
 }
 
 /* TEAM SECTION IN OURSTORY.HTML */
@@ -387,6 +397,59 @@ div.mce_inline_error {
     height: 53.125rem;
     max-height: 62.5rem;
 }
+
+/* SECTION - LOGIN PAGE */
+/* ------------------------------------------------------------------------ */
+#login {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    width: 300px;
+}
+
+#login-container .form-group,
+#logged-in-container .form-group {
+    margin-bottom: 15px;
+}
+
+#login-container .form-group label,
+#logged-in-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#login-container .form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+#login-container .form-group button,
+#logged-in-container .form-group button {
+    background-color: #e65722;
+    color: #fff;
+    padding: 0.625rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+#login-container .form-group button:hover,
+#logged-in-container .form-group button:hover {
+    background-color: #2e8b57;
+}
+
 
 /* CONTACT US FORM  */
 .form-container form {
@@ -408,6 +471,7 @@ div.mce_inline_error {
 }
 
 .form-container button {
+    background-color: #e65722;
     padding: 10px;
     border: 0;
     outline: none;
@@ -759,6 +823,18 @@ a {
 
 /* PRODUCT.HTML & FORM.HTML section ends */
 
+@media screen and (min-width: 577px) and (max-width: 992px) {
+    .navbar-nav li:first-child {
+        margin-top: 0.8rem;
+    }
+    /* .nav-link {
+        margin-top: 0.5rem;
+    } */
+    #logoutSmall {
+        margin-top: 1rem;
+    }
+}
+
 /* CONTROLLING HOW THE CAROUSELL LOOK IN VIEWPORT MIN-WIDTH 577PX AND MAX 868PX */
 @media screen and (min-width: 577px) and (max-width:868px) {
     #img-carousel .card-wrapper {
@@ -774,7 +850,6 @@ a {
         font-size: 1rem;
         color: #2e8b57;
     }
-
 }
 
 /* MOBILE */
@@ -796,7 +871,10 @@ a {
 
     .navbar-nav li:first-child {
         margin-top: 0.4rem;
+    }
 
+    #logoutSmall {
+        margin-top: 1rem;
     }
 
     .navbar-nav a {
