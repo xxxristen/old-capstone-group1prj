@@ -54,15 +54,15 @@
                 Products
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Tea</a></li>
+                <li><a class="dropdown-item" href="products?type=Tea">Tea</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Tea wares</a></li>
+                <li><a class="dropdown-item" href="products?type=Teaware">Tea wares</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Accessories</a></li>
+                <li><a class="dropdown-item" href="products?type=Accessory">Accessories</a></li>
               </ul>
             </li>
             <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
@@ -104,8 +104,7 @@
       <div class="row">
         <form class="col user_input" id="productForm">
           <span class="input_txt">Product name: </span>
-          <input type="text" class="form-control input_bar" id="input_bar_name" minlength="5" maxlength="80"
-            placeholder="">
+          <input type="text" class="form-control input_bar" id="input_bar_name" minlength="5" maxlength="80">
           <span class="input_txt">Product type: </span>
           <div class="input_type_selection">
             <div class="form-check">
@@ -118,7 +117,7 @@
             <div class="form-check">
               <!-- If checked, invoke disable format to disable tea format selection -->
               <input class="form-check-input" type="radio" name="prod_type" id="prod_type_teaware"
-                onclick="disableFormat()" value="Teaware" disabled>
+                onclick="disableFormat()" value="Teaware">
               <label class="form-check-label" for="prod_type_teaware">
                 Teaware
               </label>
@@ -126,7 +125,7 @@
             <div class="form-check">
               <!-- If checked, invoke disable format to disable tea format selection -->
               <input class="form-check-input" type="radio" name="prod_type" id="prod_type_accessories"
-                onclick="disableFormat()" value="Accessory" disabled>
+                onclick="disableFormat()" value="Accessory">
               <label class="form-check-label" for="prod_type_accessories">
                 Accessory
               </label>

@@ -51,15 +51,15 @@
                 Products
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Tea</a></li>
+                <li><a class="dropdown-item" href="products?type=Tea">Tea</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Tea wares</a></li>
+                <li><a class="dropdown-item" href="products?type=Teaware">Tea wares</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Accessories</a></li>
+                <li><a class="dropdown-item" href="products?type=Accessory">Accessories</a></li>
               </ul>
             </li>
             <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
@@ -82,7 +82,7 @@
   <!-- Main content -->
   <main>
     <section id="proj-description" class="container-fluid section-padding">
-      <h3 class="display-4 text-center fw-bold pt-4" id="tagline">Nurturing nature's best in every brew</h3>
+      <h4 class="display-4 text-center fw-bold pt-4" id="tagline">Nurturing nature's best in every brew</h4>
       <p class="text-center small pb-4 text-secondary">WeBrew is committed to sourcing and providing only the highest
         quality tea
         products,

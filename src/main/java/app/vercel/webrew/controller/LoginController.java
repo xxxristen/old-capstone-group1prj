@@ -68,6 +68,6 @@ public class LoginController {
     }
     @GetMapping("/error")
     public String errorPage2(String returnValue, Model model) {
-        return handleAuthenticatedUser("/error.html", model);
+        return handleAuthenticatedUser("/error/error.html", model);
     }
 }

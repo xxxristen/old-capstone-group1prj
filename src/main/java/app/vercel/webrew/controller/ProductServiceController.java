@@ -26,12 +26,20 @@ public class ProductServiceController {
 
     // Get all products:
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getAllProducts() {
-        List<Product> productList = productService.getProducts();
+    public ResponseEntity<List<Product>> getProducts(@RequestParam(required = false) Product.ProductType type) {
+        List<Product> productList;
+        if(type==null) {
+            productList = productService.getProducts();
+        }
+        else {
+            productList = productService.getProductsByType(type);
+        }
         if (productList.isEmpty()) {
             throw new EmptyProductListException("No product available.");
         }
-        return new ResponseEntity<>(productList, HttpStatus.OK);
+        else {
+            return new ResponseEntity<>(productList, HttpStatus.OK);
+        }
     }
 
     // GET Mapping for retrieving a specific product by ID:
@@ -40,6 +48,16 @@ public class ProductServiceController {
         Product product = productService.getProduct(id).orElseThrow(() -> new ResourceNotFoundException(id));
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
+
+    // Get Mapping for retrieving products by type
+//    @GetMapping("/products")
+//    public ResponseEntity<List<Product>> getProductsByType(@RequestParam Product.ProductType type) {
+//        List<Product> productList = productService.getProductsByType(type);
+//        if (productList.isEmpty()) {
+//            throw new EmptyProductListException("No product available.");
+//        }
+//        return new ResponseEntity<>(productList, HttpStatus.OK);
+//    }
 
     // POST Mapping for creating a new product:
     @PostMapping("/products")
@@ -62,14 +80,6 @@ public class ProductServiceController {
     // Delete a product
     @DeleteMapping("/products/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable("id") Integer id) {
-        // Product product = productService.getProduct(id).orElse(null);
-        // if (product != null) {
-        // productService.deleteProduct(id);
-        // return new ResponseEntity<>("Product deleted.", HttpStatus.OK);
-        // } else {
-        // throw new ResourceNotFoundException(id);
-        // }
-
         productService.deleteProduct(id);
         return new ResponseEntity<>("Product deleted.", HttpStatus.OK);
     }

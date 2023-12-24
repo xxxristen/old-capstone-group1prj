@@ -34,7 +34,9 @@ class ProductServiceImplTest {
 
     @BeforeEach
     void init() {
-        productA = new Product(1, "Green tea", Product.ProductType.Tea, Product.TeaFormat.Tea_bag, 12.45, "Singapore", "Something here for description blah", "/img/teas/african-rooibos-honeybush.jpg");
+        productA = new Product(1, "African rooibos honeybush tea", Product.ProductType.Tea, Product.TeaFormat.Loose_leaf, 40.12,
+                "Africa", "African Rooibos Honeybush Tea is a naturally sweet and caffeine-free herbal blend combining the earthy notes of Rooibos with the floral and honey-like flavors of Honeybush creating a soothing antioxidant-rich beverage with African flair.",
+                "/img/teas/african-rooibos-honeybush.jpg");
         productB = new Product(2, "Red tea", Product.ProductType.Tea, Product.TeaFormat.Loose_leaf, 38.1, "Taiwan", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "/img/teas/oolong-tea.jpg");
         productC = new Product(3, "Purple tea", Product.ProductType.Tea, Product.TeaFormat.Loose_leaf, 42.55, "Malaysia", "Aenean quis nibh elit.", "/img/teas/herbal-floral-tea.jpg");
     }
@@ -49,7 +51,7 @@ class ProductServiceImplTest {
 
         // The outcome
         assertNotNull(newProduct);
-        assertThat(newProduct.getId()).isEqualTo("1");
+        assertThat(newProduct.getId()).isEqualTo(1);
     }
 
     @Test
@@ -88,7 +90,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    @DisplayName("Get all product")
+    @DisplayName("Get product")
     void getProducts() {
         List<Product> productList = new ArrayList<>();
         productList.add(productA);
