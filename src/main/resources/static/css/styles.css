@@ -14,7 +14,8 @@ body {
 
 section h1,
 section h2,
-section h3 {
+section h3,
+section h4 {
     color: #e65722;
 }
 
@@ -616,9 +617,9 @@ footer p {
     margin: 0.5rem;
 }
 
-.filter_header {
+/* .filter_header {
     padding: 1rem 1rem 0rem 0rem;
-}
+} */
 
 .secondary_bar {
     margin-bottom: 1rem;

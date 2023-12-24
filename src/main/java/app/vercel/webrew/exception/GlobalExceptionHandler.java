@@ -1,7 +1,6 @@
 package app.vercel.webrew.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.coyote.BadRequestException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;

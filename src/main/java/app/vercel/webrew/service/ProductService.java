@@ -18,6 +18,9 @@ public interface ProductService {
     // Get all products
     public List<Product> getProducts();
 
+    // Get products by type
+    public List<Product> getProductsByType(Product.ProductType productType);
+
     // Get single product
     Optional<Product> getProduct(Integer id);
 

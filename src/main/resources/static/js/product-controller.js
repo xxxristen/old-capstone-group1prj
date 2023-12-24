@@ -7,21 +7,21 @@ class ProductController {
         this.products = data;
     }
 
-//    // Fetch API - Get
-//    async fetchData() {
-//        try {
-//            let response = await fetch("/api/products");
-//            let data = await response.json();
-//            this.displayList(data);
-//        }
-//        catch (error) {
-//            console.error("Error fetching products from API: ", error);
-//        }
-//    }
+    //    Fetch API - Get
+    //    async fetchData() {
+    //        try {
+    //            let response = await fetch("/api/products");
+    //            let data = await response.json();
+    //            this.displayList(data);
+    //        }
+    //        catch (error) {
+    //            console.error("Error fetching products from API: ", error);
+    //        }
+    //    }
 
     // Fetch array of objects and display in HTML (instantiated to ref classname '.row')
     displayList(data) {
-        const unorderedList = document.querySelector(".row")
+        const unorderedList = document.querySelector(".row");
 
         // If no product
         if (!data.length) {
@@ -36,14 +36,20 @@ class ProductController {
         }
 
         // Populate product cards
-        for (let i = 0; i < data.length; i++) {
-            const formattedPrice = parseFloat(data[i].price).toFixed(2);
-            let listProduct = document.createElement("a")
-            listProduct.className = "card"
-            listProduct.classList.add("card_listing")
-            listProduct.setAttribute("data-product-id", i)
-            listProduct.href = "product-details.html?id=" + data[i].id
-            listProduct.innerHTML = `
+        const selections = getAllSelections();
+        // console.log("Selections: "+selections); // For debugging on selections
+        // Clear previously appended child
+        unorderedList.textContent = '';
+        // If no filter applied
+        if (selections.length === 0) {
+            for (let i = 0; i < data.length; i++) {
+                const formattedPrice = parseFloat(data[i].price).toFixed(2);
+                let listProduct = document.createElement("a")
+                listProduct.className = "card"
+                listProduct.classList.add("card_listing")
+                listProduct.setAttribute("data-product-id", i)
+                listProduct.href = "product-details.html?id=" + data[i].id
+                listProduct.innerHTML = `
                 <img src="${data[i].imagePath}"/>
                 <div class="card-body">
                     <h5 class="card-title">${data[i].name}</h5>
@@ -53,8 +59,35 @@ class ProductController {
                     <p class="card-text proDescription">${data[i].description}</p>
                 </div>
             `
-            unorderedList.appendChild(listProduct)
-            this.displayRating(data[i])
+                unorderedList.appendChild(listProduct);
+                this.displayRating(data[i]);
+            }
+        }
+        // If filter(s) applied
+        else {
+            const filteredProducts = data.filter((product) => {
+                return selections.includes(product.type) || selections.includes(product.format);
+            });
+            for (let i = 0; i < filteredProducts.length; i++) {
+                const formattedPrice = parseFloat(filteredProducts[i].price).toFixed(2);
+                let listProduct = document.createElement("a")
+                listProduct.className = "card"
+                listProduct.classList.add("card_listing")
+                listProduct.setAttribute("data-product-id", i)
+                listProduct.href = "product-details.html?id=" + filteredProducts[i].id
+                listProduct.innerHTML = `
+                <img src="${filteredProducts[i].imagePath}"/>
+                <div class="card-body">
+                    <h5 class="card-title">${filteredProducts[i].name}</h5>
+                    <div class="card-text proReview" id="product${filteredProducts[i].id}">
+                    </div>
+                    <p class="card-text proPrice">$${formattedPrice}</p>
+                    <p class="card-text proDescription">${filteredProducts[i].description}</p>
+                </div>
+            `
+                unorderedList.appendChild(listProduct);
+                this.displayRating(filteredProducts[i]);
+            }
         }
     }
 
@@ -122,15 +155,3 @@ class ProductController {
         }
     }
 }
-
-// Capture the product index selected by user to display its details in the product details page
-//document.addEventListener('DOMContentLoaded', function () {
-//    var productLinks = document.querySelectorAll('a[data-product-id]');
-//
-//    productLinks.forEach(function (link) {
-//        link.addEventListener('click', function (event) {
-//            var productId = link.getAttribute('data-product-id')
-//            localStorage.setItem('selectedProductId', productId)
-//        })
-//    })
-//})

@@ -50,16 +50,16 @@
                                 Products
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Tea</a></li>
+                                <li><a class="dropdown-item" href="products?type=Tea">Tea</a></li>
                                 <li>
-                                    <hr class="dropdown-divider">
+                                  <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Tea wares</a></li>
+                                <li><a class="dropdown-item" href="products?type=Teaware">Tea wares</a></li>
                                 <li>
-                                    <hr class="dropdown-divider">
+                                  <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Accessories</a></li>
-                            </ul>
+                                <li><a class="dropdown-item" href="products?type=Accessory">Accessories</a></li>
+                              </ul>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="add-product.html">Add product</a>

@@ -68,4 +68,9 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductByName(String productName) {
         return weBrewRepository.findByName(productName);
     }
+
+    @Override
+    public List<Product> getProductsByType(Product.ProductType type) {
+        return weBrewRepository.findByType(type);
+    }
 }
