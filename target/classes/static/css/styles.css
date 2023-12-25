@@ -806,7 +806,7 @@ a {
     padding-left: 0.3rem;
 }
 
-input:invalid {
+#input_bar_name input:invalid, #input_bar_price input:invalid {
     border: 2px solid red;
 }
 
