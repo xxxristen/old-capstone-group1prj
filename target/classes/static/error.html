@@ -4,19 +4,19 @@
 
 <head>
     <!-- Link to CSS files -->
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="css/normalize.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- Custom CSS file -->
-    <link href="../css/styles.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
     <!-- Fetch font from google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Licorice&family=Montserrat:wght@400;500&display=swap"
         rel="stylesheet">
     <!-- Load logo in the title bar -->
-    <link rel="icon" href="../img/logo/favicon.ico">
+    <link rel="icon" href="img/logo/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coz WeBrew - Error</title>
@@ -26,12 +26,12 @@
     <header>
         <!-- Logo goes here -->
         <div id="logo" class="container-fluid d-none d-sm-block">
-            <img src="../img/logo/logo.png" alt="WeBrew logo" class="py-3">
+            <img src="img/logo/logo.png" alt="WeBrew logo" class="py-3">
         </div>
         <!-- Navigation menu -->
         <nav class="navbar navbar-expand-lg custom-bg navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand d-block d-sm-none" href="../index.html"><img src="../img/logo/logo-mobile.png"
+                <a class="navbar-brand d-block d-sm-none" href="index.html"><img src="img/logo/logo-mobile.png"
                         alt="WeBrew logo" class="img-fluid" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -41,10 +41,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../our-story.html">Our story</a>
+                            <a class="nav-link" href="our-story.html">Our story</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -52,19 +52,19 @@
                                 Products
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="products?type=Tea">Tea</a></li>
+                                <li><a class="dropdown-item" href="products.html?type=Tea">Tea</a></li>
                                 <li>
-                                  <hr class="dropdown-divider">
+                                    <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="products?type=Teaware">Tea wares</a></li>
+                                <li><a class="dropdown-item" href="products.html?type=Teaware">Tea wares</a></li>
                                 <li>
-                                  <hr class="dropdown-divider">
+                                    <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="products?type=Accessory">Accessories</a></li>
-                              </ul>
+                                <li><a class="dropdown-item" href="products.html?type=Accessory">Accessories</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" href="../add-product.html">Add product</a>
+                            <a class="nav-link" href="add-product.html">Add product</a>
                         </li>
                     </ul>
                     <!-- Visible on smaller (md and below) viewports -->
@@ -84,7 +84,7 @@
     </header>
     <div class="container border border-secondary-subtle mt-4">
         <h1 class="py-3 text-danger">Error</h1>
-        <p>There's an error</p>
+        <p>There's an error.</p>
         <p>You can try the following steps:</p>
         <ul>
             <li>If you typed in a URL, please check that it was correct.</li>

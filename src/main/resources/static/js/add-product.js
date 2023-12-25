@@ -5,6 +5,40 @@ const productController = new ProductController()
 // Select the form
 const newProdForm = document.querySelector("#productForm")
 
+// Product name and price validation - show/hide warning
+// Product name
+const productName = document.getElementById("input_bar_name");
+const nameError = document.getElementById("nameErrorCol1");
+const nameError2 = document.getElementById("nameErrorCol2");
+productName.addEventListener("focusout", validateName);
+function validateName() {
+    if (productName.value.length < 5) {
+        nameError.style.display = "block";
+        nameError2.style.display = "block";
+    }
+    else if (productName.value.length >= 5 || productName.value.length <= 80) {
+        nameError.style.display = "none";
+        nameError2.style.display = "none";
+    }
+}
+// Product price
+const productPrice = document.getElementById("input_bar_price");
+const priceError = document.getElementById("priceErrorCol1");
+const priceError2 = document.getElementById("priceErrorCol2");
+
+productPrice.addEventListener("input", validatePrice);
+function validatePrice() {
+    const priceValue = parseFloat(productPrice.value);
+    if (isNaN(priceValue) || priceValue < 0 || priceValue > 999.99) {
+        priceError.style.display = "block";
+        priceError2.style.display = "block";
+    }
+    else {
+        priceError.style.display = "none";
+        priceError2.style.display = "none";
+    }
+}
+
 // To store the base64 encoded string of the uploaded image
 let imgURL
 
@@ -139,6 +173,7 @@ newProdForm.addEventListener('submit', (event) => {
     var toastEl = document.querySelector('.toast');
     var toast = new bootstrap.Toast(toastEl);
     toast.show();
+    scrollToTop();
 
     var productAddedToast = document.querySelector('.toast');
     productAddedToast.addEventListener('hidden.bs.toast', function () {
@@ -165,4 +200,9 @@ function enableFormat() {
     formatForm.forEach(element => {
         element.disabled = false
     })
+}
+
+function scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 }
