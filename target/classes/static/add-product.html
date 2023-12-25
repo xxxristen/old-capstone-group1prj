@@ -54,15 +54,15 @@
                 Products
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="products?type=Tea">Tea</a></li>
+                <li><a class="dropdown-item" href="products.html?type=Tea">Tea</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="products?type=Teaware">Tea wares</a></li>
+                <li><a class="dropdown-item" href="products.html?type=Teaware">Tea wares</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="products?type=Accessory">Accessories</a></li>
+                <li><a class="dropdown-item" href="products.html?type=Accessory">Accessories</a></li>
               </ul>
             </li>
             <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
@@ -105,8 +105,11 @@
         <form class="col user_input" id="productForm">
           <span class="input_txt">Product name: </span>
           <input type="text" class="form-control input_bar" id="input_bar_name" minlength="5" maxlength="80">
-          <span class="input_txt">Product type: </span>
-          <div class="input_type_selection">
+          <span class="mt-1 marginTop2Rem" id="nameErrorCol1" style="display: none;">&nbsp;</span><span
+            id="nameErrorCol2" class="marginTop2Rem user_inputWarning" style="display:none;" role="alert">Enter product
+            name that is 5-80 characters long.</span>
+          <span class="input_txt marginTop2Rem">Product type: </span>
+          <div class="input_type_selection marginTop2Rem">
             <div class="form-check">
               <input class="form-check-input" type="radio" name="prod_type" id="prod_type_tea" onclick="enableFormat()"
                 value="Tea" checked>
@@ -131,8 +134,8 @@
               </label>
             </div>
           </div>
-          <span class="input_txt input_txt_format" id="input_txt_format">Tea Format: </span>
-          <div class="input_format_selection input_txt_format">
+          <span class="input_txt input_txt_format marginTop2Rem" id="input_txt_format">Tea Format: </span>
+          <div class="input_format_selection input_txt_format marginTop2Rem">
             <div class="form-check">
               <input class="form-check-input" type="radio" name="tea_format" id="tea_format_looseLeaf"
                 value="Loose_leaf" checked>
@@ -154,31 +157,34 @@
             </div>
           </div>
 
-          <span class="input_txt">Price (SGD): </span>
+          <span class="input_txt marginTop2Rem">Price (SGD) $: </span>
           <!-- Regex - 0 - 999.99 -->
-          <input type="text" pattern="^(0|[1-9][0-9]{0,2})(\.[0-9]{1,2})?$" class="form-control input_bar"
+          <input type="text" pattern="^(0|[1-9][0-9]{0,2})(\.[0-9]{1,2})?$" class="form-control input_bar marginTop2Rem"
             id="input_bar_price">
+          <span class="mt-1" id="priceErrorCol1" style="display: none;">&nbsp;</span><span id="priceErrorCol2"
+            class="user_inputWarning" style="display:none;" role="alert">Enter price that is between $0 -
+            $999.99.</span>
 
-          <span class="input_txt">Country: </span>
-          <input type="text" class="form-control input_bar" id="input_bar_country">
+          <span class="input_txt marginTop2Rem">Country: </span>
+          <input type="text" class="form-control input_bar marginTop2Rem" id="input_bar_country">
 
-          <span class="input_txt">Description: </span>
-          <textarea name="input_bar_description" class="input_bar form-control" id="input_bar_description" cols="30"
-            rows="10" maxlength="500"></textarea>
+          <span class="input_txt marginTop2Rem">Description: </span>
+          <textarea name="input_bar_description" class="input_bar form-control marginTop2Rem" id="input_bar_description"
+            cols="30" rows="10" minlength="10" maxlength="500"></textarea>
 
-          <span class="input_txt">Image: </span>
-          <div class="input-group">
+          <span class="input_txt marginTop2Rem">Image: </span>
+          <div class="input-group marginTop2Rem">
             <!-- The image file uploaded will be encoded to base64 format -->
-            <div class="row w-100"><input type="file" class="form-control" id="input_image"
-                accept="image/png, image/jpeg, image/jpg" multiple="false" onchange="getImgURL(this);">
+            <div class="row"><input type="file" class="form-control ms-3" id="input_image"
+                accept="image/png, image/jpeg, image/jpg" onchange="getImgURL(this);">
             </div>
-            <div class="row w-100 small fw-bold pt-1">Image should be in either .jpg, .jpeg or .png format.</div>
+            <div class="row w-100 small fw-bold pt-1 ps-2">Image should be in either .jpg, .jpeg or .png format.</div>
             <!-- Image preview -->
             <div class="row pt-2 w-50" id="imagePreview"></div>
           </div>
 
           <button type="submit" class="user_selection_button" id="btn_create">
-            Create Product
+            Create product
           </button>
         </form>
       </div>
