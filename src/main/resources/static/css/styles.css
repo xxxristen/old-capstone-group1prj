@@ -511,7 +511,7 @@ footer p {
     text-decoration: underline;
 }
 
-/* PRODUCT.HTML section */
+/* PRODUCTS.HTML section */
 
 .pageTitle {
     display: flex;
@@ -564,7 +564,7 @@ footer p {
     border-radius: 1.5rem;
     text-align: center;
     line-height: 3rem;
-    background: #189e1e;
+    background: #2e8b57;
     color: white;
 }
 
@@ -588,14 +588,14 @@ footer p {
     margin-left: 2rem;
     font-size: 1rem;
     padding: 5px 10px;
-    background: #189e1e;
+    background: #2e8b57;
     color: white;
     border-radius: 0.5rem;
 }
 
 #search_check:hover~.search_box .search_icon,
 #filter_check:hover~.filter_txt {
-    background: #2e8b57;
+    background: #e65722;
 }
 
 #filter_check:checked~.display>#filter_tab {
@@ -632,7 +632,7 @@ footer p {
     border-radius: 0.5rem;
     border: none;
     justify-content: space-between;
-    background: #189e1e;
+    background: #2e8b57;
     color: white;
     padding: 0.5rem;
 
@@ -640,7 +640,7 @@ footer p {
 }
 
 .reset_button:hover {
-    background-color: #2e8b57;
+    background-color: #e65722;
 }
 
 .reset_button_txt {
@@ -806,7 +806,8 @@ a {
     padding-left: 0.3rem;
 }
 
-#input_bar_name input:invalid, #input_bar_price input:invalid {
+#input_bar_name input:invalid,
+#input_bar_price input:invalid {
     border: 2px solid red;
 }
 
@@ -852,6 +853,7 @@ a {
 }
 
 /* PRODUCT.HTML & FORM.HTML section ends */
+
 
 @media screen and (min-width: 577px) and (max-width: 992px) {
     .navbar-nav li:first-child {

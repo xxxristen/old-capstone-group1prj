@@ -56,7 +56,9 @@ class ProductController {
                     <div class="card-text proReview" id="product${data[i].id}">
                     </div>
                     <p class="card-text proPrice">$${formattedPrice}</p>
+                    <div class="d-none d-md-block">
                     <p class="card-text proDescription">${data[i].description}</p>
+                    </div>
                 </div>
             `
                 unorderedList.appendChild(listProduct);
@@ -65,10 +67,57 @@ class ProductController {
         }
         // If filter(s) applied
         else {
-            const filteredProducts = data.filter((product) => {
-                return selections.includes(product.type) || selections.includes(product.format);
-            });
+            // Get all the unique product types. Can also type out all but this way doesn't further amendment even when the types grow
+            const productTypes = Array.from(new Set(data.map(product => product.type)));
+            // Get all the unique product forms. Same as above.
+            const productFormats = Array.from(new Set(data.map(product => product.format)));
+            // booleans
+            const checkIfSelectionIncludesType = selections.some(type => productTypes.includes(type));
+            const checkIfSelectionIncludesFormat = selections.some(format => productFormats.includes(format));
+            // const checkIfSelectionContainsTea = selections.includes("Tea");
+            let filteredProducts = [];
+            if (checkIfSelectionIncludesType && checkIfSelectionIncludesFormat) {
+                filteredProducts = data.filter((product) => {
+                    return (product.type === "Tea" && selections.includes(product.format)) || (selections.includes(product.type) && (product.type != "Tea"));
+                });
+                // Sort by type, format, then id
+                filteredProducts.sort((a, b) => (a.type > b.type ? 1 : a.type < b.type ? -1
+                    : a.format > b.format ? 1 : a.format < b.format ? -1
+                        : a.id - b.id));
+            }
+            else {
+                filteredProducts = data.filter((product) => {
+                    return selections.includes(product.type) || selections.includes(product.format);
+                });
+                if (checkIfSelectionIncludesType) {
+                    // Sort by type then id
+                    filteredProducts.sort((a, b) => (a.type > b.type ? 1 : a.type < b.type ? -1 : a.id - b.id));
+                }
+                // else if (checkIfSelectionIncludesFormat) {
+                //     Sort by format then id
+                //     filteredProducts.sort((a, b) => (a.format > b.format ? 1 : a.format < b.format ? -1 : a.id - b.id));
+                //     console.log("just format: ");
+                //     console.log(filteredProducts);
+                // }
+            }
+
+            let currentType = "";
             for (let i = 0; i < filteredProducts.length; i++) {
+                // So for first instance of each type, the condition is always true. 2nd instance will be true so won't print the header.
+                if (filteredProducts[i].type.toUpperCase() != currentType) {
+                    // Append div to create some space before the next header. Not applicable to the first header
+                    if (currentType != "") {
+                        let spaceBeforeNextHeader = document.createElement("div")
+                        spaceBeforeNextHeader.className = "mt-5";
+                        unorderedList.appendChild(spaceBeforeNextHeader);
+                    }
+                    currentType = filteredProducts[i].type.toUpperCase();
+                    let productHeader = document.createElement("h4");
+                    productHeader.style.color = "#e65722";
+                    productHeader.innerText = currentType;
+                    productHeader.classList = "mb-1";
+                    unorderedList.appendChild(productHeader);
+                }
                 const formattedPrice = parseFloat(filteredProducts[i].price).toFixed(2);
                 let listProduct = document.createElement("a")
                 listProduct.className = "card"
@@ -76,13 +125,15 @@ class ProductController {
                 listProduct.setAttribute("data-product-id", i)
                 listProduct.href = "product-details.html?id=" + filteredProducts[i].id
                 listProduct.innerHTML = `
-                <img src="${filteredProducts[i].imagePath}"/>
+                <img class="img-fluid" src="${filteredProducts[i].imagePath}"/>
                 <div class="card-body">
                     <h5 class="card-title">${filteredProducts[i].name}</h5>
                     <div class="card-text proReview" id="product${filteredProducts[i].id}">
                     </div>
                     <p class="card-text proPrice">$${formattedPrice}</p>
+                    <div class="d-none d-md-block">
                     <p class="card-text proDescription">${filteredProducts[i].description}</p>
+                    </div>
                 </div>
             `
                 unorderedList.appendChild(listProduct);

@@ -1,9 +1,13 @@
 const checkboxes = document.querySelectorAll('input[name="filterSelection"]');
-
+const teaCheckBox = document.getElementById('typeCheckTea');
+const teaFormatBoxes = document.querySelectorAll("#formatCheckLoose, #formatCheckPowder, #formatCheckTeaBag");
 // Function to clear all checked boxes
 function clearAllSelections() {
     checkboxes.forEach(box => {
         box.checked = false;
+    })
+    teaFormatBoxes.forEach(checkBox => {
+        checkBox.disabled = true;
     })
 }
 
@@ -24,3 +28,16 @@ checkboxes.forEach(box => {
         getAllSelections();
     });
 });
+
+// Event listener on "Tea" checkbox
+teaCheckBox.addEventListener('change', () => {
+    teaFormatBoxes.forEach(checkBox => {
+        if (!teaCheckBox.checked) {
+            checkBox.checked = false;
+            checkBox.disabled = true;
+        }
+        else {
+            checkBox.disabled = false;
+        }
+    })
+})
