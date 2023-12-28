@@ -776,7 +776,7 @@ a {
 
 .purchase_btn:hover,
 .user_selection_button:hover {
-    background-color: #2e8b57;
+    background-color: #e65722;
 }
 
 /* user input section */
@@ -836,7 +836,7 @@ a {
 .user_selection_button {
     width: fit-content;
     border-radius: 0.5rem;
-    background-color: #189e1e;
+    background-color: #2e8b57;
     color: white;
     border: none;
     padding: 1rem;
@@ -956,7 +956,7 @@ a {
         padding: 8px;
         background-color: #2e8b57;
         border-radius: 0.2rem;
-        padding-top: 1rem;
+        margin-top: 1rem;
     }
 
     /* Add whitespace between paragraph and the carousel */
