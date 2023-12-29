@@ -698,15 +698,6 @@ footer p {
     overflow: hidden;
 }
 
-/* .card_listing:hover {
-    border: 2px solid rgba(0, 0, 0, 0.4);
-} */
-
-/* card for create product */
-#create_product {
-    /* display: none; */
-}
-
 #create_product_content {
     display: flex;
     flex-direction: column;
@@ -718,6 +709,12 @@ footer p {
     height: 6rem;
     width: 6rem;
     padding: 1rem;
+}
+.hideOverLay {
+    display: none;
+}
+.showOverLay {
+    display:block;
 }
 
 /* PRODUCT.HTML & FORM.HTML section ends here */

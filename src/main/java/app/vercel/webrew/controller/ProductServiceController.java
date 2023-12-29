@@ -28,16 +28,14 @@ public class ProductServiceController {
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getProducts(@RequestParam(required = false) Product.ProductType type) {
         List<Product> productList;
-        if(type==null) {
+        if (type == null) {
             productList = productService.getProducts();
-        }
-        else {
+        } else {
             productList = productService.getProductsByType(type);
         }
         if (productList.isEmpty()) {
             throw new EmptyProductListException("No product available.");
-        }
-        else {
+        } else {
             return new ResponseEntity<>(productList, HttpStatus.OK);
         }
     }
@@ -50,14 +48,15 @@ public class ProductServiceController {
     }
 
     // Get Mapping for retrieving products by type
-//    @GetMapping("/products")
-//    public ResponseEntity<List<Product>> getProductsByType(@RequestParam Product.ProductType type) {
-//        List<Product> productList = productService.getProductsByType(type);
-//        if (productList.isEmpty()) {
-//            throw new EmptyProductListException("No product available.");
-//        }
-//        return new ResponseEntity<>(productList, HttpStatus.OK);
-//    }
+    // @GetMapping("/products")
+    // public ResponseEntity<List<Product>> getProductsByType(@RequestParam
+    // Product.ProductType type) {
+    // List<Product> productList = productService.getProductsByType(type);
+    // if (productList.isEmpty()) {
+    // throw new EmptyProductListException("No product available.");
+    // }
+    // return new ResponseEntity<>(productList, HttpStatus.OK);
+    // }
 
     // POST Mapping for creating a new product:
     @PostMapping("/products")
