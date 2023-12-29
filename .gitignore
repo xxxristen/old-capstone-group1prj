@@ -1,6 +1,7 @@
 /.idea
 src/main/resources/static/node_modules
 target/classes/static/node_modules
+target/classes/static/pure-html-backup
 src/main/resources/static/package-lock.json
 src/main/resources/static/package.json
 src/main/resources/static/img/mailing-list.png
