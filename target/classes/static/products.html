@@ -74,6 +74,20 @@
 
     <main>
         <!-- main section-->
+        <!-- toast section -->
+        <!-- Flexbox container for aligning the toasts -->
+        <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100 pt-2">
+            <!-- Then put toasts within -->
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                <div class="toast-header orange-bg text-white">
+                    <strong class="me-auto">Product deleted</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Click [x] to refresh the page.
+                </div>
+            </div>
+        </div>
         <h1 class="pageTitle">Product category</h1>
 
         <div class="productSearch_container">
@@ -90,6 +104,7 @@
         <label for="filter_check" class="filter_txt"><i class="bi bi-filter"></i> Filters</label>
 
         <div class="display">
+
             <!-- filter section, only visible after toggling filter button -->
             <div id="filter_tab">
                 <h2 class="filter_header">Filters</h2>

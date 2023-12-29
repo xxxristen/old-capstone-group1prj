@@ -135,6 +135,8 @@ newProdForm.addEventListener('submit', (event) => {
     // POST to api
     productController.sendJSON(name, type, format, price, country, description, imgURL, "POST")
 
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
     // Run toast if new product is created successfully
     var toastEl = document.querySelector('.toast');
     var toast = new bootstrap.Toast(toastEl);
