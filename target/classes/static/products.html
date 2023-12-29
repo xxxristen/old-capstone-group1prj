@@ -88,6 +88,21 @@
     <!-- main section-->
     <main>
         <h1 class="pageTitle">Products</h1>
+        <!-- main section-->
+        <!-- toast section -->
+        <!-- Flexbox container for aligning the toasts -->
+        <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100 pt-2">
+            <!-- Then put toasts within -->
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                <div class="toast-header orange-bg text-white">
+                    <strong class="me-auto">Product deleted</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Click [x] to refresh the page.
+                </div>
+            </div>
+        </div>
         <div class="productSearch_container">
             <div class="productSearch">
                 <input type="checkbox" id="search_check">
@@ -102,6 +117,7 @@
         <label for="filter_check" class="filter_txt"><i class="bi bi-filter"></i> Filters</label>
 
         <div class="display">
+
             <!-- filter section, only visible after toggling filter button -->
             <form id="filter_tab">
                 <div class="secondary_bar">
@@ -218,22 +234,6 @@
             <!-- Product listing -->
             <div class="container">
                 <ul class="row">
-                    <!-- <li class="card card_listing">
-                        <img src="img\teas\black-tea.jpg" alt="tea leaves">
-                        <div class="card-body">
-                            <h5 class="card-title">Product 1</h5>
-                            <div class="card-text proReview">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                                <i class="bi bi-star"></i>
-                            </div>
-                            <p class="card-text proPrice">Price $$$</p>
-                            <p class="card-text proDescription">Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    </li>-->
-
                     <!-- This card is to direct to create product page, only visible upon user login -->
                     <a class="card card_listing" id="create_product" href="add-product.html">
                         <div class="card-body" id="create_product_content">

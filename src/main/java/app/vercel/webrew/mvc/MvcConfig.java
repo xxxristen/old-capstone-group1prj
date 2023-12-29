@@ -7,11 +7,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
-    // @Override
-    // public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    // registry.addResourceHandler("/resources/templates/**")
-    // .addResourceLocations("/resources/static/");
-    // }
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/index").setViewName("index");
@@ -26,5 +21,4 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/error/error").setViewName("error");
         registry.addViewController("/error").setViewName("error");
     }
-
 }
