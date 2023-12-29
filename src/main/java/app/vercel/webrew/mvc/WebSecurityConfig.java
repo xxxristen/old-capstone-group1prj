@@ -61,13 +61,9 @@ public class WebSecurityConfig {
         http
                 .csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> authorize
-//                        .requestMatchers("/", "index.html", "products.html", "our-story.html", "/css/*", "/img/**",
-//                                "/js/*", "/api/**", "login-page", "/error/**")
-//                        .permitAll()
                         .requestMatchers("add-product.html","add-product").authenticated()
                         .anyRequest().permitAll())
                 .httpBasic(Customizer.withDefaults())
-                // .formLogin(Customizer.withDefaults());
                 .formLogin((form) -> form
                         .loginPage("/login-page")
                         .loginProcessingUrl("/login")
@@ -86,14 +82,4 @@ public class WebSecurityConfig {
 
         return http.build();
     }
-    // @Bean
-    // public DaoAuthenticationProvider
-    // authenticationProvider(CustomUserDetailsService customUserDetailsService,
-    // PasswordEncoder passwordEncoder) throws Exception
-    // {
-    // DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-    // provider.setUserDetailsService(customUserDetailsService);
-    // provider.setPasswordEncoder(passwordEncoder);
-    // return provider;
-    // }
 }
