@@ -5,7 +5,7 @@ const url = document.location.search;
 let urlParams = new URLSearchParams(url);
 let id = urlParams.get("id");
 const apiContainer = document.getElementById("apiError");
-const contentHolder = document.querySelector(".container")
+const contentHolder = document.querySelector("#content_holder")
 
                 const formHolder = document.createElement("div")
                 formHolder.classList.add("row")
@@ -65,14 +65,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 inputNameHolder.setAttribute("maxlength", "80")
                 inputNameHolder.value = data.name
                 const inputTypeText = document.createElement("span")
-                inputTypeText.classList.add("input_txt")
+                inputTypeText.classList.add("input_txt", "marginTop2Rem")
                 inputTypeText.innerText = "Product type: "
                 formContent.appendChild(inputNameText)
                 formContent.appendChild(inputNameHolder)
                 formContent.appendChild(inputTypeText)
 
                 const inputTypeSelection = document.createElement("div")
-                inputTypeSelection.classList.add("input_type_selection")
+                inputTypeSelection.classList.add("input_type_selection", "marginTop2Rem")
                 formContent.appendChild(inputTypeSelection)
 
                 const inputTypeTeaOuterHolder = document.createElement("div")
@@ -127,13 +127,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 inputTypeSelection.appendChild(inputTypeAccessoryOuterHolder)
 
                 const inputFormatText = document.createElement("span")
-                inputFormatText.classList.add("input_txt", "input_txt_format")
+                inputFormatText.classList.add("input_txt", "input_txt_format", "marginTop2Rem")
                 inputFormatText.setAttribute("id", "input_txt_format")
                 inputFormatText.innerText = "Tea Format: "
                 formContent.appendChild(inputFormatText)
 
                 const inputFormatSelection = document.createElement("div")
-                inputFormatSelection.classList.add("input_format_selection", "input_txt_format")
+                inputFormatSelection.classList.add("input_format_selection", "input_txt_format", "marginTop2Rem")
                 formContent.appendChild(inputFormatSelection)
 
                 const inputFormatLooseLeafOuterHolder = document.createElement("div")
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const inputFormatLooseLeafText = document.createElement("label")
                 inputFormatLooseLeafText.classList.add("form-check-label")
                 inputFormatLooseLeafText.setAttribute("for", "tea_format_looseLeaf")
-                inputFormatLooseLeafText.innerText = "Loose_leaf"
+                inputFormatLooseLeafText.innerText = "Loose leaf"
                 inputFormatLooseLeafOuterHolder.appendChild(inputFormatLooseLeafHolder)
                 inputFormatLooseLeafOuterHolder.appendChild(inputFormatLooseLeafText)
                 inputFormatSelection.appendChild(inputFormatLooseLeafOuterHolder)
@@ -188,56 +188,57 @@ document.addEventListener('DOMContentLoaded', function () {
                 inputFormatSelection.appendChild(inputFormatTeabagOuterHolder)
 
                 const inputPriceText = document.createElement("span")
-                inputPriceText.classList.add("input_txt")
+                inputPriceText.classList.add("input_txt", "marginTop2Rem")
                 inputPriceText.innerText = "Price (SGD): "
                 const inputPriceHolder = document.createElement("input")
                 inputPriceHolder.setAttribute("type","text")
                 inputPriceHolder.setAttribute("pattern","^(0|[1-9][0-9]{0,2})(\.[0-9]{1,2})?$")
                 inputPriceHolder.setAttribute("id","input_bar_price")
-                inputPriceHolder.classList.add("form-control","input_bar")
+                inputPriceHolder.classList.add("form-control","input_bar", "marginTop2Rem")
                 inputPriceHolder.value = data.price
                 formContent.appendChild(inputPriceText)
                 formContent.appendChild(inputPriceHolder)
 
                 const inputCountryText = document.createElement("span")
-                inputCountryText.classList.add("input_txt")
+                inputCountryText.classList.add("input_txt", "marginTop2Rem")
                 inputCountryText.innerText = "Country: "
                 const inputCountryHolder = document.createElement("input")
                 inputCountryHolder.setAttribute("type","text")
                 inputCountryHolder.setAttribute("id","input_bar_country")
-                inputCountryHolder.classList.add("form-control","input_bar")
+                inputCountryHolder.classList.add("form-control","input_bar", "marginTop2Rem")
                 inputCountryHolder.value = data.country
                 formContent.appendChild(inputCountryText)
                 formContent.appendChild(inputCountryHolder)
 
                 const inputDescriptionText = document.createElement("span")
-                inputDescriptionText.classList.add("input_txt")
+                inputDescriptionText.classList.add("input_txt", "marginTop2Rem")
                 inputDescriptionText.innerText = "Description: "
                 const inputDescriptionHolder = document.createElement("textarea")
                 inputDescriptionHolder.setAttribute("name","input_bar_description")
                 inputDescriptionHolder.setAttribute("id","input_bar_description")
                 inputDescriptionHolder.setAttribute("row","10")
                 inputDescriptionHolder.setAttribute("maxlength","500")
-                inputDescriptionHolder.classList.add("form-control","input_bar")
+                inputDescriptionHolder.classList.add("form-control","input_bar", "marginTop2Rem")
                 inputDescriptionHolder.value = data.description
                 formContent.appendChild(inputDescriptionText)
                 formContent.appendChild(inputDescriptionHolder)
 
                 const currentImageText = document.createElement("span")
-                currentImageText.classList.add("input_txt")
+                currentImageText.classList.add("input_txt", "marginTop2Rem")
                 currentImageText.innerText = "Current Image: "
                 const currentImageHolder = document.createElement("img")
+                currentImageHolder.classList.add("marginTop2Rem")
                 currentImageHolder.setAttribute("id","currentImage")
                 currentImageHolder.src = data.imagePath
                 formContent.appendChild(currentImageText)
                 formContent.appendChild(currentImageHolder)
 
                 const inputImageText = document.createElement("span")
-                inputImageText.classList.add("input_txt")
+                inputImageText.classList.add("input_txt", "marginTop2Rem")
                 inputImageText.innerText = "Change Image: "
 
                 const inputImageOuterHolder = document.createElement("div")
-                inputImageOuterHolder.classList.add("input-group")
+                inputImageOuterHolder.classList.add("input-group", "marginTop2Rem")
                 const inputImageRowHolder = document.createElement("div")
                 inputImageRowHolder.classList.add("row", "w-100")
                 const inputImageHolder = document.createElement("input")
@@ -412,7 +413,7 @@ newProdForm.addEventListener('submit', (event) => {
     }
 
     // PUT to api
-    productController.updateJSON(id, name, type, format, price, country, description, imgURL)
+    productController.sendJSON(id, name, type, format, price, country, description, imgURL, "PUT")
 
     window.scrollTo({ top: 0, behavior: 'smooth' })
 

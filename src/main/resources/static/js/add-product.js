@@ -167,7 +167,7 @@ newProdForm.addEventListener('submit', (event) => {
     }
 
     // POST to api
-    productController.sendJSON(name, type, format, price, country, description, imgURL, "POST")
+    productController.sendJSON(0, name, type, format, price, country, description, imgURL, "POST")
 
     // Run toast if new product is created successfully
     var toastEl = document.querySelector('.toast');

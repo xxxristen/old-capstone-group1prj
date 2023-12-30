@@ -156,10 +156,7 @@ class ProductController {
     }
 
     // Method to post or put
-    async sendJSON(name, type, format, price, country, description, image, method) {
-        // declare max and min variables for ratings
-        const max = 5
-        const min = 1
+    async sendJSON(id, name, type, format, price, country, description, image, method) {
 
         const product = {
             name: name,
@@ -170,7 +167,7 @@ class ProductController {
             description: description,
             imagePath: image
         }
-        const apiEndPoint = "";
+        var apiEndPoint = "";
         if (method === "POST") {
             apiEndPoint = "/api/products";
         }
