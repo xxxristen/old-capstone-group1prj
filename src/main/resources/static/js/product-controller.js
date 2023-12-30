@@ -150,9 +150,9 @@ class ProductController {
     }
 
     storeDataToLocalStorage(data) {
-        const cartList = JSON.parse(localStorage.getItem('cartList')) || [];
-        cartList.push(data)
-        localStorage.setItem('cartList', JSON.stringify(cartList))
+        const enquiryList = JSON.parse(localStorage.getItem('enquiryList')) || [];
+        enquiryList.push(data)
+        localStorage.setItem('enquiryList', JSON.stringify(enquiryList))
     }
 
     // Method to post or put

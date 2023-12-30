@@ -233,20 +233,7 @@
 
             <!-- Product listing -->
             <div class="container">
-                <ul class="row">
-                    <!-- This card is to direct to create product page, only visible upon user login -->
-                    <a class="card card_listing" id="create_product" href="add-product.html">
-                        <div class="card-body" id="create_product_content">
-                            <!-- svg for icon "plus sign surrounded by circle" -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                <path
-                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                            </svg>
-                            <h5 class="card-text">Click to add product</h5>
-                        </div>
-                    </a>
+                <ul class="row" id="showList">
                 </ul>
             </div>
         </div>
@@ -300,10 +287,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <script src="js/escape-html.js"></script>
     <script src="js/filter.js"></script>
     <script src="js/product-controller.js"></script>
     <script src="js/helpers.js"></script>
-    <script src="js/escape-html.js"></script>
+
 </body>
 
 </html>
