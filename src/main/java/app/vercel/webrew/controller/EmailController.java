@@ -1,6 +1,6 @@
 package app.vercel.webrew.controller;
 
-import app.vercel.webrew.model.EmailDetails;
+import app.vercel.webrew.service.EmailDetails;
 import app.vercel.webrew.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

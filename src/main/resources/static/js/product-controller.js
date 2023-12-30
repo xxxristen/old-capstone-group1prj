@@ -134,12 +134,11 @@ class ProductController {
             deleteBtn[i].addEventListener('click', ()=>{
                 this.deleteProduct(dataSet[i].id)
 
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-
                 // Run toast if new product is deleted successfully
                 var toastEl = document.querySelector('.toast');
                 var toast = new bootstrap.Toast(toastEl);
                 toast.show();
+                scrollToTop();
 
                 var productDeletedToast = document.querySelector('.toast');
                 productDeletedToast.addEventListener('hidden.bs.toast', function () {
@@ -150,16 +149,13 @@ class ProductController {
     }
 
     storeDataToLocalStorage(data) {
-        const cartList = JSON.parse(localStorage.getItem('cartList')) || [];
-        cartList.push(data)
-        localStorage.setItem('cartList', JSON.stringify(cartList))
+        const enquiryList = JSON.parse(localStorage.getItem('enquiryList')) || [];
+        enquiryList.push(data)
+        localStorage.setItem('enquiryList', JSON.stringify(enquiryList))
     }
 
     // Method to post or put
-    async sendJSON(name, type, format, price, country, description, image, method) {
-        // declare max and min variables for ratings
-        const max = 5
-        const min = 1
+    async sendJSON(id, name, type, format, price, country, description, image, method) {
 
         const product = {
             name: name,
@@ -170,7 +166,7 @@ class ProductController {
             description: description,
             imagePath: image
         }
-        const apiEndPoint = "";
+        var apiEndPoint = "";
         if (method === "POST") {
             apiEndPoint = "/api/products";
         }
@@ -203,3 +199,11 @@ class ProductController {
         }
     }
 }
+
+function scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+var windowName = window.name;
+console.log("Window Name:", windowName);

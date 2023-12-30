@@ -1,5 +1,7 @@
 // Initialize productController (item controller) as a new product list
 const productController = new ProductController()
+window.name = "productController"
+
 document.addEventListener('DOMContentLoaded', function () {
 const url = document.location.search;
 let urlParams = new URLSearchParams(url);
@@ -68,7 +70,7 @@ let urlParams = new URLSearchParams(url);
                     { htmlContent: [`<p class="prodPrice" id="prodPrice">$${Number(data.price).toFixed(2)}</p>`] },
 //                    { htmlContent: [`<div class="purchase_section"><div class="qty_section"><p class="qty_txt">Qty</p><input type="number" class="qty_input" id="qty_input"></div><button type="button" class="purchase_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="orderProduct()">Purchase</button></div></div>`] },
                     { htmlContent: [`<div class="prodDescription" id="prodDescription">${prodDescription}</div>`] },
-                    { htmlContent: [`<button type="button" class="user_selection_button" onclick="addToCart()">Add to Cart</button>`] }
+                    { htmlContent: [`<button type="button" class="user_selection_button" onclick="addToEnquiry()">Add to Enquiry</button>`] }
                 ];
                 imgBody.appendChild(imgElement);
                 productContent.appendChild(imgBody);
@@ -91,45 +93,21 @@ let urlParams = new URLSearchParams(url);
                 // document.getElementById("prodName").innerHTML = data.name
                 // document.getElementById("prodPrice").innerHTML = `$${data.price}`;
                 // document.getElementById("prodDescription").innerHTML = data.description;
-                // displayRating(products[selectedProductId])
+
+                const usernameSpanBig = document.getElementById("logoutBig");
+                const usernameSpanSmall = document.getElementById("logoutSmall");
+
+                if (!usernameSpanBig || !usernameSpanSmall) {
+                    userSelection.style.display = "none"
+                } else {
+                    userSelection.style.display = "flex"
+                }
             })
     }
     else {
         apiContainer.classList.add("alert", "alert-danger", "w-50", "translate-middle-x", "start-50", "mt-3");
         apiContainer.setAttribute("role", "alert");
         apiContainer.innerText = "No id indicated in the URL.";
-    }
-
-    function displayRating(data) {
-        let productRating = document.getElementById("prodRating")
-
-        for (let i = 1; i <= data.rating; i++) {
-            let listRatingFull = document.createElement("i")
-            listRatingFull.className = "bi"
-            listRatingFull.classList.add("bi-star-fill")
-            productRating.appendChild(listRatingFull)
-        }
-
-        if (data.rating % 1 != 0) {
-            let listRatingHalf = document.createElement("i")
-            listRatingHalf.className = "bi"
-            listRatingHalf.classList.add("bi-star-half")
-            productRating.appendChild(listRatingHalf)
-
-            for (let i = data.rating; i < 5 - 1; i++) {
-                let listRatingNone = document.createElement("i")
-                listRatingNone.className = "bi"
-                listRatingNone.classList.add("bi-star")
-                productRating.appendChild(listRatingNone)
-            }
-        } else {
-            for (let i = data.rating; i < 5; i++) {
-                let listRatingNone = document.createElement("i")
-                listRatingNone.className = "bi"
-                listRatingNone.classList.add("bi-star")
-                productRating.appendChild(listRatingNone)
-            }
-        }
     }
 });
 
@@ -138,30 +116,29 @@ function isIdPresent(arr, targetId) {
   return arr.some(product => product.id === targetId);
 }
 
-function addToCart(){
+function addToEnquiry(){
     const url = document.location.search;
     let urlParams = new URLSearchParams(url);
     let id = urlParams.get("id");
 
-    if(!localStorage.getItem('cartList')){
+    if(!localStorage.getItem('enquiryList')){
         const dummyArray = []
-        localStorage.setItem('cartList',JSON.stringify(dummyArray))
+        localStorage.setItem('enquiryList',JSON.stringify(dummyArray))
     }
 
-    const cartList = JSON.parse(localStorage.getItem('cartList')) || [];
+    const enquiryList = JSON.parse(localStorage.getItem('enquiryList')) || [];
     const idInt = parseInt(id)
     const toastText = document.querySelector("#toast_text")
 
-    if(isIdPresent(cartList,idInt)){
-        console.log("product has already been added to cart")
-        var toastEl = document.querySelector('#addToCart');
+    if(isIdPresent(enquiryList,idInt)){
+        var toastEl = document.querySelector('#addToEnquiry');
         var toast = new bootstrap.Toast(toastEl);
-        toastText.innerText = "Product has been added to cart previously. You may edit the quantity of the product in the shopping cart page"
+        toastText.innerText = "Product has been added to enquiry previously. You may edit the quantity of the product in the shopping enquiry page"
         toast.show();
 
-        var productAddToCart = document.querySelector('#addToCart');
-        productAddToCart.addEventListener('hidden.bs.toast', function () {
-            window.open("shopping-cart.html");
+        var productAddToEnquiry = document.querySelector('#addToEnquiry');
+        productAddToEnquiry.addEventListener('hidden.bs.toast', function () {
+            window.open("enquiry-form.html");
         });
 
     } else{
@@ -173,16 +150,18 @@ function addToCart(){
                             productController.storeDataToLocalStorage(data)
                         })
 
-        // Run toast if new product is added to cart successfully
-        var toastEl = document.querySelector('#addToCart');
+        // Run toast if new product is added to enquiry successfully
+        var toastEl = document.querySelector('#addToEnquiry');
         var toast = new bootstrap.Toast(toastEl);
-        toastText.innerText = "Product added to cart"
+        toastText.innerText = "Product added to enquiry"
         toast.show();
 
-        var productAddToCart = document.querySelector('#addToCart');
-        productAddToCart.addEventListener('hidden.bs.toast', function () {
-            window.open("shopping-cart.html");
+        var productAddToEnquiry = document.querySelector('#addToEnquiry');
+        productAddToEnquiry.addEventListener('hidden.bs.toast', function () {
+            window.open("enquiry-form.html", "productController");
         });
     }
 }
 
+var windowName = window.name;
+console.log("Window Name:", windowName);
