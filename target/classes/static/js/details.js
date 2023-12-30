@@ -133,7 +133,7 @@ function addToEnquiry(){
     if(isIdPresent(enquiryList,idInt)){
         var toastEl = document.querySelector('#addToEnquiry');
         var toast = new bootstrap.Toast(toastEl);
-        toastText.innerText = "Product has been added to enquiry previously. You may edit the quantity of the product in the shopping enquiry page"
+        toastText.innerText = "Product has been added to enquiry previously. You may edit the quantity of the product in the enquiry page."
         toast.show();
 
         var productAddToEnquiry = document.querySelector('#addToEnquiry');

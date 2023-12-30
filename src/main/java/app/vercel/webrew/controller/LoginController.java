@@ -63,6 +63,20 @@ public class LoginController {
         return handleAuthenticatedUser("product-details.html?id="+id, model);
     }
 
+    @GetMapping({"/update-product", "/update-product.html"})
+    public String updateProductPage(String returnValue, Model model) {
+        return handleAuthenticatedUser("update-product.html", model);
+    }
+    @GetMapping("/update-product.html?id=*")
+    public String updateProductParam(String returnValue, Model model, @RequestParam(value="id") Integer id) {
+        return handleAuthenticatedUser("update-product.html?id="+id, model);
+    }
+
+    @GetMapping({"/enquiry-form", "/enquiry-form.html"})
+    public String enquiryForm(String returnValue, Model model) {
+        return handleAuthenticatedUser("enquiry-form.html", model);
+    }
+
     @GetMapping({"/error/404","/error/404.html"})
     public String error404Page(String returnValue, Model model) {
         return handleAuthenticatedUser("/error/404.html", model);
