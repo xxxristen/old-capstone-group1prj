@@ -61,7 +61,7 @@ public class WebSecurityConfig {
         http
                 .csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("add-product.html","add-product").authenticated()
+                        .requestMatchers("add-product.html","add-product", "update-product.html", "update-product").authenticated()
                         .anyRequest().permitAll())
                 .httpBasic(Customizer.withDefaults())
                 .formLogin((form) -> form
