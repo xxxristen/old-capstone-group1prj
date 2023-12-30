@@ -1,5 +1,7 @@
 // Initialize productController (item controller) as a new product list
 const productController = new ProductController()
+window.name = "productController"
+
 document.addEventListener('DOMContentLoaded', function () {
 const url = document.location.search;
 let urlParams = new URLSearchParams(url);
@@ -156,8 +158,10 @@ function addToEnquiry(){
 
         var productAddToEnquiry = document.querySelector('#addToEnquiry');
         productAddToEnquiry.addEventListener('hidden.bs.toast', function () {
-            window.open("enquiry-form.html");
+            window.open("enquiry-form.html", "productController");
         });
     }
 }
 
+var windowName = window.name;
+console.log("Window Name:", windowName);

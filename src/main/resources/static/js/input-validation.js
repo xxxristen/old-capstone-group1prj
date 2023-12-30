@@ -101,7 +101,6 @@ function getImgURL(input) {
 
 // This section is to enable or disable the Tea Format Selection based on the product type
 const formatForm = document.getElementsByName('tea_format')
-console.log(formatForm)
 
 function disableFormat() {
     formatForm.forEach(element => {

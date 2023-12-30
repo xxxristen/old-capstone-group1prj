@@ -186,7 +186,7 @@ const enquiryProductsText = enquiryProductsTextArray.join('');
 
         var enquiryDoneToast = document.querySelector('#enquiry');
         enquiryDoneToast.addEventListener('hidden.bs.toast', function () {
-            window.open("index.html");
+            window.open("index.html", "productController");
         });
     } catch (error) {
         console.error("Error:", error);

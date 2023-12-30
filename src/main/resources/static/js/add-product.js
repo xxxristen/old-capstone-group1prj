@@ -88,3 +88,6 @@ newProdForm.addEventListener('submit', (event) => {
     document.getElementById('imagePreview').style.display = "none";
 }
 )
+
+var windowName = window.name;
+console.log("Window Name:", windowName);

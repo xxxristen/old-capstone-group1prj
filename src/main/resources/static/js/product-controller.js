@@ -134,12 +134,11 @@ class ProductController {
             deleteBtn[i].addEventListener('click', ()=>{
                 this.deleteProduct(dataSet[i].id)
 
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-
                 // Run toast if new product is deleted successfully
                 var toastEl = document.querySelector('.toast');
                 var toast = new bootstrap.Toast(toastEl);
                 toast.show();
+                scrollToTop();
 
                 var productDeletedToast = document.querySelector('.toast');
                 productDeletedToast.addEventListener('hidden.bs.toast', function () {
@@ -205,3 +204,6 @@ function scrollToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
+var windowName = window.name;
+console.log("Window Name:", windowName);
