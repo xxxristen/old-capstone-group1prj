@@ -91,45 +91,21 @@ let urlParams = new URLSearchParams(url);
                 // document.getElementById("prodName").innerHTML = data.name
                 // document.getElementById("prodPrice").innerHTML = `$${data.price}`;
                 // document.getElementById("prodDescription").innerHTML = data.description;
-                // displayRating(products[selectedProductId])
+
+                const usernameSpanBig = document.getElementById("logoutBig");
+                const usernameSpanSmall = document.getElementById("logoutSmall");
+
+                if (!usernameSpanBig || !usernameSpanSmall) {
+                    userSelection.style.display = "none"
+                } else {
+                    userSelection.style.display = "flex"
+                }
             })
     }
     else {
         apiContainer.classList.add("alert", "alert-danger", "w-50", "translate-middle-x", "start-50", "mt-3");
         apiContainer.setAttribute("role", "alert");
         apiContainer.innerText = "No id indicated in the URL.";
-    }
-
-    function displayRating(data) {
-        let productRating = document.getElementById("prodRating")
-
-        for (let i = 1; i <= data.rating; i++) {
-            let listRatingFull = document.createElement("i")
-            listRatingFull.className = "bi"
-            listRatingFull.classList.add("bi-star-fill")
-            productRating.appendChild(listRatingFull)
-        }
-
-        if (data.rating % 1 != 0) {
-            let listRatingHalf = document.createElement("i")
-            listRatingHalf.className = "bi"
-            listRatingHalf.classList.add("bi-star-half")
-            productRating.appendChild(listRatingHalf)
-
-            for (let i = data.rating; i < 5 - 1; i++) {
-                let listRatingNone = document.createElement("i")
-                listRatingNone.className = "bi"
-                listRatingNone.classList.add("bi-star")
-                productRating.appendChild(listRatingNone)
-            }
-        } else {
-            for (let i = data.rating; i < 5; i++) {
-                let listRatingNone = document.createElement("i")
-                listRatingNone.className = "bi"
-                listRatingNone.classList.add("bi-star")
-                productRating.appendChild(listRatingNone)
-            }
-        }
     }
 });
 
@@ -153,7 +129,6 @@ function addToEnquiry(){
     const toastText = document.querySelector("#toast_text")
 
     if(isIdPresent(enquiryList,idInt)){
-        console.log("product has already been added to enquiry")
         var toastEl = document.querySelector('#addToEnquiry');
         var toast = new bootstrap.Toast(toastEl);
         toastText.innerText = "Product has been added to enquiry previously. You may edit the quantity of the product in the shopping enquiry page"

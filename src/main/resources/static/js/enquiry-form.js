@@ -53,12 +53,6 @@ if(storageProduct){
         const cardName = document.createElement("p")
         cardName.classList.add("lead", "fw-normal", "mb-2")
         cardName.innerText = products[i].name
-//        const cardType = document.createElement("p")
-//        const cardTypeMute = document.createElement("span")
-//        cardTypeMute.classList.add("text-muted")
-//        cardTypeMute.innerText = "Type: "
-//        cardType.appendChild(cardTypeMute)
-//        cardType.innerText = products[i].type
         const cardId = document.createElement("span")
         cardId.classList.add("enquiry_id")
         cardId.style.display = "none"
@@ -173,7 +167,6 @@ const enquiryProductsText = enquiryProductsTextArray.join('');
         msgBody: userEmailInput.value + " has an enquiry for the products below: \n\n" + enquiryProductsText,
         subject: "New Enquiry!"
     }
-    console.log(emailContent)
     try {
         const response = await fetch("/sendMail", {
             method: 'POST',
@@ -183,13 +176,13 @@ const enquiryProductsText = enquiryProductsTextArray.join('');
             body: JSON.stringify(emailContent),
         });
 
-        //localStorage.removeItem('enquiryList')
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        localStorage.removeItem('enquiryList')
 
         // Run toast if the enquiry mail is sent successfully
         var toastEl = document.querySelector('#enquiry');
         var toast = new bootstrap.Toast(toastEl);
         toast.show();
+        scrollToTop();
 
         var enquiryDoneToast = document.querySelector('#enquiry');
         enquiryDoneToast.addEventListener('hidden.bs.toast', function () {

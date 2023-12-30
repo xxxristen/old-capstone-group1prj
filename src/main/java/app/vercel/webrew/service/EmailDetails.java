@@ -1,4 +1,4 @@
-package app.vercel.webrew.model;
+package app.vercel.webrew.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
