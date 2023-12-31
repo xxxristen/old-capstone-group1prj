@@ -120,9 +120,10 @@ if(storageProduct){
         });
     }
 } else{
-    contentHolder.classList.add("alert", "alert-danger", "w-50", "translate-middle-x", "start-50", "mt-3");
-    contentHolder.setAttribute("role", "alert");
-    contentHolder.innerText = "Enquiry form is empty.";
+    const apiContainer = document.getElementById("apiError");
+    apiContainer.classList.add("alert", "alert-danger", "w-50", "translate-middle-x", "start-50", "mt-3");
+    apiContainer.setAttribute("role", "alert");
+    apiContainer.innerText = "Enquiry form is empty.";
 
     const enquiryButton = document.getElementById('btn_enquiry')
     enquiryButton.style.display = "none"

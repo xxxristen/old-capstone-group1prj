@@ -87,7 +87,7 @@
     </header>
     <!-- main section-->
     <main>
-        <h1 class="pageTitle">Products</h1>
+        <h1 class="d-flex align-items-center justify-content-center w-100">Products</h1>
         <!-- main section-->
         <!-- toast section -->
         <!-- Flexbox container for aligning the toasts -->
@@ -103,18 +103,110 @@
                 </div>
             </div>
         </div>
-        <input type="checkbox" id="filter_check">
+
+<!--        Filter for mobile view-->
+        <div class="dropdown">
+            <a class="btn btn-success dropdown-toggle ms-4" href="#" role="button" id="dropdownFilter" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+            </a>
+            <div class="dropdown-menu">
+                <form class="dropdown-item" id="filter_tab2">
+                    <div class="secondary_bar">
+                        <button type="button" class="reset_button" id="clearAll2"
+                                onclick="clearAllSelections(); fetchData();">
+                            <i class="bi bi-x-lg"></i>
+                            <span class="reset_button_txt">
+                            Clear all
+                        </span>
+                        </button>
+                    </div>
+                    <div class="filter_content">
+                        <div class="card filter_bar category_bar">
+                            <div class="card-header">
+                                <span class="fw-bold">Type:</span>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="typeCheckTea2" value="Tea"
+                                               name="filterSelection2">
+                                        <label class="form-check-label" for="typeCheckTea">
+                                            Tea
+                                        </label>
+                                    </li>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="typeCheckTeaware2"
+                                               value="Teaware" name="filterSelection2">
+                                        <label class="form-check-label" for="typeCheckTeaware">
+                                            Teaware
+                                        </label>
+                                    </li>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="typeCheckAccessory2"
+                                               value="Accessory" name="filterSelection2">
+                                        <label class="form-check-label" for="typeCheckAccessory">
+                                            Accessory
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- filter for tea format, will only take effect if tea is checked for product type -->
+                        <div class="card filter_bar tea_format_bar">
+                            <div class="card-header">
+                                <span class="fw-bold">Format:</span>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="formatCheckLoose2"
+                                               value="Loose_leaf" name="filterSelection2">
+                                        <label class="form-check-label" for="formatCheckLoose">
+                                            Loose leaf
+                                        </label>
+                                    </li>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="formatCheckPowder2"
+                                               value="Powder" name="filterSelection2">
+                                        <label class="form-check-label" for="formatCheckPowder">
+                                            Powder
+                                        </label>
+                                    </li>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="formatCheckTeaBag2"
+                                               value="Tea_bag" name="filterSelection2">
+                                        <label class="form-check-label" for="formatCheckTeaBag">
+                                            Tea bag
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="secondary_bar">
+                        <button type="button" class="reset_button" id="updateFilter2" onclick="fetchData();">
+                        <span class="reset_button_txt">
+                            Update filter
+                        </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+<!--        Filter for non-mobile view-->
+        <input type="checkbox" id="filter_check" class="d-none">
         <label for="filter_check" class="filter_txt"><i class="bi bi-filter"></i> Filters</label>
-        <div class="display">
+        <div class="display d-flex flex-row">
             <!-- filter section, only visible after toggling filter button -->
             <form id="filter_tab">
                 <div class="secondary_bar">
                     <button type="button" class="reset_button" id="clearAll"
                         onclick="clearAllSelections(); fetchData();">
                         <i class="bi bi-x-lg"></i>
-                        <div class="reset_button_txt">
+                        <span class="reset_button_txt">
                             Clear all
-                        </div>
+                        </span>
                     </button>
                 </div>
                 <div class="filter_content">
@@ -182,9 +274,9 @@
                 </div>
                 <div class="secondary_bar">
                     <button type="button" class="reset_button" id="updateFilter" onclick="fetchData();">
-                        <div class="reset_button_txt">
+                        <span class="reset_button_txt">
                             Update filter
-                        </div>
+                        </span>
                     </button>
                 </div>
             </form>
