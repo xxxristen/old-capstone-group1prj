@@ -4,12 +4,24 @@ const teaWareCheckBox = document.getElementById('typeCheckTeaware');
 const accessoryCheckBox = document.getElementById('typeCheckAccessory');
 const teaFormatBoxes = document.querySelectorAll("#formatCheckLoose, #formatCheckPowder, #formatCheckTeaBag");
 
+const checkboxes2 = document.querySelectorAll('input[name="filterSelection2"]');
+const teaCheckBox2 = document.getElementById('typeCheckTea2');
+const teaWareCheckBox2 = document.getElementById('typeCheckTeaware2');
+const accessoryCheckBox2 = document.getElementById('typeCheckAccessory2');
+const teaFormatBoxes2 = document.querySelectorAll("#formatCheckLoose2, #formatCheckPowder2, #formatCheckTeaBag2");
+
 // Function to clear all checked boxes
 function clearAllSelections() {
     checkboxes.forEach(box => {
         box.checked = false;
     })
     teaFormatBoxes.forEach(checkBox => {
+        checkBox.disabled = true;
+    })
+    checkboxes2.forEach(box => {
+        box.checked = false;
+    })
+    teaFormatBoxes2.forEach(checkBox => {
         checkBox.disabled = true;
     })
 }
@@ -26,16 +38,41 @@ function getAllSelections() {
 }
 
 // Listen for changes to filter selections
-checkboxes.forEach(box => {
-    box.addEventListener('change', () => {
-        getAllSelections();
-    });
+//checkboxes.forEach(box => {
+//    box.addEventListener('change', () => {
+//        getAllSelections();
+//    });
+//});
+
+checkboxes.forEach((checkbox, index) => {
+  checkbox.addEventListener('change', (event) => {
+    // Update the corresponding checkbox in the second set
+    checkboxes2[index].checked = event.target.checked;
+    getAllSelections();
+  });
+});
+
+checkboxes2.forEach((checkbox, index) => {
+  checkbox.addEventListener('change', (event) => {
+    // Update the corresponding checkbox in the first set
+    checkboxes[index].checked = event.target.checked;
+    getAllSelections();
+  });
 });
 
 // Event listener on "Tea" checkbox
-teaCheckBox.addEventListener('change', () => {
+function handleTeaCheckBoxChange(){
     teaFormatBoxes.forEach(checkBox => {
-        if (!teaCheckBox.checked) {
+            if (!teaCheckBox.checked) {
+                checkBox.checked = false;
+                checkBox.disabled = true;
+            }
+            else {
+                checkBox.disabled = false;
+            }
+        })
+    teaFormatBoxes2.forEach(checkBox => {
+        if (!teaCheckBox2.checked) {
             checkBox.checked = false;
             checkBox.disabled = true;
         }
@@ -43,7 +80,11 @@ teaCheckBox.addEventListener('change', () => {
             checkBox.disabled = false;
         }
     })
-})
+}
+
+teaCheckBox.addEventListener('change', handleTeaCheckBoxChange);
+teaCheckBox2.addEventListener('change', handleTeaCheckBoxChange);
+
 document.addEventListener('DOMContentLoaded', function () {
     const url = document.location.search;
     let urlParams = new URLSearchParams(url);
@@ -55,14 +96,20 @@ document.addEventListener('DOMContentLoaded', function () {
             teaFormatBoxes.forEach(checkBox => {
                 checkBox.disabled = false
             });
+            teaCheckBox2.checked = true;
+            teaFormatBoxes2.forEach(checkBox => {
+                checkBox.disabled = false
+            });
             break;
         case "Teaware":
             clearAllSelections();
             teaWareCheckBox.checked = true;
+            teaWareCheckBox2.checked = true;
             break;
         case "Accessory":
             clearAllSelections();
             accessoryCheckBox.checked = true;
+            accessoryCheckBox2.checked = true;
             break;
         default:
             clearAllSelections();

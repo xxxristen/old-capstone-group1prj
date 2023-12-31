@@ -119,9 +119,16 @@ class ProductController {
                     <button class="card-overlay-btn btn_update">Update product</button>
                     <button class="card-overlay-btn btn_delete">Delete product</button>
                 </div>
+                <div class="d-sm-flex flex-column justify-content-center align-items-center">
+                    <button class="user_selection_button btn_modify_mobile">Modify product</button>
+                </div>
                 </div>
             `
             unorderedList.appendChild(listProduct);
+            const buttonModifyMobile = document.getElementsByClassName('btn_modify_mobile')
+            buttonModifyMobile[i].addEventListener('click',()=>{
+                window.location.href= "product-details.html?id=" + dataSet[i].id
+            })
             const buttonDetails = document.getElementsByClassName('btn_details')
             buttonDetails[i].addEventListener('click',()=>{
                 window.location.href= "product-details.html?id=" + dataSet[i].id
@@ -204,6 +211,3 @@ function scrollToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
-
-var windowName = window.name;
-console.log("Window Name:", windowName);

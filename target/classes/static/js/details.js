@@ -46,15 +46,41 @@ let urlParams = new URLSearchParams(url);
                             window.open("products.html", "productController");
                         });
                 });
+                const updateBtnMobile = document.createElement('button');
+                const deleteBtnMobile = document.createElement('button');
+                updateBtnMobile.innerText = "Update";
+                updateBtnMobile.classList.add("user_selection_button");
+                updateBtnMobile.setAttribute("id", "btn_update_mobile");
+                updateBtnMobile.addEventListener('click',()=>{
+                    window.location.href= "update-product.html?id=" + id
+                })
+                deleteBtnMobile.classList.add("user_selection_button");
+                deleteBtnMobile.setAttribute("id", "btn_delete_mobile");
+                deleteBtnMobile.innerText = "Delete";
+                deleteBtnMobile.addEventListener('click', ()=>{
+                        productController.deleteProduct(id)
+
+                        // Run toast if new product is deleted successfully
+                        var toastEl = document.querySelector('#delete');
+                        var toast = new bootstrap.Toast(toastEl);
+                        toast.show();
+
+                        var productDeletedToast = document.querySelector('#delete');
+                        productDeletedToast.addEventListener('hidden.bs.toast', function () {
+                            window.open("products.html", "productController");
+                        });
+                });
                 userSelection.appendChild(updateBtn);
                 userSelection.appendChild(deleteBtn);
+                userSelection.appendChild(updateBtnMobile);
+                userSelection.appendChild(deleteBtnMobile);
                 prodContainer.appendChild(userSelection);
                 const productBody = document.createElement("div");
                 productBody.classList.add("container", "product_details");
                 const productContent = document.createElement("div");
                 productContent.classList.add("row");
                 const imgBody = document.createElement('div');
-                imgBody.classList.add("col-6", "form_left");
+                imgBody.classList.add("col-12", "col-sm-6", "form_left");
                 const imgPath = escapeHTML(data.imagePath);
                 const productName = escapeHTML(data.name);
                 const imgElement = document.createElement('img');
@@ -63,7 +89,7 @@ let urlParams = new URLSearchParams(url);
                 imgElement.alt = productName;
                 imgBody.setAttribute("id", "prodImg");
                 const prodDetails = document.createElement('div');
-                prodDetails.classList.add("col-6", "form-right");
+                prodDetails.classList.add("col-12", "col-sm-6", "form-right");
                 const prodDescription = escapeHTML(data.description);
                 const prodDetailsContent = [
                     { htmlContent: [`<h2 class="prodName" id="prodName">${productName}</h2>`] },
@@ -135,6 +161,7 @@ function addToEnquiry(){
         var toast = new bootstrap.Toast(toastEl);
         toastText.innerText = "Product has been added to enquiry previously. You may edit the quantity of the product in the enquiry page."
         toast.show();
+        scrollToTop();
 
         var productAddToEnquiry = document.querySelector('#addToEnquiry');
         productAddToEnquiry.addEventListener('hidden.bs.toast', function () {
@@ -155,6 +182,7 @@ function addToEnquiry(){
         var toast = new bootstrap.Toast(toastEl);
         toastText.innerText = "Product added to enquiry"
         toast.show();
+        scrollToTop();
 
         var productAddToEnquiry = document.querySelector('#addToEnquiry');
         productAddToEnquiry.addEventListener('hidden.bs.toast', function () {
@@ -162,6 +190,3 @@ function addToEnquiry(){
         });
     }
 }
-
-var windowName = window.name;
-console.log("Window Name:", windowName);
