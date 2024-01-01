@@ -1,9 +1,11 @@
+// First set of variables for filter checkboxes in larger view (non-mobile view)
 const checkboxes = document.querySelectorAll('input[name="filterSelection"]');
 const teaCheckBox = document.getElementById('typeCheckTea');
 const teaWareCheckBox = document.getElementById('typeCheckTeaware');
 const accessoryCheckBox = document.getElementById('typeCheckAccessory');
 const teaFormatBoxes = document.querySelectorAll("#formatCheckLoose, #formatCheckPowder, #formatCheckTeaBag");
 
+// Second set of variables for filter checkboxes in mobile view
 const checkboxes2 = document.querySelectorAll('input[name="filterSelection2"]');
 const teaCheckBox2 = document.getElementById('typeCheckTea2');
 const teaWareCheckBox2 = document.getElementById('typeCheckTeaware2');
@@ -44,6 +46,8 @@ function getAllSelections() {
 //    });
 //});
 
+
+// The checkboxes of one filter will update the other (for mobile and non-mobile view)
 checkboxes.forEach((checkbox, index) => {
   checkbox.addEventListener('change', (event) => {
     // Update the corresponding checkbox in the second set
@@ -61,6 +65,7 @@ checkboxes2.forEach((checkbox, index) => {
 });
 
 // Event listener on "Tea" checkbox
+// To enable the Tea Format selection only if product type Tea is checked
 function handleTeaCheckBoxChange(){
     teaFormatBoxes.forEach(checkBox => {
             if (!teaCheckBox.checked) {
@@ -85,6 +90,7 @@ function handleTeaCheckBoxChange(){
 teaCheckBox.addEventListener('change', handleTeaCheckBoxChange);
 teaCheckBox2.addEventListener('change', handleTeaCheckBoxChange);
 
+// To update the filter checkboxes based on the fetch api
 document.addEventListener('DOMContentLoaded', function () {
     const url = document.location.search;
     let urlParams = new URLSearchParams(url);

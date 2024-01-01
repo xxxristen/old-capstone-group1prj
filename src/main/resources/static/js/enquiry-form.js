@@ -4,6 +4,7 @@ const productController = new ProductController()
 const storageProduct = localStorage.getItem('enquiryList')
 const contentHolder = document.getElementById("content_holder")
 
+//To show the products added to enquiry form
 if(storageProduct){
 
     const headerHolder = document.createElement("div")
@@ -129,6 +130,7 @@ if(storageProduct){
     enquiryButton.style.display = "none"
 }
 
+// Event listener for the delete icon to update the count value of the enquiry form items
 document.querySelectorAll(".fa-trash").forEach(function(button){
     button.addEventListener("click",function(){
         const productContainer = button.parentElement.parentElement.parentElement.parentElement.parentElement
@@ -150,19 +152,21 @@ document.querySelectorAll(".fa-trash").forEach(function(button){
     })
 })
 
+// Function to generate enquiry email
 async function enquiryConfirm(){
     const userEmailInput = document.getElementById('userEmail')
     const enquiryProducts = JSON.parse(storageProduct)
     const enquiryProductsTextArray = [];
     const quantityInput = document.getElementsByClassName("quantity_input")
 
+// Consolidate the product details to generate the email content
     for (let i = 0; i < enquiryProducts.length; i++) {
         const product = enquiryProducts[i];
         const productText = `Product ID: ${product.id}\nProduct Name: ${product.name}\nQuantity: ${quantityInput[i].value}\n\n`;
         enquiryProductsTextArray.push(productText);
     }
 
-const enquiryProductsText = enquiryProductsTextArray.join('');
+    const enquiryProductsText = enquiryProductsTextArray.join('');
 
     const emailContent = {
         msgBody: userEmailInput.value + " has an enquiry for the products below: \n\n" + enquiryProductsText,

@@ -94,7 +94,7 @@ class ProductController {
                 }
             }
             const formattedPrice = parseFloat(dataSet[i].price).toFixed(2);
-            //            let listProduct = document.createElement("a")
+            // let listProduct = document.createElement("a")
             let listProduct = document.createElement(contentType)
             listProduct.className = "card"
             listProduct.classList.add("card_listing")
@@ -113,30 +113,40 @@ class ProductController {
                     <p class="card-text proDescription">${dataSet[i].description}</p>
                     </div>
                 </div>
+                // The overlay with 3 buttons (see details, update product, delete product) are included after user log in
                 <div style="display:${displayStyle}">
                 <div class="card-overlay d-none d-sm-flex flex-column justify-content-center align-items-center">
                     <button class="card-overlay-btn btn_details">See product</button>
                     <button class="card-overlay-btn btn_update">Update product</button>
                     <button class="card-overlay-btn btn_delete">Delete product</button>
                 </div>
+                // Only one button in mobile view to prevent the product listing card to be too bulky
                 <div class="d-sm-flex flex-column justify-content-center align-items-center">
                     <button class="user_selection_button btn_modify_mobile">Modify product</button>
                 </div>
                 </div>
             `
             unorderedList.appendChild(listProduct);
+
+            // This button direct the user to product details page whereby he/she can update or delete the product
             const buttonModifyMobile = document.getElementsByClassName('btn_modify_mobile')
             buttonModifyMobile[i].addEventListener('click',()=>{
                 window.location.href= "product-details.html?id=" + dataSet[i].id
             })
+
+            // This button direct the user to product details page whereby he/she can see the details of the product before modifying it
             const buttonDetails = document.getElementsByClassName('btn_details')
             buttonDetails[i].addEventListener('click',()=>{
                 window.location.href= "product-details.html?id=" + dataSet[i].id
             })
+
+            // This button direct the user to update product page whereby he/she can fill in the details to be updated
             const updateBtn = document.getElementsByClassName('btn_update');
             updateBtn[i].addEventListener('click',()=>{
                 window.location.href= "update-product.html?id=" + dataSet[i].id
             })
+
+            // This button allows user to delete the product
             const deleteBtn = document.getElementsByClassName('btn_delete');
             deleteBtn[i].addEventListener('click', ()=>{
                 this.deleteProduct(dataSet[i].id)
@@ -155,6 +165,7 @@ class ProductController {
         }
     }
 
+    // To store product data in the local storage to be rendered in the enquiry form
     storeDataToLocalStorage(data) {
         const enquiryList = JSON.parse(localStorage.getItem('enquiryList')) || [];
         enquiryList.push(data)
@@ -195,6 +206,7 @@ class ProductController {
         }
     }
 
+    // Method to delete
     async deleteProduct(id) {
         try {
             const response = await fetch("/api/products/" + id, {
@@ -207,6 +219,7 @@ class ProductController {
     }
 }
 
+// Function to auto scroll the window to the top to display toast and/or modal
 function scrollToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;

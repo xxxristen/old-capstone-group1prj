@@ -1,6 +1,6 @@
 // Product name and price validation - show/hide warning
-// Product name
 
+// Product name
 const productName = document.getElementById("input_bar_name");
 productName.addEventListener("focusout", validateName);
 
@@ -99,7 +99,7 @@ function getImgURL(input) {
     }
 }
 
-// This section is to enable or disable the Tea Format Selection based on the product type
+// This section is to enable the Tea Format selection only if product type Tea is checked
 const formatForm = document.getElementsByName('tea_format')
 
 function disableFormat() {

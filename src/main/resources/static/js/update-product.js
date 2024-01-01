@@ -89,7 +89,7 @@ newProdForm.addEventListener('submit', (event) => {
         return false;
     }
 
-    // If no image uploaded - replace with default image
+    // If no image uploaded - the current image is used
     if (newProdImage.files.length == 0) {
         imgURL = currentImage.src
     }
@@ -101,7 +101,7 @@ newProdForm.addEventListener('submit', (event) => {
     // PUT to api
     productController.sendJSON(id, name, type, format, price, country, description, imgURL, "PUT")
 
-    // Run toast if new product is created successfully
+    // Run toast if new product is updated successfully
     var toastEl = document.querySelector('.toast');
     var toast = new bootstrap.Toast(toastEl);
     toast.show();
