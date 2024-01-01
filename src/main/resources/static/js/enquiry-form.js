@@ -70,7 +70,6 @@ if(storageProduct){
         const deleteButtonHolder = document.createElement("div")
         deleteButtonHolder.classList.add("col-md-1","col-lg-1", "col-xl-1", "text-end")
         const deleteButton = document.createElement("a")
-//        deleteButton.href = "#!"
         deleteButton.classList.add("text-danger")
         const deleteButtonIcon = document.createElement("i")
         deleteButtonIcon.classList.add("fas", "fa-trash", "fa-lg")
