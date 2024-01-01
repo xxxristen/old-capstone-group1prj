@@ -19,6 +19,7 @@ let urlParams = new URLSearchParams(url);
                 return response.json();
             })
             .then(data => {
+                // To start tabulating the product details into the page if the fetch api is successfully responded
                 const prodContainer = document.getElementById('prodContainer');
                 const userSelection = document.createElement('div');
                 userSelection.classList.add("user_selection");
@@ -27,12 +28,14 @@ let urlParams = new URLSearchParams(url);
                 updateBtn.innerText = "Update product";
                 updateBtn.classList.add("user_selection_button");
                 updateBtn.setAttribute("id", "btn_update");
+                // This button direct the user to product details page whereby he/she can update or delete the product
                 updateBtn.addEventListener('click',()=>{
                     window.location.href= "update-product.html?id=" + id
                 })
                 deleteBtn.classList.add("user_selection_button");
                 deleteBtn.innerText = "Delete product";
                 deleteBtn.setAttribute("id", "btn_delete");
+                // This button allows user to delete the product
                 deleteBtn.addEventListener('click', ()=>{
                         productController.deleteProduct(id)
 
@@ -46,6 +49,7 @@ let urlParams = new URLSearchParams(url);
                             window.open("products.html", "productController");
                         });
                 });
+                //These 2 buttons are for mobile view only
                 const updateBtnMobile = document.createElement('button');
                 const deleteBtnMobile = document.createElement('button');
                 updateBtnMobile.innerText = "Update";
@@ -142,6 +146,7 @@ function isIdPresent(arr, targetId) {
   return arr.some(product => product.id === targetId);
 }
 
+//function to add the product into local storage to be rendered in the enquiry form later
 function addToEnquiry(){
     const url = document.location.search;
     let urlParams = new URLSearchParams(url);
@@ -157,6 +162,7 @@ function addToEnquiry(){
     const toastText = document.querySelector("#toast_text")
 
     if(isIdPresent(enquiryList,idInt)){
+        // If the product exists in local storage, the toast is run to inform the the customer
         var toastEl = document.querySelector('#addToEnquiry');
         var toast = new bootstrap.Toast(toastEl);
         toastText.innerText = "Product has been added to enquiry previously. You may edit the quantity of the product in the enquiry page."
@@ -169,6 +175,7 @@ function addToEnquiry(){
         });
 
     } else{
+        // If the product does not exist in local storage, product is fetched from database to the local storage
             fetch(`/api/products/${id}`)
                         .then(response => {
                             return response.json();
@@ -177,7 +184,7 @@ function addToEnquiry(){
                             productController.storeDataToLocalStorage(data)
                         })
 
-        // Run toast if new product is added to enquiry successfully
+        // Run toast if new product is added to enquiry form successfully
         var toastEl = document.querySelector('#addToEnquiry');
         var toast = new bootstrap.Toast(toastEl);
         toastText.innerText = "Product added to enquiry"
