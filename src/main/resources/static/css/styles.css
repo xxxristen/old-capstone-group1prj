@@ -514,6 +514,12 @@ footer p {
 }
 
 /* PRODUCTS.HTML section */
+.pageTitle {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
 
 #dropdownFilter{
     display: none;
@@ -896,7 +902,7 @@ a {
     /* filter section*/
     .filter_txt,
     #filter_tab{
-        display: none;
+        display: none !important;
     }
 
     #dropdownFilter{
@@ -920,6 +926,16 @@ a {
     #btn_update_mobile,
     #btn_delete_mobile{
         display: flex;
+    }
+
+    .mobile_center{
+        display: flex;
+        justify-content: center;
+    }
+
+    .form_left img {
+        max-width: 100%;
+        padding-bottom: 12px
     }
 
     /* FOOTER SECTION */

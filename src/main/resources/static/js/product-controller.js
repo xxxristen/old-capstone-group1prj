@@ -102,6 +102,8 @@ class ProductController {
             if (!usernameSpanBig || !usernameSpanSmall) {
                 listProduct.href = "product-details.html?id=" + dataSet[i].id
             }
+            // The overlay with 3 buttons (see details, update product, delete product) are included after user log in
+            // Only one button in mobile view to prevent the product listing card to be too bulky
             listProduct.innerHTML = `
                 <img class="img-fluid" src="${dataSet[i].imagePath}"/>
                 <div class="card-body">
@@ -113,14 +115,12 @@ class ProductController {
                     <p class="card-text proDescription">${dataSet[i].description}</p>
                     </div>
                 </div>
-                // The overlay with 3 buttons (see details, update product, delete product) are included after user log in
                 <div style="display:${displayStyle}">
                 <div class="card-overlay d-none d-sm-flex flex-column justify-content-center align-items-center">
                     <button class="card-overlay-btn btn_details">See product</button>
                     <button class="card-overlay-btn btn_update">Update product</button>
                     <button class="card-overlay-btn btn_delete">Delete product</button>
                 </div>
-                // Only one button in mobile view to prevent the product listing card to be too bulky
                 <div class="d-sm-flex flex-column justify-content-center align-items-center">
                     <button class="user_selection_button btn_modify_mobile">Modify product</button>
                 </div>
@@ -146,22 +146,14 @@ class ProductController {
                 window.location.href= "update-product.html?id=" + dataSet[i].id
             })
 
-            // This button allows user to delete the product
+            // This button will display the a Bootstrap modal that will ask user for confirmation for delete
             const deleteBtn = document.getElementsByClassName('btn_delete');
-            deleteBtn[i].addEventListener('click', ()=>{
-                this.deleteProduct(dataSet[i].id)
-
-                // Run toast if new product is deleted successfully
-                var toastEl = document.querySelector('.toast');
-                var toast = new bootstrap.Toast(toastEl);
-                toast.show();
-                scrollToTop();
-
-                var productDeletedToast = document.querySelector('.toast');
-                productDeletedToast.addEventListener('hidden.bs.toast', function () {
-                    window.open("products.html", "productController");
-                });
-            });
+            deleteBtn[i].setAttribute("data-bs-toggle","modal")
+            deleteBtn[i].setAttribute("data-bs-target","#exampleModal")
+            deleteBtn[i].addEventListener("click",()=>{
+                   localStorage.setItem("product_id_to_delete", dataSet[i].id)
+                   document.querySelector("#modal_delete_text").innerText = `Are you sure you want to delete ${dataSet[i].name}?`
+            })
         }
     }
 
@@ -173,7 +165,7 @@ class ProductController {
     }
 
     // Method to post or put
-    async sendJSON(id, name, type, format, price, country, description, image, method) {
+    async sendJSON(name, type, format, price, country, description, image, method, id) {
 
         const product = {
             name: name,
@@ -223,4 +215,14 @@ class ProductController {
 function scrollToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+}
+
+// Function to delete product
+function deleteProduct(){
+    const idToDelete = localStorage.getItem('product_id_to_delete')
+    productController.deleteProduct(idToDelete).then(()=>{
+        localStorage.removeItem('product_id_to_delete')
+
+        window.open("products.html", "productController")
+    })
 }

@@ -89,22 +89,7 @@
     <main>
         <h1 class="d-flex align-items-center justify-content-center w-100">Products</h1>
         <!-- main section-->
-        <!-- toast section -->
-        <!-- Flexbox container for aligning the toasts -->
-        <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100 pt-2">
-            <!-- Then put toasts within -->
-            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-                <div class="toast-header orange-bg text-white">
-                    <strong class="me-auto">Click [x] to refresh the page.</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    Product deleted.
-                </div>
-            </div>
-        </div>
-
-<!--        Filter for mobile view-->
+        <!-- Filter for mobile view-->
         <div class="dropdown">
             <a class="btn btn-success dropdown-toggle ms-4" href="#" role="button" id="dropdownFilter" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Filter
@@ -194,7 +179,7 @@
             </div>
         </div>
 
-<!--        Filter for non-mobile view-->
+        <!--  Filter for non-mobile view-->
         <input type="checkbox" id="filter_check" class="d-none">
         <label for="filter_check" class="filter_txt"><i class="bi bi-filter"></i> Filters</label>
         <div class="display d-flex flex-row">
@@ -285,6 +270,28 @@
             <div class="container">
                 <ul class="row" id="showList">
                 </ul>
+            </div>
+        </div>
+        <!-- Modal -->
+        <!-- This modal will show to let the customer confirm if he/sheh wants to delete the product-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete product</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <p id="modal_delete_text"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="user_selection_button" data-bs-dismiss="modal" onclick="deleteProduct()">Confirm Delete</button>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- main section ends here -->

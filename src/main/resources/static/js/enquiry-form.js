@@ -11,7 +11,7 @@ if(storageProduct){
     headerHolder.classList.add("d-flex", "justify-content-between", "align-item-center", "mb-4")
     const title = document.createElement("h3")
     title.classList.add("fw-normal", "mb-0", "text-black")
-    title.innerText = "Enquiry form"
+    title.innerText = "Purchase Enquiry (selected product)"
     const enquiryCountHolder = document.createElement("div")
     const enquiryCount = document.createElement("p")
     enquiryCount.classList.add("mb-0")
@@ -141,13 +141,14 @@ document.querySelectorAll(".fa-trash").forEach(function(button){
         const updatedEnquiryList = enquiryList.filter(product => product.id != productId)
         localStorage.setItem('enquiryList', JSON.stringify(updatedEnquiryList))
 
-        const enquiryCount = document.querySelector("#enquiry_count")
-            if(updatedEnquiryList.length >1){
-                enquiryCount.innerText = `${updatedEnquiryList.length} items`
-            } else {
-                enquiryCount.innerText = `${updatedEnquiryList.length} item`
-            }
+//        const enquiryCount = document.querySelector("#enquiry_count")
+//            if(updatedEnquiryList.length >1){
+//                enquiryCount.innerText = `${updatedEnquiryList.length} items`
+//            } else {
+//                enquiryCount.innerText = `${updatedEnquiryList.length} item`
+//            }
         productContainer.remove('')
+        window.open("enquiry-form.html", "productController")
     })
 })
 

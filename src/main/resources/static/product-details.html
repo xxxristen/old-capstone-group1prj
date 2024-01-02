@@ -86,20 +86,6 @@
   <!-- main section starts here -->
   <main>
     <!-- toast section -->
-    <!-- This toast will show once the product is deleted-->
-    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100 pt-2">
-      <!-- Then put toasts within -->
-      <div class="toast" id="delete" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-        <div class="toast-header orange-bg text-white">
-          <strong class="me-auto">Click [x] to visit the product listing.</strong>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-          Product deleted.
-        </div>
-      </div>
-    </div>
-
     <!-- This toast will show once the add to enquiry button is clicked-->
     <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100 pt-2">
       <!-- Then put toasts within -->
@@ -113,7 +99,32 @@
     </div>
     <div id="apiError"></div>
     <!-- User selection button section starts here - to update or delete the product upon signing in -->
-    <div id="prodContainer"></div>
+    <div class="d-flex justify-content-center">
+      <div id="prodContainer"></div>
+    </div>
+
+    <!-- Modal -->
+    <!-- This modal will show to let the customer confirm if he/sheh wants to delete the product-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete product</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <p id="modal_delete_text"></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="user_selection_button" data-bs-dismiss="modal" onclick="deleteProduct()">Confirm Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </main>
   <!-- main section ends here -->

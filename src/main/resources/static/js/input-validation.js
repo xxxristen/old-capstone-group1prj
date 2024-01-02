@@ -100,16 +100,22 @@ function getImgURL(input) {
 }
 
 // This section is to enable the Tea Format selection only if product type Tea is checked
-const formatForm = document.getElementsByName('tea_format')
+const typeForm = document.getElementsByName('prod_type')
+const teaCheckBox = document.getElementById('prod_type_tea');
+const teaFormatBoxes = document.querySelectorAll("#tea_format_looseLeaf, #tea_format_powder, #tea_format_teabag");
 
-function disableFormat() {
-    formatForm.forEach(element => {
-        element.disabled = true
-    })
+function handleTeaCheckBoxChange(){
+    teaFormatBoxes.forEach(checkBox => {
+            if (!teaCheckBox.checked) {
+                checkBox.checked = false;
+                checkBox.disabled = true;
+            }
+            else {
+                checkBox.disabled = false;
+            }
+        })
 }
 
-function enableFormat() {
-    formatForm.forEach(element => {
-        element.disabled = false
-    })
-}
+typeForm.forEach(function(element){
+    element.addEventListener('change', handleTeaCheckBoxChange)
+})
