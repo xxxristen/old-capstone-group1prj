@@ -25,7 +25,11 @@ newProdForm.addEventListener('submit', (event) => {
     const price = escapeHTML(newProdPrice.value);
     const country = escapeHTML(newProdCountry.value);
     const description = escapeHTML(newProdDescription.value);
-    const format = escapeHTML(newProdFormat.value);
+    var format = null
+
+    if(newProdFormat !== null){
+        format = escapeHTML(newProdFormat.value);
+    }
 
     // Validation - Fields cannot be empty
     // Creation of empty array to store those empty fields
@@ -69,7 +73,7 @@ newProdForm.addEventListener('submit', (event) => {
     }
 
     // POST to api
-    productController.sendJSON(0, name, type, format, price, country, description, imgURL, "POST")
+    productController.sendJSON(name, type, format, price, country, description, imgURL, "POST")
 
     // Run toast if new product is created successfully
     var toastEl = document.querySelector('.toast');

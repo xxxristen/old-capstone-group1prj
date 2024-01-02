@@ -41,7 +41,6 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private ProductType type;
 
-    @NotNull
     @Column(name = "format")
     @Enumerated(EnumType.STRING)
     private TeaFormat format;

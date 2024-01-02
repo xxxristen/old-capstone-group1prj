@@ -33,22 +33,16 @@ let urlParams = new URLSearchParams(url);
                     window.location.href= "update-product.html?id=" + id
                 })
                 deleteBtn.classList.add("user_selection_button");
+                deleteBtn.setAttribute("data-bs-toggle","modal")
+                deleteBtn.setAttribute("data-bs-target","#exampleModal")
                 deleteBtn.innerText = "Delete product";
                 deleteBtn.setAttribute("id", "btn_delete");
-                // This button allows user to delete the product
-                deleteBtn.addEventListener('click', ()=>{
-                        productController.deleteProduct(id)
+                // This button will display the a Bootstrap modal that will ask user for confirmation for delete
+                deleteBtn.addEventListener("click",()=>{
+                    localStorage.setItem("product_id_to_delete", id)
+                    document.querySelector("#modal_delete_text").innerText = `Are you sure you want to delete ${data.name}?`
+                })
 
-                        // Run toast if new product is deleted successfully
-                        var toastEl = document.querySelector('#delete');
-                        var toast = new bootstrap.Toast(toastEl);
-                        toast.show();
-
-                        var productDeletedToast = document.querySelector('#delete');
-                        productDeletedToast.addEventListener('hidden.bs.toast', function () {
-                            window.open("products.html", "productController");
-                        });
-                });
                 //These 2 buttons are for mobile view only
                 const updateBtnMobile = document.createElement('button');
                 const deleteBtnMobile = document.createElement('button');
@@ -59,26 +53,21 @@ let urlParams = new URLSearchParams(url);
                     window.location.href= "update-product.html?id=" + id
                 })
                 deleteBtnMobile.classList.add("user_selection_button");
+                deleteBtnMobile.setAttribute("data-bs-toggle","modal")
+                deleteBtnMobile.setAttribute("data-bs-target","#exampleModal")
                 deleteBtnMobile.setAttribute("id", "btn_delete_mobile");
                 deleteBtnMobile.innerText = "Delete";
-                deleteBtnMobile.addEventListener('click', ()=>{
-                        productController.deleteProduct(id)
+                deleteBtnMobile.addEventListener("click",()=>{
+                    localStorage.setItem("product_id_to_delete", id)
+                    document.querySelector("#modal_delete_text").innerText = `Are you sure you want to delete ${data.name}?`
+                })
 
-                        // Run toast if new product is deleted successfully
-                        var toastEl = document.querySelector('#delete');
-                        var toast = new bootstrap.Toast(toastEl);
-                        toast.show();
-
-                        var productDeletedToast = document.querySelector('#delete');
-                        productDeletedToast.addEventListener('hidden.bs.toast', function () {
-                            window.open("products.html", "productController");
-                        });
-                });
                 userSelection.appendChild(updateBtn);
                 userSelection.appendChild(deleteBtn);
                 userSelection.appendChild(updateBtnMobile);
                 userSelection.appendChild(deleteBtnMobile);
                 prodContainer.appendChild(userSelection);
+
                 const productBody = document.createElement("div");
                 productBody.classList.add("container", "product_details");
                 const productContent = document.createElement("div");
@@ -100,7 +89,7 @@ let urlParams = new URLSearchParams(url);
                     { htmlContent: [`<p class="prodPrice" id="prodPrice">$${Number(data.price).toFixed(2)}</p>`] },
 //                    { htmlContent: [`<div class="purchase_section"><div class="qty_section"><p class="qty_txt">Qty</p><input type="number" class="qty_input" id="qty_input"></div><button type="button" class="purchase_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="orderProduct()">Purchase</button></div></div>`] },
                     { htmlContent: [`<div class="prodDescription" id="prodDescription">${prodDescription}</div>`] },
-                    { htmlContent: [`<button type="button" class="user_selection_button" onclick="addToEnquiry()">Add to Enquiry</button>`] }
+                    { htmlContent: [`<div class="mobile_center"><button type="button" class="user_selection_button" onclick="addToEnquiry()">Add to Enquiry</button></div>`] }
                 ];
                 imgBody.appendChild(imgElement);
                 productContent.appendChild(imgBody);
