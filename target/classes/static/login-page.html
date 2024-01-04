@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="th">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
     <!-- Link to CSS files -->
@@ -52,14 +52,18 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="products.html?type=Tea">Tea</a></li>
                                 <li>
-                                  <hr class="dropdown-divider">
+                                    <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="products.html?type=Teaware">Tea wares</a></li>
                                 <li>
-                                  <hr class="dropdown-divider">
+                                    <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="products.html?type=Accessory">Accessories</a></li>
-                              </ul>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="products.html">All products</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="add-product.html">Add product</a>
