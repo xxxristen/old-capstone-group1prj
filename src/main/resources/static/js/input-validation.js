@@ -1,14 +1,21 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const productName = document.getElementById("input_bar_name");
+  productName.addEventListener("focusout", validateName);
+  const productPrice = document.getElementById("input_bar_price");
+  productPrice.addEventListener("input", validatePrice);
+});
+
+
 // Product name and price validation - show/hide warning
 
 // Product name
-const productName = document.getElementById("input_bar_name");
-productName.addEventListener("focusout", validateName);
 
 function validateName() {
+const productName = document.getElementById("input_bar_name");
 const nameError = document.getElementById("nameErrorCol1");
 const nameError2 = document.getElementById("nameErrorCol2");
 
-    if (productName.value.length < 5) {
+    if (productName.value.length < 5 ) {
         nameError.style.display = "block";
         nameError2.style.display = "block";
     }
@@ -18,10 +25,9 @@ const nameError2 = document.getElementById("nameErrorCol2");
     }
 }
 // Product price
-const productPrice = document.getElementById("input_bar_price");
-productPrice.addEventListener("input", validatePrice);
 
 function validatePrice() {
+const productPrice = document.getElementById("input_bar_price");
 const priceError = document.getElementById("priceErrorCol1");
 const priceError2 = document.getElementById("priceErrorCol2");
 
@@ -119,3 +125,5 @@ function handleTeaCheckBoxChange(){
 typeForm.forEach(function(element){
     element.addEventListener('change', handleTeaCheckBoxChange)
 })
+
+module.exports = {validateName, validatePrice}
