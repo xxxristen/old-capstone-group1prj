@@ -1,4 +1,4 @@
-const { validateName, validatePrice } = require('./input-validation.js');
+const { validateName, validatePrice } = require('../js/input-validation.js');
 
 // Test for validateName()
 // Use 'describe' to group together related test cases
