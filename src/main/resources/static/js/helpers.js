@@ -31,7 +31,7 @@ function loadError(error) {
   const unorderedList = document.getElementById("showList");
   unorderedList.classList.add("alert", "alert-danger", "w-50", "translate-middle-x", "start-50", "mt-3");
                       unorderedList.setAttribute("role", "alert");
-                      unorderedList.innerHTML = `<span>${error}.</span>`;
+                      unorderedList.innerHTML = `<span>Failed to fetch.</span>`;
                       throw new Error("Fetching of data failed.");
 }
 // Initial fetch - Load immediately when the script is loaded to fetch initial data.
