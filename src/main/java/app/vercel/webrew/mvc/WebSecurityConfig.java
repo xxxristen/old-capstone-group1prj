@@ -78,7 +78,7 @@ public class WebSecurityConfig {
                         .deleteCookies("JSESSIONID")
                         .permitAll())
                 .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer
-                        .accessDeniedPage("/error/40x"));
+                        .accessDeniedPage("/40x"));
 
         return http.build();
     }

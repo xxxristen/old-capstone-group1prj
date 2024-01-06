@@ -29,7 +29,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleNoResourceFoundException(NoResourceFoundException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         return ResponseEntity.status(HttpStatus.FOUND)
                 // Set the location header to custom 404 error page's url
-                .location(URI.create("/error/404.html"))
+                .location(URI.create("/404"))
                 // Build the ResponseEntity object
                 .build();
     }
@@ -38,7 +38,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleRequestRejectedException(HttpServletRequest request, Exception ex) {
         return ResponseEntity.status(HttpStatus.FOUND)
                 // Set the location header to custom error page's url
-                .location(URI.create("/error/error.html"))
+                .location(URI.create("/error"))
                 // Build the ResponseEntity object
                 .build();
     }

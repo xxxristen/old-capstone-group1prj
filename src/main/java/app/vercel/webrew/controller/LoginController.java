@@ -77,18 +77,23 @@ public class LoginController {
         return handleAuthenticatedUser("enquiry-form.html", model);
     }
 
-    @GetMapping({"/error/404","/error/404.html"})
+    @GetMapping({"/404","/404.html"})
     public String error404Page(String returnValue, Model model) {
-        return handleAuthenticatedUser("/error/404.html", model);
+        return handleAuthenticatedUser("404.html", model);
     }
 
-    @GetMapping({"/error/40x", "/error/40x.html"})
+    @GetMapping({"/40x", "/40x.html"})
     public String error40xPage(String returnValue, Model model) {
-        return handleAuthenticatedUser("/error/40x.html", model);
+        return handleAuthenticatedUser("40x.html", model);
     }
 
-    @GetMapping({"/error","/error.html", "/error/error", "/error/error.html"})
+    @GetMapping({"/400", "/400.html"})
+    public String error400Page(String returnValue, Model model) {
+        return handleAuthenticatedUser("400.html", model);
+    }
+
+    @GetMapping({"/error","/error.html"})
     public String errorPage(String returnValue, Model model) {
-        return handleAuthenticatedUser("/error/error.html", model);
+        return handleAuthenticatedUser("error.html", model);
     }
 }
