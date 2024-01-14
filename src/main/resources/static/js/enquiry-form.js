@@ -4,13 +4,14 @@ const productController = new ProductController()
 const storageProduct = localStorage.getItem('enquiryList')
 const contentHolder = document.getElementById("content_holder")
 
+//To show the products added to enquiry form
 if(storageProduct){
 
     const headerHolder = document.createElement("div")
     headerHolder.classList.add("d-flex", "justify-content-between", "align-item-center", "mb-4")
     const title = document.createElement("h3")
     title.classList.add("fw-normal", "mb-0", "text-black")
-    title.innerText = "Enquiry form"
+    title.innerText = "Purchase Enquiry (selected product)"
     const enquiryCountHolder = document.createElement("div")
     const enquiryCount = document.createElement("p")
     enquiryCount.classList.add("mb-0")
@@ -69,7 +70,6 @@ if(storageProduct){
         const deleteButtonHolder = document.createElement("div")
         deleteButtonHolder.classList.add("col-md-1","col-lg-1", "col-xl-1", "text-end")
         const deleteButton = document.createElement("a")
-//        deleteButton.href = "#!"
         deleteButton.classList.add("text-danger")
         const deleteButtonIcon = document.createElement("i")
         deleteButtonIcon.classList.add("fas", "fa-trash", "fa-lg")
@@ -120,14 +120,16 @@ if(storageProduct){
         });
     }
 } else{
-    contentHolder.classList.add("alert", "alert-danger", "w-50", "translate-middle-x", "start-50", "mt-3");
-    contentHolder.setAttribute("role", "alert");
-    contentHolder.innerText = "Enquiry form is empty.";
+    const apiContainer = document.getElementById("apiError");
+    apiContainer.classList.add("alert", "alert-danger", "w-50", "translate-middle-x", "start-50", "mt-3");
+    apiContainer.setAttribute("role", "alert");
+    apiContainer.innerText = "Enquiry form is empty.";
 
     const enquiryButton = document.getElementById('btn_enquiry')
     enquiryButton.style.display = "none"
 }
 
+// Event listener for the delete icon to update the count value of the enquiry form items
 document.querySelectorAll(".fa-trash").forEach(function(button){
     button.addEventListener("click",function(){
         const productContainer = button.parentElement.parentElement.parentElement.parentElement.parentElement
@@ -139,29 +141,32 @@ document.querySelectorAll(".fa-trash").forEach(function(button){
         const updatedEnquiryList = enquiryList.filter(product => product.id != productId)
         localStorage.setItem('enquiryList', JSON.stringify(updatedEnquiryList))
 
-        const enquiryCount = document.querySelector("#enquiry_count")
-            if(updatedEnquiryList.length >1){
-                enquiryCount.innerText = `${updatedEnquiryList.length} items`
-            } else {
-                enquiryCount.innerText = `${updatedEnquiryList.length} item`
-            }
+//        const enquiryCount = document.querySelector("#enquiry_count")
+//            if(updatedEnquiryList.length >1){
+//                enquiryCount.innerText = `${updatedEnquiryList.length} items`
+//            } else {
+//                enquiryCount.innerText = `${updatedEnquiryList.length} item`
+//            }
         productContainer.remove('')
+        window.open("enquiry-form.html", "productController")
     })
 })
 
+// Function to generate enquiry email
 async function enquiryConfirm(){
     const userEmailInput = document.getElementById('userEmail')
     const enquiryProducts = JSON.parse(storageProduct)
     const enquiryProductsTextArray = [];
     const quantityInput = document.getElementsByClassName("quantity_input")
 
+// Consolidate the product details to generate the email content
     for (let i = 0; i < enquiryProducts.length; i++) {
         const product = enquiryProducts[i];
         const productText = `Product ID: ${product.id}\nProduct Name: ${product.name}\nQuantity: ${quantityInput[i].value}\n\n`;
         enquiryProductsTextArray.push(productText);
     }
 
-const enquiryProductsText = enquiryProductsTextArray.join('');
+    const enquiryProductsText = enquiryProductsTextArray.join('');
 
     const emailContent = {
         msgBody: userEmailInput.value + " has an enquiry for the products below: \n\n" + enquiryProductsText,

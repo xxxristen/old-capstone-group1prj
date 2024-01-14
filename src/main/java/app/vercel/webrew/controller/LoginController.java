@@ -63,18 +63,37 @@ public class LoginController {
         return handleAuthenticatedUser("product-details.html?id="+id, model);
     }
 
-    @GetMapping({"/error/404","/error/404.html"})
+    @GetMapping({"/update-product", "/update-product.html"})
+    public String updateProductPage(String returnValue, Model model) {
+        return handleAuthenticatedUser("update-product.html", model);
+    }
+    @GetMapping("/update-product.html?id=*")
+    public String updateProductParam(String returnValue, Model model, @RequestParam(value="id") Integer id) {
+        return handleAuthenticatedUser("update-product.html?id="+id, model);
+    }
+
+    @GetMapping({"/enquiry-form", "/enquiry-form.html"})
+    public String enquiryForm(String returnValue, Model model) {
+        return handleAuthenticatedUser("enquiry-form.html", model);
+    }
+
+    @GetMapping({"/404","/404.html"})
     public String error404Page(String returnValue, Model model) {
-        return handleAuthenticatedUser("/error/404.html", model);
+        return handleAuthenticatedUser("404.html", model);
     }
 
-    @GetMapping({"/error/40x", "/error/40x.html"})
+    @GetMapping({"/40x", "/40x.html"})
     public String error40xPage(String returnValue, Model model) {
-        return handleAuthenticatedUser("/error/40x.html", model);
+        return handleAuthenticatedUser("40x.html", model);
     }
 
-    @GetMapping({"/error","/error.html", "/error/error", "/error/error.html"})
+    @GetMapping({"/400", "/400.html"})
+    public String error400Page(String returnValue, Model model) {
+        return handleAuthenticatedUser("400.html", model);
+    }
+
+    @GetMapping({"/error","/error.html"})
     public String errorPage(String returnValue, Model model) {
-        return handleAuthenticatedUser("/error/error.html", model);
+        return handleAuthenticatedUser("error.html", model);
     }
 }

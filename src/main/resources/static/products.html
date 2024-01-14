@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<!--<html lang="en">-->
-<html xmlns:th="http://www.thymeleaf.org" lang="th">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coz WeBrew - Products</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -23,6 +21,7 @@
         rel="stylesheet">
     <!-- Load logo in the title bar -->
     <link rel="icon" href="img/logo/favicon.ico">
+    <title>Coz WeBrew - Products</title>
 </head>
 
 <body>
@@ -64,6 +63,10 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="products.html?type=Accessory">Accessories</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="products.html">All products</a></li>
                             </ul>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
@@ -87,46 +90,112 @@
     </header>
     <!-- main section-->
     <main>
-        <h1 class="pageTitle">Products</h1>
+        <h1 class="d-flex align-items-center justify-content-center w-100">Products</h1>
         <!-- main section-->
-        <!-- toast section -->
-        <!-- Flexbox container for aligning the toasts -->
-        <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100 pt-2">
-            <!-- Then put toasts within -->
-            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-                <div class="toast-header orange-bg text-white">
-                    <strong class="me-auto">Click [x] to refresh the page.</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    Product deleted.
-                </div>
-            </div>
-        </div>
-        <div class="productSearch_container">
-            <div class="productSearch">
-                <input type="checkbox" id="search_check">
-                <div class="search_box">
-                    <input type="text" placeholder="Search product" id="searchText">
-                    <label for="search_check" class="search_icon"><i class="bi bi-search"></i></label>
-                </div>
+        <!-- Filter for mobile view-->
+        <div class="dropdown">
+            <a class="btn btn-success dropdown-toggle ms-4" href="#" role="button" id="dropdownFilter"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+            </a>
+            <div class="dropdown-menu">
+                <form class="dropdown-item" id="filter_tab2">
+                    <div class="secondary_bar">
+                        <button type="button" class="reset_button" id="clearAll2"
+                            onclick="clearAllSelections(); fetchData();">
+                            <i class="bi bi-x-lg"></i>
+                            <span class="reset_button_txt">
+                                Clear all
+                            </span>
+                        </button>
+                    </div>
+                    <div class="filter_content">
+                        <div class="card filter_bar category_bar">
+                            <div class="card-header">
+                                <span class="fw-bold">Type:</span>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="typeCheckTea2" value="Tea"
+                                            name="filterSelection2">
+                                        <label class="form-check-label" for="typeCheckTea">
+                                            Tea
+                                        </label>
+                                    </li>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="typeCheckTeaware2"
+                                            value="Teaware" name="filterSelection2">
+                                        <label class="form-check-label" for="typeCheckTeaware">
+                                            Teaware
+                                        </label>
+                                    </li>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="typeCheckAccessory2"
+                                            value="Accessory" name="filterSelection2">
+                                        <label class="form-check-label" for="typeCheckAccessory">
+                                            Accessory
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- filter for tea format, will only take effect if tea is checked for product type -->
+                        <div class="card filter_bar tea_format_bar">
+                            <div class="card-header">
+                                <span class="fw-bold">Format:</span>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="formatCheckLoose2"
+                                            value="Loose_leaf" name="filterSelection2">
+                                        <label class="form-check-label" for="formatCheckLoose">
+                                            Loose leaf
+                                        </label>
+                                    </li>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="formatCheckPowder2"
+                                            value="Powder" name="filterSelection2">
+                                        <label class="form-check-label" for="formatCheckPowder">
+                                            Powder
+                                        </label>
+                                    </li>
+                                    <li class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="formatCheckTeaBag2"
+                                            value="Tea_bag" name="filterSelection2">
+                                        <label class="form-check-label" for="formatCheckTeaBag">
+                                            Tea bag
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="secondary_bar">
+                        <button type="button" class="reset_button" id="updateFilter2" onclick="fetchData();">
+                            <span class="reset_button_txt">
+                                Update filter
+                            </span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <input type="checkbox" id="filter_check">
+        <!--  Filter for non-mobile view-->
+        <input type="checkbox" id="filter_check" class="d-none">
         <label for="filter_check" class="filter_txt"><i class="bi bi-filter"></i> Filters</label>
-
-        <div class="display">
-
+        <div class="display d-flex flex-row">
             <!-- filter section, only visible after toggling filter button -->
             <form id="filter_tab">
                 <div class="secondary_bar">
                     <button type="button" class="reset_button" id="clearAll"
                         onclick="clearAllSelections(); fetchData();">
                         <i class="bi bi-x-lg"></i>
-                        <div class="reset_button_txt">
+                        <span class="reset_button_txt">
                             Clear all
-                        </div>
+                        </span>
                     </button>
                 </div>
                 <div class="filter_content">
@@ -191,42 +260,12 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- <div class="card filter_bar price_bar">
-                        <div class="card-header">
-                            <span class="fw-bold">Price:</span>
-                        </div>
-                        <div class="card-body">
-                            <ul>
-                                <li class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="priceCheck" value="0-25"
-                                        name="filterSelection">
-                                    <label class="form-check-label" for="priceCheck">
-                                        $0 - $25
-                                    </label>
-                                </li>
-                                <li class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="priceCheckMid" value="26-50"
-                                        name="filterSelection">
-                                    <label class="form-check-label" for="priceCheckMid">
-                                        $26 - $50
-                                    </label>
-                                </li>
-                                <li class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="priceCheckHigh" value="50-100"
-                                        name="filterSelection">
-                                    <label class="form-check-label" for="priceCheckHigh">
-                                        $50 - $100
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="secondary_bar">
                     <button type="button" class="reset_button" id="updateFilter" onclick="fetchData();">
-                        <div class="reset_button_txt">
+                        <span class="reset_button_txt">
                             Update filter
-                        </div>
+                        </span>
                     </button>
                 </div>
             </form>
@@ -235,6 +274,30 @@
             <div class="container">
                 <ul class="row" id="showList">
                 </ul>
+            </div>
+        </div>
+        <!-- Modal -->
+        <!-- This modal will show to let the customer confirm if he/sheh wants to delete the product-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete product</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <p id="modal_delete_text"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="user_selection_button" data-bs-dismiss="modal"
+                            onclick="deleteProduct()">Confirm Delete</button>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- main section ends here -->

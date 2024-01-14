@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!--<html lang="en">-->
-<html xmlns:th="http://www.thymeleaf.org" lang="th">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -63,6 +62,10 @@
                   <hr class="dropdown-divider">
                 </li>
                 <li><a class="dropdown-item" href="products.html?type=Accessory">Accessories</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="products.html">All products</a></li>
               </ul>
             </li>
             <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
@@ -85,7 +88,7 @@
   <!-- main section starts here -->
   <main>
     <!-- toast section -->
-    <!-- Flexbox container for aligning the toasts -->
+    <!-- This toast will show once new product is created -->
     <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100 pt-2">
       <!-- Then put toasts within -->
       <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
@@ -100,27 +103,29 @@
     </div>
     <h1 class="pageTitle">Add new product</h1>
 
+    <!-- Section to add product-->
     <div class="container">
       <div class="row">
         <form class="col user_input" id="productForm">
+          <!-- Product name-->
           <span class="input_txt">Product name: </span>
           <input type="text" class="form-control input_bar" id="input_bar_name" minlength="5" maxlength="80">
           <span class="mt-1 marginTop2Rem" id="nameErrorCol1" style="display: none;">&nbsp;</span><span
             id="nameErrorCol2" class="marginTop2Rem user_inputWarning" style="display:none;" role="alert">Enter product
             name that is 5-80 characters long.</span>
+
+          <!-- Product type-->
           <span class="input_txt marginTop2Rem">Product type: </span>
           <div class="input_type_selection marginTop2Rem">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="prod_type" id="prod_type_tea" onclick="enableFormat()"
-                value="Tea" checked>
+              <input class="form-check-input" type="radio" name="prod_type" id="prod_type_tea" value="Tea" checked>
               <label class="form-check-label" for="prod_type_tea">
                 Tea
               </label>
             </div>
             <div class="form-check">
               <!-- If checked, invoke disable format to disable tea format selection -->
-              <input class="form-check-input" type="radio" name="prod_type" id="prod_type_teaware"
-                onclick="disableFormat()" value="Teaware">
+              <input class="form-check-input" type="radio" name="prod_type" id="prod_type_teaware" value="Teaware">
               <label class="form-check-label" for="prod_type_teaware">
                 Teaware
               </label>
@@ -128,17 +133,19 @@
             <div class="form-check">
               <!-- If checked, invoke disable format to disable tea format selection -->
               <input class="form-check-input" type="radio" name="prod_type" id="prod_type_accessories"
-                onclick="disableFormat()" value="Accessory">
+                value="Accessory">
               <label class="form-check-label" for="prod_type_accessories">
                 Accessory
               </label>
             </div>
           </div>
+
+          <!-- Tea format -->
           <span class="input_txt input_txt_format marginTop2Rem" id="input_txt_format">Tea Format: </span>
           <div class="input_format_selection input_txt_format marginTop2Rem">
             <div class="form-check">
               <input class="form-check-input" type="radio" name="tea_format" id="tea_format_looseLeaf"
-                value="Loose_leaf" checked>
+                value="Loose_leaf">
               <label class="form-check-label" for="tea_format_looseLeaf">
                 Loose leaf
               </label>
@@ -157,6 +164,7 @@
             </div>
           </div>
 
+          <!-- Price -->
           <span class="input_txt marginTop2Rem">Price (SGD) $: </span>
           <!-- Regex - 0 - 999.99 -->
           <input type="text" pattern="^(0|[1-9][0-9]{0,2})(\.[0-9]{1,2})?$" class="form-control input_bar marginTop2Rem"
@@ -165,13 +173,16 @@
             class="user_inputWarning" style="display:none;" role="alert">Enter price that is between $0 -
             $999.99.</span>
 
+          <!-- Country -->
           <span class="input_txt marginTop2Rem">Country: </span>
           <input type="text" class="form-control input_bar marginTop2Rem" id="input_bar_country">
 
+          <!-- Description -->
           <span class="input_txt marginTop2Rem">Description: </span>
           <textarea name="input_bar_description" class="input_bar form-control marginTop2Rem" id="input_bar_description"
             cols="30" rows="10" minlength="10" maxlength="500"></textarea>
 
+          <!-- Image -->
           <span class="input_txt marginTop2Rem">Image: </span>
           <div class="input-group marginTop2Rem">
             <!-- The image file uploaded will be encoded to base64 format -->
@@ -183,6 +194,7 @@
             <div class="row pt-2 w-50" id="imagePreview"></div>
           </div>
 
+          <!-- Create product button -->
           <button type="submit" class="user_selection_button" id="btn_create">
             Create product
           </button>

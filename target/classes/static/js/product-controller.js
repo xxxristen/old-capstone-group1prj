@@ -94,7 +94,7 @@ class ProductController {
                 }
             }
             const formattedPrice = parseFloat(dataSet[i].price).toFixed(2);
-            //            let listProduct = document.createElement("a")
+            // let listProduct = document.createElement("a")
             let listProduct = document.createElement(contentType)
             listProduct.className = "card"
             listProduct.classList.add("card_listing")
@@ -102,6 +102,8 @@ class ProductController {
             if (!usernameSpanBig || !usernameSpanSmall) {
                 listProduct.href = "product-details.html?id=" + dataSet[i].id
             }
+            // The overlay with 3 buttons (see details, update product, delete product) are included after user log in
+            // Only one button in mobile view to prevent the product listing card to be too bulky
             listProduct.innerHTML = `
                 <img class="img-fluid" src="${dataSet[i].imagePath}"/>
                 <div class="card-body">
@@ -119,35 +121,43 @@ class ProductController {
                     <button class="card-overlay-btn btn_update">Update product</button>
                     <button class="card-overlay-btn btn_delete">Delete product</button>
                 </div>
+                <div class="d-sm-flex flex-column justify-content-center align-items-center">
+                    <button class="user_selection_button btn_modify_mobile">Modify product</button>
+                </div>
                 </div>
             `
             unorderedList.appendChild(listProduct);
+
+            // This button direct the user to product details page whereby he/she can update or delete the product
+            const buttonModifyMobile = document.getElementsByClassName('btn_modify_mobile')
+            buttonModifyMobile[i].addEventListener('click',()=>{
+                window.location.href= "product-details.html?id=" + dataSet[i].id
+            })
+
+            // This button direct the user to product details page whereby he/she can see the details of the product before modifying it
             const buttonDetails = document.getElementsByClassName('btn_details')
             buttonDetails[i].addEventListener('click',()=>{
                 window.location.href= "product-details.html?id=" + dataSet[i].id
             })
+
+            // This button direct the user to update product page whereby he/she can fill in the details to be updated
             const updateBtn = document.getElementsByClassName('btn_update');
             updateBtn[i].addEventListener('click',()=>{
                 window.location.href= "update-product.html?id=" + dataSet[i].id
             })
+
+            // This button will display the a Bootstrap modal that will ask user for confirmation for delete
             const deleteBtn = document.getElementsByClassName('btn_delete');
-            deleteBtn[i].addEventListener('click', ()=>{
-                this.deleteProduct(dataSet[i].id)
-
-                // Run toast if new product is deleted successfully
-                var toastEl = document.querySelector('.toast');
-                var toast = new bootstrap.Toast(toastEl);
-                toast.show();
-                scrollToTop();
-
-                var productDeletedToast = document.querySelector('.toast');
-                productDeletedToast.addEventListener('hidden.bs.toast', function () {
-                    window.open("products.html", "productController");
-                });
-            });
+            deleteBtn[i].setAttribute("data-bs-toggle","modal")
+            deleteBtn[i].setAttribute("data-bs-target","#exampleModal")
+            deleteBtn[i].addEventListener("click",()=>{
+                   localStorage.setItem("product_id_to_delete", dataSet[i].id)
+                   document.querySelector("#modal_delete_text").innerText = `Are you sure you want to delete ${dataSet[i].name}?`
+            })
         }
     }
 
+    // To store product data in the local storage to be rendered in the enquiry form
     storeDataToLocalStorage(data) {
         const enquiryList = JSON.parse(localStorage.getItem('enquiryList')) || [];
         enquiryList.push(data)
@@ -155,7 +165,7 @@ class ProductController {
     }
 
     // Method to post or put
-    async sendJSON(id, name, type, format, price, country, description, image, method) {
+    async sendJSON(name, type, format, price, country, description, image, method, id) {
 
         const product = {
             name: name,
@@ -188,6 +198,7 @@ class ProductController {
         }
     }
 
+    // Method to delete
     async deleteProduct(id) {
         try {
             const response = await fetch("/api/products/" + id, {
@@ -200,10 +211,18 @@ class ProductController {
     }
 }
 
+// Function to auto scroll the window to the top to display toast and/or modal
 function scrollToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
 
-var windowName = window.name;
-console.log("Window Name:", windowName);
+// Function to delete product
+function deleteProduct(){
+    const idToDelete = localStorage.getItem('product_id_to_delete')
+    productController.deleteProduct(idToDelete).then(()=>{
+        localStorage.removeItem('product_id_to_delete')
+
+        window.open("products.html", "productController")
+    })
+}

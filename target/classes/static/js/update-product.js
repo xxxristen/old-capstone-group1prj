@@ -19,14 +19,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 const inputName = document.getElementById("input_bar_name")
                 inputName.value = data.name
                 const inputPrice = document.getElementById("input_bar_price")
-                inputPrice.value = data.price
+                inputPrice.value = data.price.toFixed(2)
                 const inputCountry = document.getElementById("input_bar_country")
                 inputCountry.value = data.country
                 const inputDescription = document.getElementById("input_bar_description")
                 inputDescription.value = data.description
                 const inputImage = document.getElementById("currentImage")
                 inputImage.src = data.imagePath
-
+                const typeToCheck = document.querySelector(`input[name="prod_type"][value="${data.type}"]`)
+                typeToCheck.checked = true
+                const formatToCheck = document.querySelector(`input[name="tea_format"][value="${data.format}"]`)
+                if(formatToCheck !== null){
+                    formatToCheck.checked = true
+                }
             })
     }
 })
@@ -55,7 +60,12 @@ newProdForm.addEventListener('submit', (event) => {
     const price = escapeHTML(newProdPrice.value);
     const country = escapeHTML(newProdCountry.value);
     const description = escapeHTML(newProdDescription.value);
-    const format = escapeHTML(newProdFormat.value);
+    var format = null
+
+    if(newProdFormat !== null){
+        format = escapeHTML(newProdFormat.value);
+    }
+
 
     // Validation - Fields cannot be empty
     // Creation of empty array to store those empty fields
@@ -89,7 +99,7 @@ newProdForm.addEventListener('submit', (event) => {
         return false;
     }
 
-    // If no image uploaded - replace with default image
+    // If no image uploaded - the current image is used
     if (newProdImage.files.length == 0) {
         imgURL = currentImage.src
     }
@@ -99,9 +109,9 @@ newProdForm.addEventListener('submit', (event) => {
     }
 
     // PUT to api
-    productController.sendJSON(id, name, type, format, price, country, description, imgURL, "PUT")
+    productController.sendJSON(name, type, format, price, country, description, imgURL, "PUT", id)
 
-    // Run toast if new product is created successfully
+    // Run toast if new product is updated successfully
     var toastEl = document.querySelector('.toast');
     var toast = new bootstrap.Toast(toastEl);
     toast.show();
@@ -118,6 +128,3 @@ newProdForm.addEventListener('submit', (event) => {
     document.getElementById('imagePreview').style.display = "none";
 }
 )
-
-var windowName = window.name;
-console.log("Window Name:", windowName);

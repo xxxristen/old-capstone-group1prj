@@ -1,14 +1,21 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const productName = document.getElementById("input_bar_name");
+  productName.addEventListener("focusout", validateName);
+  const productPrice = document.getElementById("input_bar_price");
+  productPrice.addEventListener("input", validatePrice);
+});
+
+
 // Product name and price validation - show/hide warning
+
 // Product name
 
-const productName = document.getElementById("input_bar_name");
-productName.addEventListener("focusout", validateName);
-
 function validateName() {
+const productName = document.getElementById("input_bar_name");
 const nameError = document.getElementById("nameErrorCol1");
 const nameError2 = document.getElementById("nameErrorCol2");
 
-    if (productName.value.length < 5) {
+    if (productName.value.length < 5 ) {
         nameError.style.display = "block";
         nameError2.style.display = "block";
     }
@@ -18,10 +25,9 @@ const nameError2 = document.getElementById("nameErrorCol2");
     }
 }
 // Product price
-const productPrice = document.getElementById("input_bar_price");
-productPrice.addEventListener("input", validatePrice);
 
 function validatePrice() {
+const productPrice = document.getElementById("input_bar_price");
 const priceError = document.getElementById("priceErrorCol1");
 const priceError2 = document.getElementById("priceErrorCol2");
 
@@ -99,17 +105,25 @@ function getImgURL(input) {
     }
 }
 
-// This section is to enable or disable the Tea Format Selection based on the product type
-const formatForm = document.getElementsByName('tea_format')
+// This section is to enable the Tea Format selection only if product type Tea is checked
+const typeForm = document.getElementsByName('prod_type')
+const teaCheckBox = document.getElementById('prod_type_tea');
+const teaFormatBoxes = document.querySelectorAll("#tea_format_looseLeaf, #tea_format_powder, #tea_format_teabag");
 
-function disableFormat() {
-    formatForm.forEach(element => {
-        element.disabled = true
-    })
+function handleTeaCheckBoxChange(){
+    teaFormatBoxes.forEach(checkBox => {
+            if (!teaCheckBox.checked) {
+                checkBox.checked = false;
+                checkBox.disabled = true;
+            }
+            else {
+                checkBox.disabled = false;
+            }
+        })
 }
 
-function enableFormat() {
-    formatForm.forEach(element => {
-        element.disabled = false
-    })
-}
+typeForm.forEach(function(element){
+    element.addEventListener('change', handleTeaCheckBoxChange)
+})
+
+module.exports = {validateName, validatePrice}
