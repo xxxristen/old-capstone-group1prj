@@ -26,8 +26,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 inputDescription.value = data.description
                 const inputImage = document.getElementById("currentImage")
                 inputImage.src = data.imagePath
+
+                // check the correct product type
                 const typeToCheck = document.querySelector(`input[name="prod_type"][value="${data.type}"]`)
                 typeToCheck.checked = true
+
+                // disable the tea format if the product type is not equal to Tea
+                const teaFormatBoxes = document.querySelectorAll("#tea_format_looseLeaf, #tea_format_powder, #tea_format_teabag");
+                if(data.type !== "Tea"){
+                    teaFormatBoxes.forEach(checkBox => {
+                        checkBox.disabled = true;
+                    })
+                }
+
+                // check the correct tea format
                 const formatToCheck = document.querySelector(`input[name="tea_format"][value="${data.format}"]`)
                 if(formatToCheck !== null){
                     formatToCheck.checked = true
