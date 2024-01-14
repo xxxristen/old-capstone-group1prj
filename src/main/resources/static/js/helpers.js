@@ -21,9 +21,11 @@ async function fetchData(type = "") {
     try {
       let response = await fetch(`/api/products?type=${type}`);
       let data = await response.json();
-      this.displayList(data);
+      console.log(data)
+      productController.displayList(data);
     } catch (error) {
       loadError(error);
+      console.log(error);
     }
   }
 }
@@ -34,5 +36,6 @@ function loadError(error) {
                       unorderedList.innerHTML = `<span>Failed to fetch.</span>`;
                       throw new Error("Fetching of data failed.");
 }
+
 // Initial fetch - Load immediately when the script is loaded to fetch initial data.
 fetchData(type);
