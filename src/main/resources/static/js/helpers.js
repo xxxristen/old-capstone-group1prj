@@ -5,7 +5,6 @@ const productController = new ProductController();
 const url = document.location.search;
 let urlParams = new URLSearchParams(url);
 let type = urlParams.get("type");
-// console.log("Type is:" + type); // For debugging
 
 // Fetch data from API
 async function fetchData(type = "") {
@@ -21,11 +20,9 @@ async function fetchData(type = "") {
     try {
       let response = await fetch(`/api/products?type=${type}`);
       let data = await response.json();
-      console.log(data)
       productController.displayList(data);
     } catch (error) {
       loadError(error);
-      console.log(error);
     }
   }
 }
