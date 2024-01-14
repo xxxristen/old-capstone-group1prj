@@ -32,6 +32,10 @@ footer {
     background-color: #e65722;
 }
 
+.orange-light-bg {
+    background-color: #FFF6DC;
+}
+
 a:hover {
     color: #e65722;
 }
@@ -913,7 +917,7 @@ a {
     .filter_tab2,
     #filter_tab2:hover,
     #filter_tab2:active{
-        background-color: white;
+        background-color: #FFF6DC;
     }
 
     /* user_selection button section*/

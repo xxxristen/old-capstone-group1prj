@@ -5,7 +5,6 @@ const productController = new ProductController();
 const url = document.location.search;
 let urlParams = new URLSearchParams(url);
 let type = urlParams.get("type");
-// console.log("Type is:" + type); // For debugging
 
 // Fetch data from API
 async function fetchData(type = "") {
@@ -16,28 +15,24 @@ async function fetchData(type = "") {
       productController.displayList(data);
     } catch (error) {
       loadError(error);
-      console.error("Error fetching products from API: 1", error);
     }
   } else {
     try {
       let response = await fetch(`/api/products?type=${type}`);
       let data = await response.json();
-      this.displayList(data);
+      productController.displayList(data);
     } catch (error) {
       loadError(error);
-      console.error("Error fetching products from API: ", error);
     }
   }
 }
 function loadError(error) {
   const unorderedList = document.getElementById("showList");
-  let listProduct = document.createElement("li");
-  listProduct.innerHTML = `<span>${error}.</span>`;
-  listProduct.style.alignItems = "center";
-  listProduct.style.fontSize = "x-large";
-  listProduct.style.fontStyle = "italic";
-  listProduct.style.listStyle = "none";
-  unorderedList.appendChild(listProduct);
+  unorderedList.classList.add("alert", "alert-danger", "w-50", "translate-middle-x", "start-50", "mt-3");
+                      unorderedList.setAttribute("role", "alert");
+                      unorderedList.innerHTML = `<span>Failed to fetch.</span>`;
+                      throw new Error("Fetching of data failed.");
 }
+
 // Initial fetch - Load immediately when the script is loaded to fetch initial data.
 fetchData(type);
