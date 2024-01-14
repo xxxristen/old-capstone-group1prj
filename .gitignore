@@ -4,7 +4,6 @@ target/
 src/main/resources/static/package-lock.json
 src/main/resources/static/package.json
 src/main/resources/static/img/mailing-list.png
-src/main/resources/static/js/helper.js
 SQL statements
 .vscode/
 colors-pyscho.png
