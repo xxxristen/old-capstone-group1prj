@@ -5,7 +5,6 @@ const productController = new ProductController();
 const url = document.location.search;
 let urlParams = new URLSearchParams(url);
 let type = urlParams.get("type");
-// console.log("Type is:" + type); // For debugging
 
 // Fetch data from API
 async function fetchData(type = "") {
@@ -21,7 +20,7 @@ async function fetchData(type = "") {
     try {
       let response = await fetch(`/api/products?type=${type}`);
       let data = await response.json();
-      this.displayList(data);
+      productController.displayList(data);
     } catch (error) {
       loadError(error);
     }
@@ -34,5 +33,6 @@ function loadError(error) {
                       unorderedList.innerHTML = `<span>Failed to fetch.</span>`;
                       throw new Error("Fetching of data failed.");
 }
+
 // Initial fetch - Load immediately when the script is loaded to fetch initial data.
 fetchData(type);
