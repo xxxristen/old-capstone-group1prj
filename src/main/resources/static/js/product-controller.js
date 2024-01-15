@@ -82,7 +82,7 @@ class ProductController {
                     // Append div to create some space before the next header. Not applicable to the first header
                     if (currentType != "") {
                         let spaceBeforeNextHeader = document.createElement("div")
-                        spaceBeforeNextHeader.className="git typeHeader";
+                        spaceBeforeNextHeader.className="typeHeader";
                         unorderedList.appendChild(spaceBeforeNextHeader);
                     }
                     currentType = dataSet[i].type.toUpperCase();
