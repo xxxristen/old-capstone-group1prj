@@ -524,11 +524,11 @@ footer p {
     width: 100%;
     justify-content: center;
 }
-#typeHeader {
+.typeHeader {
 padding-top: 2.5rem;
 }
 
-#typeHeader:first-child {
+.typeHeader:first-child {
 padding-top: 0;
 }
 
@@ -908,6 +908,10 @@ a {
         height: 50rem;
         max-height: 62rem;
         overflow: visible;
+    }
+
+    .typeHeader, .typeHeader:first-child {
+    padding-top: 2rem;
     }
 
     /* filter section*/
