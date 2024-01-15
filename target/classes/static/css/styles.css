@@ -524,6 +524,13 @@ footer p {
     width: 100%;
     justify-content: center;
 }
+#typeHeader {
+padding-top: 2.5rem;
+}
+
+#typeHeader:first-child {
+padding-top: 0;
+}
 
 #dropdownFilter{
     display: none;

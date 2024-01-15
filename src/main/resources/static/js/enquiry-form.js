@@ -139,7 +139,11 @@ document.querySelectorAll(".fa-trash").forEach(function(button){
 
         const enquiryList = JSON.parse(storageProduct)
         const updatedEnquiryList = enquiryList.filter(product => product.id != productId)
-        localStorage.setItem('enquiryList', JSON.stringify(updatedEnquiryList))
+        if(updatedEnquiryList.length > 0){
+            localStorage.setItem('enquiryList', JSON.stringify(updatedEnquiryList))
+        } else {
+            localStorage.removeItem('enquiryList')
+        }
 
 //        const enquiryCount = document.querySelector("#enquiry_count")
 //            if(updatedEnquiryList.length >1){

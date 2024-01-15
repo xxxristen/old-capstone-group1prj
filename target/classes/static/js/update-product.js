@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const typeToCheck = document.querySelector(`input[name="prod_type"][value="${data.type}"]`)
                 typeToCheck.checked = true
 
+                // disable the tea format if the product type is not equal to Tea
                 const teaFormatBoxes = document.querySelectorAll("#tea_format_looseLeaf, #tea_format_powder, #tea_format_teabag");
                 if(data.type !== "Tea"){
                     teaFormatBoxes.forEach(checkBox => {
